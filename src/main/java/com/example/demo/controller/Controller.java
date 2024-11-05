@@ -11,7 +11,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import com.example.demo.LevelParent;
 
-public class Controller implements Observer {
+public class Controller {
 
 	private static final String LEVEL_ONE_CLASS_NAME = "com.example.demo.LevelOne";
 	private final Stage stage;
@@ -27,28 +27,61 @@ public class Controller implements Observer {
 			goToLevel(LEVEL_ONE_CLASS_NAME);
 	}
 
+//	private void goToLevel(String className) throws ClassNotFoundException, NoSuchMethodException, SecurityException,
+//			InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+//			Class<?> myClass = Class.forName(className);
+//			Constructor<?> constructor = myClass.getConstructor(double.class, double.class);
+//			LevelParent myLevel = (LevelParent) constructor.newInstance(stage.getHeight(), stage.getWidth());
+//			myLevel.addObserver(this);
+//			Scene scene = myLevel.initializeScene();
+//			stage.setScene(scene);
+//			myLevel.startGame();
+//
+//	}
+
 	private void goToLevel(String className) throws ClassNotFoundException, NoSuchMethodException, SecurityException,
 			InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-			Class<?> myClass = Class.forName(className);
-			Constructor<?> constructor = myClass.getConstructor(double.class, double.class);
-			LevelParent myLevel = (LevelParent) constructor.newInstance(stage.getHeight(), stage.getWidth());
-			myLevel.addObserver(this);
-			Scene scene = myLevel.initializeScene();
-			stage.setScene(scene);
-			myLevel.startGame();
 
+		// Use reflection to load the level class
+		Class<?> myClass = Class.forName(className);
+		Constructor<?> constructor = myClass.getConstructor(double.class, double.class);
+		LevelParent myLevel = (LevelParent) constructor.newInstance(stage.getHeight(), stage.getWidth());
+
+		Scene scene = myLevel.initializeScene(); // Initialize the scene for the level
+		stage.setScene(scene); // Set the scene on the stage
+		myLevel.startGame(); // Start the level
+
+		// Add listener for level change
+		myLevel.nextLevelProperty().addListener((observable, oldValue, newValue) -> {
+			if (newValue != null && !newValue.isEmpty()) {
+				try {
+					goToLevel(newValue);
+				} catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException
+						 | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+					handleException(e);
+				}
+			}
+		});
 	}
 
-	@Override
-	public void update(Observable arg0, Object arg1) {
-		try {
-			goToLevel((String) arg1);
-		} catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException
-				| IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setContentText(e.getClass().toString());
-			alert.show();
-		}
+	private void handleException(Exception e) {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setContentText(e.getClass().toString());
+		alert.show();
+		e.printStackTrace();
 	}
+
+
+//	@Override
+//	public void update(Observable arg0, Object arg1) {
+//		try {
+//			goToLevel((String) arg1);
+//		} catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException
+//				| IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+//			Alert alert = new Alert(AlertType.ERROR);
+//			alert.setContentText(e.getClass().toString());
+//			alert.show();
+//		}
+//	}
 
 }
