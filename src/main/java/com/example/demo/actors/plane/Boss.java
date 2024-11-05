@@ -1,4 +1,7 @@
-package com.example.demo;
+package com.example.demo.actors.plane;
+
+import com.example.demo.actors.ActiveActorDestructible;
+import com.example.demo.actors.projectile.BossProjectile;
 
 import java.util.*;
 

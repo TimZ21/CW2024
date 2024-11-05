@@ -1,8 +1,12 @@
-package com.example.demo;
+package com.example.demo.level;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
+import com.example.demo.actors.ActiveActorDestructible;
+import com.example.demo.actors.plane.FighterPlane;
+import com.example.demo.view.LevelView;
+import com.example.demo.actors.plane.UserPlane;
 import javafx.animation.*;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
