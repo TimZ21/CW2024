@@ -35,7 +35,9 @@ public abstract class LevelParent {
 	private final List<ActiveActorDestructible> enemyUnits;
 	private final List<ActiveActorDestructible> userProjectiles;
 	private final List<ActiveActorDestructible> enemyProjectiles;
-	
+	private final ActorManager actorManager;
+
+
 	private int currentNumberOfEnemies;
 	private LevelView levelView;
 
@@ -52,13 +54,15 @@ public abstract class LevelParent {
 		this.userProjectiles = new ArrayList<>();
 		this.enemyProjectiles = new ArrayList<>();
 
-		this.background = new ImageView(new Image(getClass().getResource(backgroundImageName).toExternalForm()));
+		this.background = new ImageView(new Image(Objects.requireNonNull(getClass().getResource(backgroundImageName)).toExternalForm()));
 		this.screenHeight = screenHeight;
 		this.screenWidth = screenWidth;
 		this.enemyMaximumYPosition = screenHeight - SCREEN_HEIGHT_ADJUSTMENT;
 		this.levelView = instantiateLevelView();
 		this.currentNumberOfEnemies = 0;
 		initializeTimeline();
+
+		this.actorManager = new ActorManager(friendlyUnits, enemyUnits, userProjectiles, enemyProjectiles, root);
 		friendlyUnits.add(user);
 	}
 
@@ -93,14 +97,14 @@ public abstract class LevelParent {
 
 	private void updateScene() {
 		spawnEnemyUnits();
-		updateActors();
+		actorManager.updateAllActors();
 		generateEnemyFire();
 		updateNumberOfEnemies();
 		handleEnemyPenetration();
 		handleUserProjectileCollisions();
 		handleEnemyProjectileCollisions();
 		handlePlaneCollisions();
-		removeAllDestroyedActors();
+		actorManager.removeDestroyedActors();
 		updateKillCount();
 		updateLevelView();
 		checkIfGameOver();
@@ -150,26 +154,27 @@ public abstract class LevelParent {
 		}
 	}
 
-	private void updateActors() {
-		friendlyUnits.forEach(plane -> plane.updateActor());
-		enemyUnits.forEach(enemy -> enemy.updateActor());
-		userProjectiles.forEach(projectile -> projectile.updateActor());
-		enemyProjectiles.forEach(projectile -> projectile.updateActor());
-	}
 
-	private void removeAllDestroyedActors() {
-		removeDestroyedActors(friendlyUnits);
-		removeDestroyedActors(enemyUnits);
-		removeDestroyedActors(userProjectiles);
-		removeDestroyedActors(enemyProjectiles);
-	}
-
-	private void removeDestroyedActors(List<ActiveActorDestructible> actors) {
-		List<ActiveActorDestructible> destroyedActors = actors.stream().filter(actor -> actor.isDestroyed())
-				.collect(Collectors.toList());
-		root.getChildren().removeAll(destroyedActors);
-		actors.removeAll(destroyedActors);
-	}
+	//	private void updateActors() {
+//		friendlyUnits.forEach(plane -> plane.updateActor());
+//		enemyUnits.forEach(enemy -> enemy.updateActor());
+//		userProjectiles.forEach(projectile -> projectile.updateActor());
+//		enemyProjectiles.forEach(projectile -> projectile.updateActor());
+//	}
+//
+//	private void removeAllDestroyedActors() {
+//		removeDestroyedActors(friendlyUnits);
+//		removeDestroyedActors(enemyUnits);
+//		removeDestroyedActors(userProjectiles);
+//		removeDestroyedActors(enemyProjectiles);
+//	}
+//
+//	private void removeDestroyedActors(List<ActiveActorDestructible> actors) {
+//		List<ActiveActorDestructible> destroyedActors = actors.stream().filter(actor -> actor.isDestroyed())
+//				.collect(Collectors.toList());
+//		root.getChildren().removeAll(destroyedActors);
+//		actors.removeAll(destroyedActors);
+//	}
 
 	private void handlePlaneCollisions() {
 		handleCollisions(friendlyUnits, enemyUnits);
