@@ -36,6 +36,8 @@ public abstract class LevelParent {
 	private final List<ActiveActorDestructible> userProjectiles;
 	private final List<ActiveActorDestructible> enemyProjectiles;
 	private final ActorManager actorManager;
+	private final CollisionHandler collisionHandler;
+
 
 
 	private int currentNumberOfEnemies;
@@ -45,7 +47,7 @@ public abstract class LevelParent {
 
 
 	public LevelParent(String backgroundImageName, double screenHeight, double screenWidth, int playerInitialHealth) {
-		this.root = new Group();
+        this.root = new Group();
 		this.scene = new Scene(root, screenWidth, screenHeight);
 		this.timeline = new Timeline();
 		this.user = new UserPlane(playerInitialHealth);
@@ -62,7 +64,11 @@ public abstract class LevelParent {
 		this.currentNumberOfEnemies = 0;
 		initializeTimeline();
 
+		// New added constructor for the class I created for single responsibility principle
 		this.actorManager = new ActorManager(friendlyUnits, enemyUnits, userProjectiles, enemyProjectiles, root);
+		this.collisionHandler = new CollisionHandler();
+
+
 		friendlyUnits.add(user);
 	}
 
@@ -176,29 +182,44 @@ public abstract class LevelParent {
 //		actors.removeAll(destroyedActors);
 //	}
 
+//	private void handlePlaneCollisions() {
+//		handleCollisions(friendlyUnits, enemyUnits);
+//	}
+//
+//	private void handleUserProjectileCollisions() {
+//		handleCollisions(userProjectiles, enemyUnits);
+//	}
+//
+//	private void handleEnemyProjectileCollisions() {
+//		handleCollisions(enemyProjectiles, friendlyUnits);
+//	}
+
+//	private void handleCollisions(List<ActiveActorDestructible> actors1,
+//			List<ActiveActorDestructible> actors2) {
+//		for (ActiveActorDestructible actor : actors2) {
+//			for (ActiveActorDestructible otherActor : actors1) {
+//				if (actor.getBoundsInParent().intersects(otherActor.getBoundsInParent())) {
+//					actor.takeDamage();
+//					otherActor.takeDamage();
+//				}
+//			}
+//		}
+//	}
 	private void handlePlaneCollisions() {
-		handleCollisions(friendlyUnits, enemyUnits);
+		collisionHandler.detectCollisions(friendlyUnits, enemyUnits);
 	}
 
 	private void handleUserProjectileCollisions() {
-		handleCollisions(userProjectiles, enemyUnits);
+		collisionHandler.detectCollisions(userProjectiles, enemyUnits);
 	}
 
 	private void handleEnemyProjectileCollisions() {
-		handleCollisions(enemyProjectiles, friendlyUnits);
+		collisionHandler.detectCollisions(enemyProjectiles, friendlyUnits);
 	}
 
-	private void handleCollisions(List<ActiveActorDestructible> actors1,
-			List<ActiveActorDestructible> actors2) {
-		for (ActiveActorDestructible actor : actors2) {
-			for (ActiveActorDestructible otherActor : actors1) {
-				if (actor.getBoundsInParent().intersects(otherActor.getBoundsInParent())) {
-					actor.takeDamage();
-					otherActor.takeDamage();
-				}
-			}
-		}
-	}
+
+
+
 
 	private void handleEnemyPenetration() {
 		for (ActiveActorDestructible enemy : enemyUnits) {

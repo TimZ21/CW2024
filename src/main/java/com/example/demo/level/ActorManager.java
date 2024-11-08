@@ -25,7 +25,7 @@ public class ActorManager {
         this.root = root;
     }
 
-    // Method to update all actors
+    // update all actors
     public void updateAllActors() {
         friendlyUnits.forEach(ActiveActorDestructible::updateActor);
         enemyUnits.forEach(ActiveActorDestructible::updateActor);
@@ -33,7 +33,7 @@ public class ActorManager {
         enemyProjectiles.forEach(ActiveActorDestructible::updateActor);
     }
 
-    // Method to remove destroyed actors
+    // remove destroyed actors
     public void removeDestroyedActors() {
         removeActorsFromList(friendlyUnits);
         removeActorsFromList(enemyUnits);
@@ -41,7 +41,7 @@ public class ActorManager {
         removeActorsFromList(enemyProjectiles);
     }
 
-    // Helper method to remove destroyed actors from a list
+    // remove destroyed actors from a list
     private void removeActorsFromList(List<ActiveActorDestructible> actors) {
         actors.removeIf(ActiveActorDestructible::isDestroyed);
         root.getChildren().removeIf(node -> node instanceof ActiveActorDestructible && ((ActiveActorDestructible) node).isDestroyed());
