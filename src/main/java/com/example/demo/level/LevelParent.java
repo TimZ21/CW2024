@@ -37,6 +37,7 @@ public abstract class LevelParent {
 	private final List<ActiveActorDestructible> enemyProjectiles;
 	private final ActorManager actorManager;
 	private final CollisionHandler collisionHandler;
+	private final InputHandler inputHandler;
 
 
 
@@ -67,6 +68,9 @@ public abstract class LevelParent {
 		// New added constructor for the class I created for single responsibility principle
 		this.actorManager = new ActorManager(friendlyUnits, enemyUnits, userProjectiles, enemyProjectiles, root);
 		this.collisionHandler = new CollisionHandler();
+
+		// Initialized input handler with user plane, because only user plane need to be control by input
+		this.inputHandler = new InputHandler(user, this::fireProjectile);
 
 
 		friendlyUnits.add(user);
@@ -126,20 +130,29 @@ public abstract class LevelParent {
 		background.setFocusTraversable(true);
 		background.setFitHeight(screenHeight);
 		background.setFitWidth(screenWidth);
-		background.setOnKeyPressed(new EventHandler<KeyEvent>() {
-			public void handle(KeyEvent e) {
-				KeyCode kc = e.getCode();
-				if (kc == KeyCode.UP) user.moveUp();
-				if (kc == KeyCode.DOWN) user.moveDown();
-				if (kc == KeyCode.SPACE) fireProjectile();
-			}
-		});
-		background.setOnKeyReleased(new EventHandler<KeyEvent>() {
-			public void handle(KeyEvent e) {
-				KeyCode kc = e.getCode();
-				if (kc == KeyCode.UP || kc == KeyCode.DOWN) user.stop();
-			}
-		});
+
+		// The input handle function is split into
+//		background.setOnKeyPressed(new EventHandler<KeyEvent>() {
+//			public void handle(KeyEvent e) {
+//				KeyCode kc = e.getCode();
+//				if (kc == KeyCode.UP) user.moveUp();
+//				if (kc == KeyCode.DOWN) user.moveDown();
+//				if (kc == KeyCode.SPACE) fireProjectile();
+//			}
+//		});
+//		background.setOnKeyReleased(new EventHandler<KeyEvent>() {
+//			public void handle(KeyEvent e) {
+//				KeyCode kc = e.getCode();
+//				if (kc == KeyCode.UP || kc == KeyCode.DOWN) user.stop();
+//			}
+//		});
+		background.setOnKeyPressed(inputHandler.getOnKeyPressedHandler());
+		background.setOnKeyReleased(inputHandler.getOnKeyReleasedHandler());
+
+
+
+
+
 		root.getChildren().add(background);
 	}
 
