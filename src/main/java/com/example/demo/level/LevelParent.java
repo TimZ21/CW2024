@@ -38,6 +38,7 @@ public abstract class LevelParent {
 	private final ActorManager actorManager;
 	private final CollisionHandler collisionHandler;
 	private final InputHandler inputHandler;
+	private final EnemySpawner enemySpawner;
 
 
 
@@ -71,6 +72,7 @@ public abstract class LevelParent {
 
 		// Initialized input handler with user plane, because only user plane need to be control by input
 		this.inputHandler = new InputHandler(user, this::fireProjectile);
+		this.enemySpawner = new EnemySpawner(enemyUnits, root, enemyProjectiles);
 
 
 		friendlyUnits.add(user);
@@ -108,7 +110,7 @@ public abstract class LevelParent {
 	private void updateScene() {
 		spawnEnemyUnits();
 		actorManager.updateAllActors();
-		generateEnemyFire();
+		enemySpawner.generateEnemyFire();
 		updateNumberOfEnemies();
 		handleEnemyPenetration();
 		handleUserProjectileCollisions();
@@ -162,16 +164,19 @@ public abstract class LevelParent {
 		userProjectiles.add(projectile);
 	}
 
-	private void generateEnemyFire() {
-		enemyUnits.forEach(enemy -> spawnEnemyProjectile(((FighterPlane) enemy).fireProjectile()));
-	}
+	// This method has been moved to EnemySpawner for single responsibility principle
+//	private void generateEnemyFire() {
+//		enemyUnits.forEach(enemy -> spawnEnemyProjectile(((FighterPlane) enemy).fireProjectile()));
+//	}
 
-	private void spawnEnemyProjectile(ActiveActorDestructible projectile) {
-		if (projectile != null) {
-			root.getChildren().add(projectile);
-			enemyProjectiles.add(projectile);
-		}
-	}
+
+	// This method has been moved to EnemySpawner for single responsibility principle
+//	private void spawnEnemyProjectile(ActiveActorDestructible projectile) {
+//		if (projectile != null) {
+//			root.getChildren().add(projectile);
+//			enemyProjectiles.add(projectile);
+//		}
+//	}
 
 
 	//	private void updateActors() {
@@ -279,10 +284,16 @@ public abstract class LevelParent {
 		return enemyUnits.size();
 	}
 
+//	protected void addEnemyUnit(ActiveActorDestructible enemy) {
+//		enemyUnits.add(enemy);
+//		root.getChildren().add(enemy);
+//	}
+
+	// Move the detailed code into EnemySpawner class for single responsibility principle
 	protected void addEnemyUnit(ActiveActorDestructible enemy) {
-		enemyUnits.add(enemy);
-		root.getChildren().add(enemy);
+		enemySpawner.addEnemyUnit(enemy);
 	}
+
 
 	protected double getEnemyMaximumYPosition() {
 		return enemyMaximumYPosition;
