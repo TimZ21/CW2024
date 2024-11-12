@@ -4,6 +4,11 @@ import com.example.demo.actors.plane.Boss;
 import com.example.demo.view.LevelView;
 import com.example.demo.view.LevelViewLevelTwo;
 
+/**
+ * The {@code LevelTwo} class represents the second level of the game.
+ * It extends {@code LevelParent} and defines the specific setup, enemy spawning,
+ * and game-over conditions for Level Two.
+ */
 public class LevelTwo extends LevelParent {
 
 	private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/background2.jpg";
@@ -11,26 +16,42 @@ public class LevelTwo extends LevelParent {
 	private final Boss boss;
 	private LevelViewLevelTwo levelView;
 
+	/**
+	 * Constructs a {@code LevelTwo} instance with the specified screen dimensions.
+	 *
+	 * @param screenHeight The height of the game screen.
+	 * @param screenWidth The width of the game screen.
+	 */
 	public LevelTwo(double screenHeight, double screenWidth) {
 		super(BACKGROUND_IMAGE_NAME, screenHeight, screenWidth, PLAYER_INITIAL_HEALTH);
-		boss = new Boss();
+		boss = new Boss(getRoot());
 	}
 
+	/**
+	 * Initializes friendly units in the level, including the player's plane.
+	 * Adds the user's plane to the root group for display.
+	 */
 	@Override
 	protected void initializeFriendlyUnits() {
 		getRoot().getChildren().add(getUser());
 	}
 
+	/**
+	 * Checks if the game is over. If the user is destroyed, it triggers a game loss.
+	 * If the boss is destroyed, it triggers a game win.
+	 */
 	@Override
 	protected void checkIfGameOver() {
 		if (userIsDestroyed()) {
 			loseGame();
-		}
-		else if (boss.isDestroyed()) {
+		} else if (boss.isDestroyed()) {
 			winGame();
 		}
 	}
 
+	/**
+	 * Spawns enemy units in the level. Adds the boss to the enemy units if no enemies are present.
+	 */
 	@Override
 	protected void spawnEnemyUnits() {
 		if (getCurrentNumberOfEnemies() == 0) {
@@ -38,10 +59,15 @@ public class LevelTwo extends LevelParent {
 		}
 	}
 
+	/**
+	 * Instantiates the level view specific to Level Two. Creates an instance of
+	 * {@code LevelViewLevelTwo} and returns it.
+	 *
+	 * @return An instance of {@code LevelViewLevelTwo} for this level.
+	 */
 	@Override
 	protected LevelView instantiateLevelView() {
 		levelView = new LevelViewLevelTwo(getRoot(), PLAYER_INITIAL_HEALTH);
 		return levelView;
 	}
-
 }
