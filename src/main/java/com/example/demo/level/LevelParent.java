@@ -120,6 +120,7 @@ public abstract class LevelParent {
 		updateKillCount();
 		updateLevelView();
 		checkIfGameOver();
+		actorManager.removeOutOfBoundsProjectiles();
 	}
 
 	private void initializeTimeline() {

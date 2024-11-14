@@ -2,7 +2,6 @@ package com.example.demo.level;
 
 import com.example.demo.actors.ActiveActorDestructible;
 import javafx.scene.Group;
-
 import java.util.List;
 
 public class ActorManager {
@@ -25,7 +24,9 @@ public class ActorManager {
         this.root = root;
     }
 
-    // update all actors
+    /**
+     * Updates all active actors (friendly units, enemy units, and projectiles).
+     */
     public void updateAllActors() {
         friendlyUnits.forEach(ActiveActorDestructible::updateActor);
         enemyUnits.forEach(ActiveActorDestructible::updateActor);
@@ -33,7 +34,9 @@ public class ActorManager {
         enemyProjectiles.forEach(ActiveActorDestructible::updateActor);
     }
 
-    // remove destroyed actors
+    /**
+     * Removes all destroyed actors from the scene and their respective lists.
+     */
     public void removeDestroyedActors() {
         removeActorsFromList(friendlyUnits);
         removeActorsFromList(enemyUnits);
@@ -41,9 +44,46 @@ public class ActorManager {
         removeActorsFromList(enemyProjectiles);
     }
 
-    // remove destroyed actors from a list
+    /**
+     * Removes destroyed actors from a specified list and the scene graph.
+     *
+     * @param actors The list of actors to check for destruction.
+     */
     private void removeActorsFromList(List<ActiveActorDestructible> actors) {
         actors.removeIf(ActiveActorDestructible::isDestroyed);
         root.getChildren().removeIf(node -> node instanceof ActiveActorDestructible && ((ActiveActorDestructible) node).isDestroyed());
+    }
+
+    /**
+     * Removes projectiles that are completely out of the screen bounds.
+     */
+    public void removeOutOfBoundsProjectiles() {
+        removeOutOfBoundsFromList(userProjectiles);
+        removeOutOfBoundsFromList(enemyProjectiles);
+    }
+
+    /**
+     * Removes projectiles from the list and the scene if they are completely out of the screen bounds.
+     *
+     * @param projectiles The list of projectiles to check and remove if necessary.
+     */
+    private void removeOutOfBoundsFromList(List<ActiveActorDestructible> projectiles) {
+        double screenWidth = root.getScene().getWidth(); // Use scene width for better flexibility
+
+        projectiles.removeIf(projectile -> {
+            double x = projectile.getLayoutX() + projectile.getTranslateX();
+            double projectileWidth = projectile.getBoundsInParent().getWidth();
+
+            // Set the minimum X bound as negative projectile width and use scene width for maximum bound
+            boolean outOfBounds = (x < -projectileWidth || x > screenWidth);
+
+            // If the projectile is out of bounds, remove it from the scene graph
+            if (outOfBounds) {
+                root.getChildren().remove(projectile);
+                System.out.println("Projectile removed from the screen and memory freed.");
+            }
+
+            return outOfBounds; // Remove from the list if out of bounds
+        });
     }
 }
