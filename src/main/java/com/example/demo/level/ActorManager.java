@@ -68,8 +68,8 @@ public class ActorManager {
      * @param projectiles The list of projectiles to check and remove if necessary.
      */
     private void removeOutOfBoundsFromList(List<ActiveActorDestructible> projectiles) {
-        double screenWidth = root.getScene().getWidth(); // Use scene width for better flexibility
-
+        double screenWidth = 1300;
+        System.out.println(screenWidth);
         projectiles.removeIf(projectile -> {
             double x = projectile.getLayoutX() + projectile.getTranslateX();
             double projectileWidth = projectile.getBoundsInParent().getWidth();
