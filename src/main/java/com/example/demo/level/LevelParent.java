@@ -66,8 +66,18 @@ public abstract class LevelParent {
 		this.currentNumberOfEnemies = 0;
 		initializeTimeline();
 
+		// Initialize ActorGroups and pass them to ActorManager
+		ActorGroup friendlyGroup = new ActorGroup(friendlyUnits, root);
+		ActorGroup enemyGroup = new ActorGroup(enemyUnits, root);
+		ActorGroup userProjectileGroup = new ActorGroup(userProjectiles, root);
+		ActorGroup enemyProjectileGroup = new ActorGroup(enemyProjectiles, root);
+
+		//
+		this.actorManager = new ActorManager(friendlyGroup, enemyGroup, userProjectileGroup, enemyProjectileGroup);
+
+
 		// New added constructor for the class I created for single responsibility principle
-		this.actorManager = new ActorManager(friendlyUnits, enemyUnits, userProjectiles, enemyProjectiles, root);
+//		this.actorManager = new ActorManager(friendlyUnits, enemyUnits, userProjectiles, enemyProjectiles);
 		this.collisionHandler = new CollisionHandler();
 
 		// Initialized input handler with user plane, because only user plane need to be control by input
@@ -120,7 +130,7 @@ public abstract class LevelParent {
 		updateKillCount();
 		updateLevelView();
 		checkIfGameOver();
-		actorManager.removeOutOfBoundsProjectiles();
+		actorManager.removeOutOfBoundsProjectiles(1300);
 	}
 
 	private void initializeTimeline() {

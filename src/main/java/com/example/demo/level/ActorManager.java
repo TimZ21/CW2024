@@ -1,89 +1,67 @@
 package com.example.demo.level;
 
 import com.example.demo.actors.ActiveActorDestructible;
-import javafx.scene.Group;
-import java.util.List;
 
+/**
+ * The {@code ActorManager} class is responsible for managing different groups of game actors,
+ * including friendly units, enemy units, user projectiles, and enemy projectiles.
+ * It utilizes the {@code ActorGroup} class to perform operations such as updating actors,
+ * removing destroyed actors, and handling projectiles that move out of screen bounds.
+ */
 public class ActorManager {
 
-    private final List<ActiveActorDestructible> friendlyUnits;
-    private final List<ActiveActorDestructible> enemyUnits;
-    private final List<ActiveActorDestructible> userProjectiles;
-    private final List<ActiveActorDestructible> enemyProjectiles;
-    private final Group root;
+    private final ActorGroup friendlyGroup;
+    private final ActorGroup enemyGroup;
+    private final ActorGroup userProjectileGroup;
+    private final ActorGroup enemyProjectileGroup;
 
-    public ActorManager(List<ActiveActorDestructible> friendlyUnits,
-                        List<ActiveActorDestructible> enemyUnits,
-                        List<ActiveActorDestructible> userProjectiles,
-                        List<ActiveActorDestructible> enemyProjectiles,
-                        Group root) {
-        this.friendlyUnits = friendlyUnits;
-        this.enemyUnits = enemyUnits;
-        this.userProjectiles = userProjectiles;
-        this.enemyProjectiles = enemyProjectiles;
-        this.root = root;
+    /**
+     * Constructs an {@code ActorManager} with the specified actor groups.
+     *
+     * @param friendlyGroup        The {@code ActorGroup} for friendly units.
+     * @param enemyGroup           The {@code ActorGroup} for enemy units.
+     * @param userProjectileGroup  The {@code ActorGroup} for user projectiles.
+     * @param enemyProjectileGroup The {@code ActorGroup} for enemy projectiles.
+     */
+    public ActorManager(ActorGroup friendlyGroup, ActorGroup enemyGroup,
+                        ActorGroup userProjectileGroup, ActorGroup enemyProjectileGroup) {
+        this.friendlyGroup = friendlyGroup;
+        this.enemyGroup = enemyGroup;
+        this.userProjectileGroup = userProjectileGroup;
+        this.enemyProjectileGroup = enemyProjectileGroup;
     }
 
     /**
-     * Updates all active actors (friendly units, enemy units, and projectiles).
+     * Updates all actors in the game, including friendly units, enemy units,
+     * user projectiles, and enemy projectiles.
+     * This method should be called during each game loop iteration.
      */
     public void updateAllActors() {
-        friendlyUnits.forEach(ActiveActorDestructible::updateActor);
-        enemyUnits.forEach(ActiveActorDestructible::updateActor);
-        userProjectiles.forEach(ActiveActorDestructible::updateActor);
-        enemyProjectiles.forEach(ActiveActorDestructible::updateActor);
+        friendlyGroup.update();
+        enemyGroup.update();
+        userProjectileGroup.update();
+        enemyProjectileGroup.update();
     }
 
     /**
-     * Removes all destroyed actors from the scene and their respective lists.
+     * Removes all destroyed actors from each actor group, freeing up resources.
+     * This method helps prevent memory leaks by ensuring destroyed actors are removed from the scene.
      */
     public void removeDestroyedActors() {
-        removeActorsFromList(friendlyUnits);
-        removeActorsFromList(enemyUnits);
-        removeActorsFromList(userProjectiles);
-        removeActorsFromList(enemyProjectiles);
+        friendlyGroup.removeDestroyed();
+        enemyGroup.removeDestroyed();
+        userProjectileGroup.removeDestroyed();
+        enemyProjectileGroup.removeDestroyed();
     }
 
     /**
-     * Removes destroyed actors from a specified list and the scene graph.
+     * Removes projectiles that are completely out of the screen bounds for both user
+     * and enemy projectile groups.
      *
-     * @param actors The list of actors to check for destruction.
+     * @param screenWidth The width of the game screen used to determine out-of-bounds condition.
      */
-    private void removeActorsFromList(List<ActiveActorDestructible> actors) {
-        actors.removeIf(ActiveActorDestructible::isDestroyed);
-        root.getChildren().removeIf(node -> node instanceof ActiveActorDestructible && ((ActiveActorDestructible) node).isDestroyed());
-    }
-
-    /**
-     * Removes projectiles that are completely out of the screen bounds.
-     */
-    public void removeOutOfBoundsProjectiles() {
-        removeOutOfBoundsFromList(userProjectiles);
-        removeOutOfBoundsFromList(enemyProjectiles);
-    }
-
-    /**
-     * Removes projectiles from the list and the scene if they are completely out of the screen bounds.
-     *
-     * @param projectiles The list of projectiles to check and remove if necessary.
-     */
-    private void removeOutOfBoundsFromList(List<ActiveActorDestructible> projectiles) {
-        double screenWidth = 1300;
-        System.out.println(screenWidth);
-        projectiles.removeIf(projectile -> {
-            double x = projectile.getLayoutX() + projectile.getTranslateX();
-            double projectileWidth = projectile.getBoundsInParent().getWidth();
-
-            // Set the minimum X bound as negative projectile width and use scene width for maximum bound
-            boolean outOfBounds = (x < -projectileWidth || x > screenWidth);
-
-            // If the projectile is out of bounds, remove it from the scene graph
-            if (outOfBounds) {
-                root.getChildren().remove(projectile);
-                System.out.println("Projectile removed from the screen and memory freed.");
-            }
-
-            return outOfBounds; // Remove from the list if out of bounds
-        });
+    public void removeOutOfBoundsProjectiles(double screenWidth) {
+        userProjectileGroup.removeOutOfBounds(screenWidth);
+        enemyProjectileGroup.removeOutOfBounds(screenWidth);
     }
 }
