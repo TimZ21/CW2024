@@ -81,7 +81,7 @@ public abstract class LevelParent {
 		this.collisionHandler = new CollisionHandler();
 
 		// Initialized input handler with user plane, because only user plane need to be control by input
-		this.inputHandler = new InputHandler(user, this::fireProjectile);
+		this.inputHandler = new InputHandler(user, root, userProjectiles);
 		this.enemySpawner = new EnemySpawner(enemyUnits, root, enemyProjectiles);
 
 
