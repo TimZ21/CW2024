@@ -40,7 +40,7 @@ public abstract class LevelParent {
 
 
 	private int currentNumberOfEnemies;
-	private LevelView levelView;
+	private final LevelView levelView;
 
 	private final StringProperty nextLevelProperty = new SimpleStringProperty();
 
@@ -75,7 +75,7 @@ public abstract class LevelParent {
 
 		// New added constructor for the class I created for single responsibility principle
 //		this.actorManager = new ActorManager(friendlyUnits, enemyUnits, userProjectiles, enemyProjectiles);
-		this.collisionHandler = new CollisionHandler();
+		this.collisionHandler = CollisionHandler.getInstance();
 
 		// Initialized input handler with user plane, because only user plane need to be control by input
 		this.inputHandler = new InputHandler(user, root, userProjectiles);
@@ -166,11 +166,11 @@ public abstract class LevelParent {
 		root.getChildren().add(background);
 	}
 
-	private void fireProjectile() {
-		ActiveActorDestructible projectile = user.fireProjectile();
-		root.getChildren().add(projectile);
-		userProjectiles.add(projectile);
-	}
+//	private void fireProjectile() {
+//		ActiveActorDestructible projectile = user.fireProjectile();
+//		root.getChildren().add(projectile);
+//		userProjectiles.add(projectile);
+//	}
 
 	// This method has been moved to EnemySpawner for single responsibility principle
 //	private void generateEnemyFire() {
