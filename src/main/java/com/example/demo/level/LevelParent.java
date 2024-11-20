@@ -1,20 +1,17 @@
 package com.example.demo.level;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 import com.example.demo.actors.ActiveActorDestructible;
-import com.example.demo.actors.plane.FighterPlane;
+import com.example.demo.actors.mamager.*;
 import com.example.demo.view.LevelView;
 import com.example.demo.actors.plane.UserPlane;
 import javafx.animation.*;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.*;
-import javafx.scene.input.*;
 import javafx.util.Duration;
 
 public abstract class LevelParent {

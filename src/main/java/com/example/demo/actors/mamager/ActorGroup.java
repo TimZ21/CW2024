@@ -1,6 +1,7 @@
-package com.example.demo.level;
+package com.example.demo.actors.mamager;
 
 import com.example.demo.actors.ActiveActorDestructible;
+import com.example.demo.actors.GameComponent;
 import javafx.scene.Group;
 
 import java.util.List;
@@ -67,5 +68,14 @@ public class ActorGroup implements GameComponent {
 
             return outOfBounds;
         });
+    }
+
+    /**
+     * Returns the list of actors managed by this group.
+     *
+     * @return The list of {@code ActiveActorDestructible} actors.
+     */
+    public List<ActiveActorDestructible> getActors() {
+        return actors;
     }
 }

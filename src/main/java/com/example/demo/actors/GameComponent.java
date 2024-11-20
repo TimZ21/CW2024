@@ -1,4 +1,4 @@
-package com.example.demo.level;
+package com.example.demo.actors;
 
 /**
  * The {@code GameComponent} interface defines the essential methods
