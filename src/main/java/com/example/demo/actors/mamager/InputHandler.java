@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * The {@code InputHandler} class manages user input and maps key events
  * to actions for controlling the {@code UserPlane}.
- * It handles movement controls (up, down) and the firing of projectiles.
+ * It handles movement controls (up, down, left, right) and the firing of projectiles.
  */
 public class InputHandler {
 
@@ -40,6 +40,8 @@ public class InputHandler {
      * <ul>
      *   <li>{@code UP}: Moves the user plane upwards.</li>
      *   <li>{@code DOWN}: Moves the user plane downwards.</li>
+     *   <li>{@code LEFT}: Moves the user plane to the left.</li>
+     *   <li>{@code RIGHT}: Moves the user plane to the right.</li>
      *   <li>{@code SPACE}: Fires a projectile from the user plane.</li>
      * </ul>
      *
@@ -52,6 +54,10 @@ public class InputHandler {
                 userPlane.moveUp();
             } else if (kc == KeyCode.DOWN) {
                 userPlane.moveDown();
+            } else if (kc == KeyCode.LEFT) {
+                userPlane.moveLeft();
+            } else if (kc == KeyCode.RIGHT) {
+                userPlane.moveRight();
             } else if (kc == KeyCode.SPACE) {
                 fireProjectile();
             }
@@ -60,7 +66,7 @@ public class InputHandler {
 
     /**
      * Provides an {@code EventHandler} for handling key released events.
-     * Stops the movement of the user plane when the {@code UP} or {@code DOWN} key is released.
+     * Stops the movement of the user plane when the movement keys are released.
      *
      * @return An {@code EventHandler<KeyEvent>} for key release events.
      */
@@ -68,7 +74,10 @@ public class InputHandler {
         return e -> {
             KeyCode kc = e.getCode();
             if (kc == KeyCode.UP || kc == KeyCode.DOWN) {
-                userPlane.stop();
+                userPlane.stopVerticalMovement();
+            }
+            if ( kc == KeyCode.LEFT || kc == KeyCode.RIGHT) {
+                userPlane.stopHorizontalMovement();
             }
         };
     }
