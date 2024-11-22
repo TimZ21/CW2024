@@ -28,6 +28,11 @@ public class EnemyPlane extends FighterPlane {
 		super(IMAGE_NAME, IMAGE_HEIGHT, initialXPos, initialYPos, INITIAL_HEALTH);
 	}
 
+	public EnemyPlane(double initialXPos, double initialYPos, int health) {
+		super(IMAGE_NAME, IMAGE_HEIGHT, initialXPos, initialYPos, health);
+	}
+
+
 	/**
 	 * Updates the position of the enemy plane by moving it horizontally
 	 * based on a predefined velocity.
