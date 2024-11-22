@@ -2,27 +2,27 @@ package com.example.demo.level;
 
 import com.example.demo.actors.plane.Boss;
 import com.example.demo.view.LevelView;
-import com.example.demo.view.LevelViewLevelTwo;
+import com.example.demo.view.LevelViewLevelBoss;
 
 /**
- * The {@code LevelTwo} class represents the second level of the game.
+ * The {@code LevelBoss} class represents the second level of the game.
  * It extends {@code LevelParent} and defines the specific setup, enemy spawning,
  * and game-over conditions for Level Two.
  */
-public class LevelTwo extends LevelParent {
+public class LevelBoss extends LevelParent {
 
 	private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/background2.jpg";
 	private static final int PLAYER_INITIAL_HEALTH = 5;
 	private final Boss boss;
-	private LevelViewLevelTwo levelView;
+	private LevelViewLevelBoss levelView;
 
 	/**
-	 * Constructs a {@code LevelTwo} instance with the specified screen dimensions.
+	 * Constructs a {@code LevelBoss} instance with the specified screen dimensions.
 	 *
 	 * @param screenHeight The height of the game screen.
 	 * @param screenWidth The width of the game screen.
 	 */
-	public LevelTwo(double screenHeight, double screenWidth) {
+	public LevelBoss(double screenHeight, double screenWidth) {
 		super(BACKGROUND_IMAGE_NAME, screenHeight, screenWidth, PLAYER_INITIAL_HEALTH);
 		boss = new Boss(getRoot());
 	}
@@ -61,13 +61,13 @@ public class LevelTwo extends LevelParent {
 
 	/**
 	 * Instantiates the level view specific to Level Two. Creates an instance of
-	 * {@code LevelViewLevelTwo} and returns it.
+	 * {@code LevelViewLevelBoss} and returns it.
 	 *
-	 * @return An instance of {@code LevelViewLevelTwo} for this level.
+	 * @return An instance of {@code LevelViewLevelBoss} for this level.
 	 */
 	@Override
 	protected LevelView instantiateLevelView() {
-		levelView = new LevelViewLevelTwo(getRoot(), PLAYER_INITIAL_HEALTH);
+		levelView = new LevelViewLevelBoss(getRoot(), PLAYER_INITIAL_HEALTH);
 		return levelView;
 	}
 }

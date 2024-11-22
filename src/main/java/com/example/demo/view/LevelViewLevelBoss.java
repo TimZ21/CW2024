@@ -1,14 +1,13 @@
 package com.example.demo.view;
 
-import javafx.application.Platform;
 import javafx.scene.Group;
 
 /**
- * The {@code LevelViewLevelTwo} class is a specialized version of {@code LevelView}
+ * The {@code LevelViewLevelBoss} class is a specialized version of {@code LevelView}
  * for the second level of the game. It includes additional visual elements specific
- * to LevelTwo, such as the shield image.
+ * to LevelBoss, such as the shield image.
  */
-public class LevelViewLevelTwo extends LevelView {
+public class LevelViewLevelBoss extends LevelView {
 
 	private static final int SHIELD_X_POSITION = 1150;
 	private static final int SHIELD_Y_POSITION = 500;
@@ -16,12 +15,12 @@ public class LevelViewLevelTwo extends LevelView {
 	private final ShieldImage shieldImage;
 
 	/**
-	 * Constructs a {@code LevelViewLevelTwo} with the specified root and number of hearts to display.
+	 * Constructs a {@code LevelViewLevelBoss} with the specified root and number of hearts to display.
 	 *
 	 * @param root The root {@code Group} for the level view.
 	 * @param heartsToDisplay The number of hearts (lives) to display for the player.
 	 */
-	public LevelViewLevelTwo(Group root, int heartsToDisplay) {
+	public LevelViewLevelBoss(Group root, int heartsToDisplay) {
 		super(root, heartsToDisplay);
 		this.root = root;
 		this.shieldImage = new ShieldImage(SHIELD_X_POSITION, SHIELD_Y_POSITION);
@@ -30,7 +29,7 @@ public class LevelViewLevelTwo extends LevelView {
 
 	/**
 	 * Adds the shield image container to the root {@code Group}. This method ensures that
-	 * the shield image is part of the scene graph and will be displayed correctly in LevelTwo.
+	 * the shield image is part of the scene graph and will be displayed correctly in LevelBoss.
 	 */
 	private void addImagesToRoot() {
 		root.getChildren().addAll(shieldImage.getContainer());

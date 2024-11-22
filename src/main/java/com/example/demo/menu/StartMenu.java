@@ -37,7 +37,7 @@ public class StartMenu {
         startButton.setOnAction(e -> startGame());
         quitButton.setOnAction(e -> Platform.exit());
 
-        // Creat e layout for buttons
+        // Create e layout for buttons
         VBox buttonLayout = new VBox(20, startButton, quitButton);
         buttonLayout.setStyle("-fx-alignment: center; -fx-padding: 50;");
 
