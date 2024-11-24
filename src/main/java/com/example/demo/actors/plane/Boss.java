@@ -47,7 +47,7 @@ public class Boss extends FighterPlane {
 		this.shieldManager = new ShieldManager(root, INITIAL_X_POSITION, INITIAL_Y_POSITION);
 
 		// Initialize the health bar manager
-		this.healthBarManager = new HealthBarManager(550, 10); // Top-center position
+		this.healthBarManager = new HealthBarManager(400, 10); // Top-center position
 		root.getChildren().add(healthBarManager.getContainer());
 		healthBarManager.showHealthBar(); // Ensure the health bar is visible initially
 

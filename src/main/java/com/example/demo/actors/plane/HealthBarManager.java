@@ -10,7 +10,7 @@ import javafx.scene.layout.HBox;
  */
 public class HealthBarManager {
 
-    private static final int HEALTH_BAR_WIDTH = 200; // Default width of the health bar
+    private static final int HEALTH_BAR_WIDTH = 500; // Default width of the health bar
     private static final int HEALTH_BAR_HEIGHT = 20; // Default height of the health bar
 
     private final HBox container;
