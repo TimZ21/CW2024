@@ -32,6 +32,7 @@ public class Boss extends FighterPlane {
 	private int consecutiveMovesInSameDirection;
 	private int indexOfCurrentMove;
 	private final ShieldManager shieldManager;
+	private final HealthBarManager healthBarManager;
 
 	/**
 	 * Constructs a {@code Boss} instance with its initial position and shield manager.
@@ -44,6 +45,12 @@ public class Boss extends FighterPlane {
 		this.consecutiveMovesInSameDirection = 0;
 		this.indexOfCurrentMove = 0;
 		this.shieldManager = new ShieldManager(root, INITIAL_X_POSITION, INITIAL_Y_POSITION);
+
+		// Initialize the health bar manager
+		this.healthBarManager = new HealthBarManager(550, 10); // Top-center position
+		root.getChildren().add(healthBarManager.getContainer());
+		healthBarManager.showHealthBar(); // Ensure the health bar is visible initially
+
 		initializeMovePattern();
 	}
 
@@ -88,9 +95,16 @@ public class Boss extends FighterPlane {
 	public void takeDamage() {
 		if (!shieldManager.isShielded()) {
 			super.takeDamage();
+			double healthPercentage = (double) getHealth() / HEALTH;
+			healthBarManager.updateHealthBar(healthPercentage);
 		}
 	}
 
+	@Override
+	public void destroy() {
+		super.destroy();
+		healthBarManager.hideHealthBar(); // Hide health bar when the boss is destroyed
+	}
 	/**
 	 * Initializes the movement pattern for the boss.
 	 * The pattern alternates between upward, downward, and stationary movements.
