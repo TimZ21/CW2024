@@ -4,15 +4,19 @@ import java.util.*;
 
 import com.example.demo.actors.ActiveActorDestructible;
 import com.example.demo.actors.mamager.*;
+import com.example.demo.menu.LoseMenu;
 import com.example.demo.view.LevelView;
 import com.example.demo.actors.plane.UserPlane;
 import javafx.animation.*;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.*;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+
 
 public abstract class LevelParent {
 
@@ -36,7 +40,6 @@ public abstract class LevelParent {
 	private final CollisionHandler collisionHandler;
 	private final InputHandler inputHandler;
 	private final EnemySpawner enemySpawner;
-
 
 
 	private int currentNumberOfEnemies;
@@ -340,7 +343,7 @@ public abstract class LevelParent {
 	 */
 	protected void winGame() {
 		timeline.stop();
-		levelView.showWinImage();
+		new LoseMenu(scene).show(); // Pass the current scene to the LoseMenu
 	}
 
 	/**
@@ -348,8 +351,30 @@ public abstract class LevelParent {
 	 */
 	protected void loseGame() {
 		timeline.stop();
-		levelView.showGameOverImage();
+		new LoseMenu(scene).show(); // Pass the current scene to the LoseMenu
 	}
+
+
+	/**
+	 * Cleans up resources associated with the current level.
+	 * Removes all actors from the scene, stops active processes, and resets game state.
+	 */
+	public void cleanUp() {
+		// Stop the game timeline to prevent further updates
+		if (timeline != null) {
+			timeline.stop();
+		}
+
+		// Clear all actors from their respective lists
+		friendlyUnits.clear();
+		enemyUnits.clear();
+		userProjectiles.clear();
+		enemyProjectiles.clear();
+
+		// Clear all visual elements from the root group
+		root.getChildren().clear();
+	}
+
 
 	/**
 	 * Retrieves the user-controlled plane in the level.
