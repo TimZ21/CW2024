@@ -5,6 +5,7 @@ import java.util.*;
 import com.example.demo.actors.ActiveActorDestructible;
 import com.example.demo.actors.mamager.*;
 import com.example.demo.menu.LoseMenu;
+import com.example.demo.menu.WinMenu;
 import com.example.demo.view.LevelView;
 import com.example.demo.actors.plane.UserPlane;
 import javafx.animation.*;
@@ -343,7 +344,7 @@ public abstract class LevelParent {
 	 */
 	protected void winGame() {
 		timeline.stop();
-		new LoseMenu(scene).show(); // Pass the current scene to the LoseMenu
+		new WinMenu(scene).show(); // Pass the current scene to the LoseMenu
 	}
 
 	/**
