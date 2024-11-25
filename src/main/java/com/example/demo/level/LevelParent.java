@@ -166,6 +166,7 @@ public abstract class LevelParent {
 		handleUserProjectileCollisions();
 		handleEnemyProjectileCollisions();
 		handlePlaneCollisions();
+		handleProjectileCollision();
 		actorManager.removeDestroyedActors();
 		updateKillCount();
 		updateLevelView();
@@ -278,7 +279,7 @@ public abstract class LevelParent {
 //	}
 
 	/**
-	 * Handles collisions between friendly and enemy planes.
+	 * Handles collisions between user plane and enemy planes.
 	 */
 	private void handlePlaneCollisions() {
 		collisionHandler.detectCollisions(friendlyUnits, enemyUnits);
@@ -292,13 +293,18 @@ public abstract class LevelParent {
 	}
 
 	/**
-	 * Handles collisions between enemy projectiles and friendly planes.
+	 * Handles collisions between enemy projectiles and user planes.
 	 */
 	private void handleEnemyProjectileCollisions() {
 		collisionHandler.detectCollisions(enemyProjectiles, friendlyUnits);
 	}
 
-
+	/**
+	 * Handles collisions between user projectiles and enemy projectiles.
+	 */
+	private void handleProjectileCollision() {
+		collisionHandler.detectCollisions(userProjectiles, enemyProjectiles);
+	}
 
 
 	/**
@@ -344,6 +350,7 @@ public abstract class LevelParent {
 	 */
 	protected void winGame() {
 		timeline.stop();
+		cleanUp();
 		new WinMenu(scene).show(); // Pass the current scene to the LoseMenu
 	}
 
@@ -352,6 +359,7 @@ public abstract class LevelParent {
 	 */
 	protected void loseGame() {
 		timeline.stop();
+		cleanUp();
 		new LoseMenu(scene).show(); // Pass the current scene to the LoseMenu
 	}
 
