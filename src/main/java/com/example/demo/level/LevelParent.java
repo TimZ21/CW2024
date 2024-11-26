@@ -5,6 +5,7 @@ import java.util.*;
 import com.example.demo.actors.ActiveActorDestructible;
 import com.example.demo.actors.mamager.*;
 import com.example.demo.menu.LoseMenu;
+import com.example.demo.menu.PauseMenu;
 import com.example.demo.menu.WinMenu;
 import com.example.demo.view.LevelView;
 import com.example.demo.actors.plane.UserPlane;
@@ -41,7 +42,7 @@ public abstract class LevelParent {
 	private final CollisionHandler collisionHandler;
 	private final InputHandler inputHandler;
 	private final EnemySpawner enemySpawner;
-
+	protected PauseMenu pauseMenu;
 
 	private int currentNumberOfEnemies;
 	private final LevelView levelView;
@@ -89,7 +90,7 @@ public abstract class LevelParent {
 		this.collisionHandler = CollisionHandler.getInstance();
 
 		// Initialized input handler with user plane, because only user plane need to be control by input
-		this.inputHandler = new InputHandler(user, root, userProjectiles);
+		this.inputHandler = new InputHandler(user, root, userProjectiles, this::pauseGame);
 		this.enemySpawner = new EnemySpawner(enemyUnits, root, enemyProjectiles);
 
 
@@ -468,5 +469,22 @@ public abstract class LevelParent {
 		return nextLevelProperty;
 	}
 
+	public void setPauseMenu(PauseMenu pauseMenu) {
+		this.pauseMenu = pauseMenu;
+	}
 
+	public void pauseGame() {
+		if (timeline != null) {
+			timeline.pause(); // Pause the game loop
+		}
+		if (pauseMenu != null) {
+			pauseMenu.show(); // Show the pause menu
+		}
+	}
+
+	public void resumeGame() {
+		if (timeline != null) {
+			timeline.play(); // Resume the game loop
+		}
+	}
 }
