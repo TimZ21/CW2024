@@ -1,5 +1,6 @@
 package com.example.demo.menu;
 
+import com.example.demo.controller.AudioManager;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -18,12 +19,14 @@ public class StartMenu {
     private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/startmenu.jpg";
     private static final String TITLE_TEXT = "Sky Battle";
     private final Stage stage;
+    private static final String BACKGROUND_MUSIC = "/com/example/demo/sounds/bg.mp3";
 
     public StartMenu(Stage stage) {
         this.stage = stage;
     }
 
     public void show() {
+
         // Create title
         Text title = new Text(TITLE_TEXT);
         title.setFont(Font.font("Arial", 70)); // Customize font and size
@@ -60,6 +63,8 @@ public class StartMenu {
         Scene scene = new Scene(root, stage.getWidth(), stage.getHeight());
         stage.setScene(scene);
         stage.show();
+
+        AudioManager.getInstance().playBackgroundMusic(BACKGROUND_MUSIC); // Use singleton // Play music
     }
 
     private void startGame() {

@@ -1,13 +1,14 @@
 package com.example.demo.controller;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import com.example.demo.level.LevelParent;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * The {@code Controller} class manages the game's flow, including level transitions and
@@ -59,16 +60,14 @@ public class Controller {
 	 */
 	private void goToLevel(String className) throws ClassNotFoundException, NoSuchMethodException, SecurityException,
 			InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		// Use reflection to load the level class
 		Class<?> myClass = Class.forName(className);
 		Constructor<?> constructor = myClass.getConstructor(double.class, double.class);
 		LevelParent myLevel = (LevelParent) constructor.newInstance(stage.getHeight(), stage.getWidth());
 
-		Scene scene = myLevel.initializeScene(); // Initialize the scene for the level
-		stage.setScene(scene); // Set the scene on the stage
-		myLevel.startGame(); // Start the level
+		Scene scene = myLevel.initializeScene();
+		stage.setScene(scene);
+		myLevel.startGame();
 
-		// Add listener for level change
 		myLevel.nextLevelProperty().addListener((observable, oldValue, newValue) -> {
 			if (newValue != null && !newValue.isEmpty()) {
 				try {

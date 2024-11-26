@@ -21,7 +21,6 @@ public class LoseMenu {
 
     private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/startmenu.jpg";
     private final Scene currentScene;
-
     /**
      * Constructs a {@code LoseMenu} with the given scene.
      *
