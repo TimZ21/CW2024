@@ -35,13 +35,15 @@ public class StartMenu {
         // Create buttons
         Button startButton = new Button("Start");
         Button quitButton = new Button("Quit");
+        Button muteButton = new Button("Mute"); // Add Mute button
 
         // Set button actions
         startButton.setOnAction(e -> startGame());
         quitButton.setOnAction(e -> Platform.exit());
+        muteButton.setOnAction(e -> toggleMute(muteButton)); // Add action for Mute button
 
-        // Create e layout for buttons
-        VBox buttonLayout = new VBox(20, startButton, quitButton);
+        // Create layout for buttons
+        VBox buttonLayout = new VBox(20, startButton, muteButton, quitButton);
         buttonLayout.setStyle("-fx-alignment: center; -fx-padding: 50;");
 
         // Create layout for the title and buttons
@@ -64,7 +66,8 @@ public class StartMenu {
         stage.setScene(scene);
         stage.show();
 
-        AudioManager.getInstance().playBackgroundMusic(BACKGROUND_MUSIC); // Use singleton // Play music
+        // Start playing background music
+        AudioManager.getInstance().playBackgroundMusic(BACKGROUND_MUSIC); // Use singleton
     }
 
     private void startGame() {
@@ -73,6 +76,18 @@ public class StartMenu {
             new com.example.demo.controller.Controller(stage).launchGame();
         } catch (Exception ex) {
             ex.printStackTrace();
+        }
+    }
+
+    private void toggleMute(Button muteButton) {
+        AudioManager audioManager = AudioManager.getInstance();
+
+        if (audioManager.isMuted()) {
+            audioManager.unmute(); // Unmute the music
+            muteButton.setText("Mute"); // Update button text
+        } else {
+            audioManager.mute(); // Mute the music
+            muteButton.setText("Unmute"); // Update button text
         }
     }
 }

@@ -9,6 +9,7 @@ public class AudioManager {
 
     private static AudioManager instance; // Singleton instance
     private MediaPlayer backgroundMusicPlayer;
+    private boolean isMuted = false;
 
     // Private constructor to prevent instantiation
     private AudioManager() {}
@@ -53,5 +54,24 @@ public class AudioManager {
         if (backgroundMusicPlayer != null) {
             backgroundMusicPlayer.setVolume(volume);
         }
+    }
+
+
+    public void mute() {
+        if (backgroundMusicPlayer != null) {
+            backgroundMusicPlayer.setMute(true);
+            isMuted = true;
+        }
+    }
+
+    public void unmute() {
+        if (backgroundMusicPlayer != null) {
+            backgroundMusicPlayer.setMute(false);
+            isMuted = false;
+        }
+    }
+
+    public boolean isMuted() {
+        return isMuted;
     }
 }
