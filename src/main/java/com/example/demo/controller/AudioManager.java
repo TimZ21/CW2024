@@ -9,8 +9,9 @@ public class AudioManager {
 
     private static AudioManager instance; // Singleton instance
     private MediaPlayer backgroundMusicPlayer;
+    private MediaPlayer soundEffectPlayer;
     private boolean isMuted = false;
-    private final String SOUNDS_EFFECT= "/com/example/demo/sounds/explosion.mp3";
+    private final String SOUND_EFFECT_PATH = "/com/example/demo/sounds/explosion.mp3";
 
     // Private constructor to prevent instantiation
     private AudioManager() {}
@@ -76,18 +77,29 @@ public class AudioManager {
     }
 
     /**
+     * Stops the currently playing sound effect.
+     */
+    public void stopSoundEffect() {
+        if (soundEffectPlayer != null) {
+            soundEffectPlayer.stop();
+        }
+    }
+
+    /**
      * Plays a sound effect.
      */
     public void playSoundEffect() {
-        URL resource = getClass().getResource(SOUNDS_EFFECT);
+        stopSoundEffect(); // Stop the current sound effect if it's playing
+
+        URL resource = getClass().getResource(SOUND_EFFECT_PATH);
         if (resource == null) {
-            System.err.println("Error: Sound effect file not found at " + SOUNDS_EFFECT);
+            System.err.println("Error: Sound effect file not found at " + SOUND_EFFECT_PATH);
             return;
         }
 
         Media soundEffect = new Media(resource.toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(soundEffect);
-        mediaPlayer.setVolume(0.5);
-        mediaPlayer.play();
+        soundEffectPlayer = new MediaPlayer(soundEffect);
+        soundEffectPlayer.setVolume(0.5);
+        soundEffectPlayer.play();
     }
 }
