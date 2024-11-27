@@ -1,6 +1,8 @@
 package com.example.demo.actors.mamager;
 
 import com.example.demo.actors.ActiveActorDestructible;
+import com.example.demo.controller.AudioManager;
+
 import java.util.List;
 
 /**
@@ -65,6 +67,23 @@ public class CollisionHandler {
                     // Apply damage to both actors upon collision
                     actor1.takeDamage();
                     actor2.takeDamage();
+                }
+            }
+        }
+    }
+
+    public void detectCollisionsWithSoundEffect(List<ActiveActorDestructible> list1, List<ActiveActorDestructible> list2) {
+        for (ActiveActorDestructible actor1 : list1) {
+            for (ActiveActorDestructible actor2 : list2) {
+                // Check if the bounding boxes of the two actors intersect
+                if (actor1.getBoundsInParent().intersects(actor2.getBoundsInParent())) {
+                    // Apply damage to both actors upon collision
+                    actor1.takeDamage();
+                    actor2.takeDamage();
+                    // Play sound effect if an enemy plane is destroyed
+                    if (actor2.isDestroyed()) {
+                        AudioManager.getInstance().playSoundEffect();
+                    }
                 }
             }
         }

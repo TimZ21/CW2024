@@ -290,7 +290,7 @@ public abstract class LevelParent {
 	 * Handles collisions between user projectiles and enemy planes.
 	 */
 	private void handleUserProjectileCollisions() {
-		collisionHandler.detectCollisions(userProjectiles, enemyUnits);
+		collisionHandler.detectCollisionsWithSoundEffect(userProjectiles, enemyUnits);
 	}
 
 	/**
