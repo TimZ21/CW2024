@@ -1,6 +1,8 @@
 package com.example.demo.actors.plane;
 
 import com.example.demo.actors.ActiveActorDestructible;
+import com.example.demo.actors.plane.FighterPlane;
+import com.example.demo.actors.plane.HealthBarManager;
 import com.example.demo.actors.projectile.BossProjectile;
 import com.example.demo.actors.plane.ShieldManager;
 import javafx.scene.Group;

@@ -152,6 +152,8 @@ public abstract class LevelParent {
 	 * @param levelName The name of the next level.
 	 */
 	public void goToNextLevel(String levelName) {
+		timeline.stop();
+		cleanUp();
 		nextLevelProperty.set(levelName);
 	}
 
