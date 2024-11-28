@@ -95,10 +95,13 @@ public class InputHandler {
      * Adds the fired projectile to the scene and the list of user projectiles.
      */
     private void fireProjectile() {
-        ActiveActorDestructible projectile = userPlane.fireProjectile();
-        if (projectile != null) {
-            root.getChildren().add(projectile);
-            userProjectiles.add(projectile);
+        List<ActiveActorDestructible> projectiles = userPlane.fireProjectile();
+        if (projectiles != null && !projectiles.isEmpty()) {
+            for (ActiveActorDestructible projectile : projectiles) {
+                root.getChildren().add(projectile); // Add the projectile to the scene
+                userProjectiles.add(projectile);   // Add the projectile to the tracking list
+            }
         }
     }
+
 }

@@ -1,10 +1,6 @@
 package com.example.demo.actors.plane;
 
 import com.example.demo.actors.ActiveActorDestructible;
-import com.example.demo.actors.plane.FighterPlane;
-import com.example.demo.actors.plane.HealthBarManager;
-import com.example.demo.actors.projectile.BossProjectile;
-import com.example.demo.actors.plane.ShieldManager;
 import javafx.scene.Group;
 
 import java.util.*;
@@ -35,6 +31,7 @@ public class Boss extends FighterPlane {
 	private int indexOfCurrentMove;
 	private final ShieldManager shieldManager;
 	private final HealthBarManager healthBarManager;
+	private final FirePatternManager firePatternManager;
 
 	/**
 	 * Constructs a {@code Boss} instance with its initial position and shield manager.
@@ -52,6 +49,7 @@ public class Boss extends FighterPlane {
 		this.healthBarManager = new HealthBarManager(400, 10); // Top-center position
 		root.getChildren().add(healthBarManager.getContainer());
 		healthBarManager.showHealthBar(); // Ensure the health bar is visible initially
+		this.firePatternManager = new FirePatternManager(PROJECTILE_Y_POSITION_OFFSET);
 
 		initializeMovePattern();
 	}
@@ -86,8 +84,11 @@ public class Boss extends FighterPlane {
 	 * @return A {@code BossProjectile} if the boss decides to fire; otherwise, {@code null}.
 	 */
 	@Override
-	public ActiveActorDestructible fireProjectile() {
-		return bossFiresInCurrentFrame() ? new BossProjectile(getProjectileInitialPosition()) : null;
+	public List<ActiveActorDestructible> fireProjectile() {
+		if (bossFiresInCurrentFrame()) {
+			return firePatternManager.fireProjectiles(getLayoutX() + getTranslateX(), getLayoutY() + getTranslateY());
+		}
+		return Collections.emptyList();
 	}
 
 	/**

@@ -81,8 +81,14 @@ public class EnemySpawner {
      * Generates fire for all enemy units, spawning projectiles.
      */
     public void generateEnemyFire() {
-        enemyUnits.forEach(enemy -> spawnEnemyProjectile(((FighterPlane) enemy).fireProjectile()));
+        enemyUnits.forEach(enemy -> {
+            List<ActiveActorDestructible> projectiles = ((FighterPlane) enemy).fireProjectile();
+            if (projectiles != null && !projectiles.isEmpty()) {
+                projectiles.forEach(this::spawnEnemyProjectile); // Handle each projectile
+            }
+        });
     }
+
 
     /**
      * Spawns a projectile fired by an enemy unit.
@@ -91,8 +97,9 @@ public class EnemySpawner {
      */
     private void spawnEnemyProjectile(ActiveActorDestructible projectile) {
         if (projectile != null) {
-            root.getChildren().add(projectile);
-            enemyProjectiles.add(projectile);
+            root.getChildren().add(projectile); // Add to scene graph
+            enemyProjectiles.add(projectile);  // Track in list
         }
     }
+
 }

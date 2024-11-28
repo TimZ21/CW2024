@@ -3,6 +3,9 @@ package com.example.demo.actors.plane;
 import com.example.demo.actors.ActiveActorDestructible;
 import com.example.demo.actors.projectile.EnemyProjectile;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The {@code EnemyPlane} class represents an enemy aircraft in the game.
  * It extends the {@code FighterPlane} class and defines specific behaviors
@@ -43,20 +46,22 @@ public class EnemyPlane extends FighterPlane {
 	}
 
 	/**
-	 * Fires a projectile with a certain probability defined by {@code FIRE_RATE}.
-	 * The projectile is positioned relative to the plane's current position.
-	 *
-	 * @return A new {@code EnemyProjectile} if fired; otherwise, {@code null}.
-	 */
+     * Fires a projectile with a certain probability defined by {@code FIRE_RATE}.
+     * The projectile is positioned relative to the plane's current position.
+     *
+     * @return A new {@code EnemyProjectile} if fired; otherwise, {@code null}.
+     */
 	@Override
-	public ActiveActorDestructible fireProjectile() {
+	public List<ActiveActorDestructible> fireProjectile() {
+		List<ActiveActorDestructible> projectiles = new ArrayList<>();
 		if (Math.random() < FIRE_RATE) {
 			double projectileXPosition = getProjectileXPosition(PROJECTILE_X_POSITION_OFFSET);
 			double projectileYPosition = getProjectileYPosition(PROJECTILE_Y_POSITION_OFFSET);
-			return new EnemyProjectile(projectileXPosition, projectileYPosition);
+			projectiles.add(new EnemyProjectile(projectileXPosition, projectileYPosition));
 		}
-		return null;
+		return projectiles;
 	}
+
 
 	/**
 	 * Updates the state of the enemy plane, including its position.

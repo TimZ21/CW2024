@@ -3,6 +3,9 @@ package com.example.demo.actors.plane;
 import com.example.demo.actors.ActiveActorDestructible;
 import com.example.demo.actors.projectile.UserProjectile;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The {@code UserPlane} class represents the player's aircraft in the game.
  * It extends the {@code FighterPlane} class and provides specific functionality
@@ -81,9 +84,12 @@ public class UserPlane extends FighterPlane {
 	 * @return A new {@code UserProjectile} object representing the fired projectile.
 	 */
 	@Override
-	public ActiveActorDestructible fireProjectile() {
-		return new UserProjectile(getProjectileXPosition(PROJECTILE_X_POSITION), getProjectileYPosition(PROJECTILE_Y_POSITION_OFFSET));
+	public List<ActiveActorDestructible> fireProjectile() {
+		List<ActiveActorDestructible> projectiles = new ArrayList<>();
+		projectiles.add(new UserProjectile(getProjectileXPosition(PROJECTILE_X_POSITION), getProjectileYPosition(PROJECTILE_Y_POSITION_OFFSET)));
+		return projectiles;
 	}
+
 
 	/**
 	 * Moves the user plane upward by setting the vertical velocity multiplier to -1.

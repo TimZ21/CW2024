@@ -2,6 +2,8 @@ package com.example.demo.actors.plane;
 
 import com.example.demo.actors.ActiveActorDestructible;
 
+import java.util.List;
+
 /**
  * The {@code FighterPlane} class is an abstract representation of a combat aircraft
  * in the game. It extends the {@code ActiveActorDestructible} class and introduces
@@ -32,7 +34,7 @@ public abstract class FighterPlane extends ActiveActorDestructible {
 	 *
 	 * @return An {@code ActiveActorDestructible} representing the fired projectile.
 	 */
-	public abstract ActiveActorDestructible fireProjectile();
+	public abstract List<ActiveActorDestructible> fireProjectile();
 
 	/**
 	 * Decreases the health of the plane when it takes damage. If the health
