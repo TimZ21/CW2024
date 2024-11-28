@@ -4,6 +4,8 @@ import com.example.demo.view.ShieldImage;
 import javafx.application.Platform;
 import javafx.scene.Group;
 
+import static com.example.demo.level.LevelParent.VOLECITY_CHANGE;
+
 /**
  * The `ShieldManager` class manages the shield's activation, deactivation,
  * position updates, and status checks for an entity with a shield.
@@ -13,8 +15,8 @@ public class ShieldManager {
     private final ShieldImage shieldImage;
     private boolean isShielded;
     private int framesWithShieldActivated;
-    private static final int MAX_FRAMES_WITH_SHIELD = 50;
-    private static final double SHIELD_PROBABILITY = 0.02;
+    private static final int MAX_FRAMES_WITH_SHIELD = 50*VOLECITY_CHANGE;
+    private static final double SHIELD_PROBABILITY = 0.02/VOLECITY_CHANGE;
 
     /**
      * Constructs a `ShieldManager` with the specified root and initial position.

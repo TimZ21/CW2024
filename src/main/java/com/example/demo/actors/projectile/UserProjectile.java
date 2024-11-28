@@ -1,5 +1,11 @@
 package com.example.demo.actors.projectile;
 
+import com.example.demo.level.LevelParent;
+
+import java.lang.annotation.Target;
+
+import static com.example.demo.level.LevelParent.VOLECITY_CHANGE;
+
 /**
  * The {@code UserProjectile} class represents a projectile fired by the player's plane.
  * It defines the specific behavior and appearance of the user's projectiles, such as their
@@ -9,7 +15,7 @@ public class UserProjectile extends Projectile {
 
 	private static final String IMAGE_NAME = "userfire.png";
 	private static final int IMAGE_HEIGHT = 6;
-	private static final int HORIZONTAL_VELOCITY = 15;
+	private static final int HORIZONTAL_VELOCITY = 15/VOLECITY_CHANGE;
 
 	/**
 	 * Constructs a {@code UserProjectile} instance with the specified initial position.

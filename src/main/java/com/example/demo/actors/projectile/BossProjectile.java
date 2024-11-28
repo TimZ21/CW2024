@@ -1,5 +1,7 @@
 package com.example.demo.actors.projectile;
 
+import static com.example.demo.level.LevelParent.VOLECITY_CHANGE;
+
 /**
  * The {@code BossProjectile} class represents a projectile fired by the boss in the game.
  * It extends the {@code Projectile} class and defines specific behavior for the boss's projectile.
@@ -8,11 +10,11 @@ public class BossProjectile extends Projectile {
 
 	private static final String IMAGE_NAME = "fireball.png";
 	private static final int IMAGE_HEIGHT = 75;
-	private static final int HORIZONTAL_VELOCITY = -15;
+	private static final double HORIZONTAL_VELOCITY = (double) -15 /VOLECITY_CHANGE;
 	private static final int INITIAL_X_POSITION = 950;
 
-	private int xVelocity;
-	private int yVelocity;
+	private double xVelocity;
+	private double yVelocity;
 
 	/**
 	 * Constructs a {@code BossProjectile} with the specified initial position.

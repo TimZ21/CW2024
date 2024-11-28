@@ -5,6 +5,8 @@ import javafx.scene.Group;
 
 import java.util.*;
 
+import static com.example.demo.level.LevelParent.VOLECITY_CHANGE;
+
 /**
  * Represents a boss enemy in the game.
  * The {@code Boss} class extends {@code FighterPlane} and implements special behavior
@@ -16,9 +18,9 @@ public class Boss extends FighterPlane {
 	private static final double INITIAL_X_POSITION = 1000.0;
 	private static final double INITIAL_Y_POSITION = 400;
 	private static final double PROJECTILE_Y_POSITION_OFFSET = 75.0;
-	private static final double BOSS_FIRE_RATE = 0.04;
+	private static final double BOSS_FIRE_RATE = 0.04/VOLECITY_CHANGE;
 	private static final int IMAGE_HEIGHT = 60;
-	private static final int VERTICAL_VELOCITY = 8;
+	private static final int VERTICAL_VELOCITY = 8/VOLECITY_CHANGE;
 	private static final int HEALTH = 10;
 	private static final int MOVE_FREQUENCY_PER_CYCLE = 5;
 	private static final int ZERO = 0;
