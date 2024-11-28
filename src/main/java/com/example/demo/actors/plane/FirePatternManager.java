@@ -61,9 +61,9 @@ public class FirePatternManager {
      */
     private List<ActiveActorDestructible> fireHorizontalPattern(double x, double y) {
         List<ActiveActorDestructible> projectiles = new ArrayList<>();
-        projectiles.add(new BossProjectile(x, y - projectileYPositionOffset, -15/VOLECITY_CHANGE, 0));
-        projectiles.add(new BossProjectile(x, y, -15/VOLECITY_CHANGE, 0));
-        projectiles.add(new BossProjectile(x, y + projectileYPositionOffset, -15/VOLECITY_CHANGE, 0));
+        projectiles.add(new BossProjectile(x, y - projectileYPositionOffset, -5, 0));
+        projectiles.add(new BossProjectile(x, y, -5, 0));
+        projectiles.add(new BossProjectile(x, y + projectileYPositionOffset, -5, 0));
         return projectiles;
     }
 
@@ -76,9 +76,9 @@ public class FirePatternManager {
      */
     private List<ActiveActorDestructible> fireVerticalPattern(double x, double y) {
         List<ActiveActorDestructible> projectiles = new ArrayList<>();
-        projectiles.add(new BossProjectile(x, y - projectileYPositionOffset, -15/VOLECITY_CHANGE, 0));
-        projectiles.add(new BossProjectile(x, y, -15/VOLECITY_CHANGE, 0));
-        projectiles.add(new BossProjectile(x, y + projectileYPositionOffset, -15/VOLECITY_CHANGE, 0));
+        projectiles.add(new BossProjectile(x, y - projectileYPositionOffset, -5, 0));
+        projectiles.add(new BossProjectile(x, y, -5, 0));
+        projectiles.add(new BossProjectile(x, y + projectileYPositionOffset, -5, 0));
         return projectiles;
     }
 
@@ -91,9 +91,9 @@ public class FirePatternManager {
      */
     private List<ActiveActorDestructible> fireDiagonalPattern(double x, double y) {
         List<ActiveActorDestructible> projectiles = new ArrayList<>();
-        projectiles.add(new BossProjectile(x, y - projectileYPositionOffset, -15/VOLECITY_CHANGE, -15/VOLECITY_CHANGE)); // Upper left
-        projectiles.add(new BossProjectile(x, y, -15/VOLECITY_CHANGE, 0)); // Horizontal left
-        projectiles.add(new BossProjectile(x, y + projectileYPositionOffset, -15/VOLECITY_CHANGE, 15/VOLECITY_CHANGE)); // Lower left
+        projectiles.add(new BossProjectile(x, y - projectileYPositionOffset, -5, -5)); // Upper left
+        projectiles.add(new BossProjectile(x, y, -5, 0)); // Horizontal left
+        projectiles.add(new BossProjectile(x, y + projectileYPositionOffset, -5, 5)); // Lower left
         return projectiles;
     }
 }

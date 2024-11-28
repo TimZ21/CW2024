@@ -15,7 +15,7 @@ public class UserProjectile extends Projectile {
 
 	private static final String IMAGE_NAME = "userfire.png";
 	private static final int IMAGE_HEIGHT = 6;
-	private static final int HORIZONTAL_VELOCITY = 15/VOLECITY_CHANGE;
+	private static final int HORIZONTAL_VELOCITY = 6;
 
 	/**
 	 * Constructs a {@code UserProjectile} instance with the specified initial position.

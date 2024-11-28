@@ -23,7 +23,7 @@ public class UserPlane extends FighterPlane {
 	private static final double INITIAL_X_POSITION = 5.0;
 	private static final double INITIAL_Y_POSITION = 300.0;
 	private static final int IMAGE_HEIGHT = 50;
-	private static final double MOVEMENT_VELOCITY = (double) 8 /VOLECITY_CHANGE; // Used for both vertical and horizontal movement
+	private static final double MOVEMENT_VELOCITY = (double) 9 /VOLECITY_CHANGE; // Used for both vertical and horizontal movement
 	private static final int PROJECTILE_X_POSITION = 110;
 	private static final int PROJECTILE_Y_POSITION_OFFSET = 20;
 

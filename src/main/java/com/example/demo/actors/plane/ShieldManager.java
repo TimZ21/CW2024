@@ -15,7 +15,7 @@ public class ShieldManager {
     private final ShieldImage shieldImage;
     private boolean isShielded;
     private int framesWithShieldActivated;
-    private static final int MAX_FRAMES_WITH_SHIELD = 50*VOLECITY_CHANGE;
+    private static final int MAX_FRAMES_WITH_SHIELD = 50*(int)VOLECITY_CHANGE;
     private static final double SHIELD_PROBABILITY = 0.02/VOLECITY_CHANGE;
 
     /**

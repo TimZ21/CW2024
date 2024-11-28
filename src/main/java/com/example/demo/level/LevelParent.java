@@ -23,7 +23,7 @@ public abstract class LevelParent {
 
 	private static final double SCREEN_HEIGHT_ADJUSTMENT = 150;
 	private static final int TARGET_FPS = 60;
-	public static final int VOLECITY_CHANGE = TARGET_FPS/20;
+	public static final double VOLECITY_CHANGE = TARGET_FPS/20;
 	private static final int MILLISECOND_DELAY = (1000/TARGET_FPS);
 	private final double screenHeight;
 	private final double screenWidth;
