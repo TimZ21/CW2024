@@ -8,8 +8,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-import static com.example.demo.level.LevelParent.VOLECITY_CHANGE;
-
 public class FirePatternManager {
 
     private static final int FIRE_PATTERN_HORIZONTAL = 0;

@@ -1,11 +1,5 @@
 package com.example.demo.actors.projectile;
 
-import com.example.demo.level.LevelParent;
-
-import java.lang.annotation.Target;
-
-import static com.example.demo.level.LevelParent.VOLECITY_CHANGE;
-
 /**
  * The {@code UserProjectile} class represents a projectile fired by the player's plane.
  * It defines the specific behavior and appearance of the user's projectiles, such as their

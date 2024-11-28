@@ -10,20 +10,18 @@ import com.example.demo.menu.WinMenu;
 import com.example.demo.view.LevelView;
 import com.example.demo.actors.plane.UserPlane;
 import javafx.animation.*;
-import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.*;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public abstract class LevelParent {
 
 	private static final double SCREEN_HEIGHT_ADJUSTMENT = 150;
 	private static final int TARGET_FPS = 60;
-	public static final double VOLECITY_CHANGE = TARGET_FPS/20;
+	public static final double VELOCITY_CHANGE = (double) TARGET_FPS /20;
 	private static final int MILLISECOND_DELAY = (1000/TARGET_FPS);
 	private final double screenHeight;
 	private final double screenWidth;
@@ -120,6 +118,7 @@ public abstract class LevelParent {
 		updateLevelView();
 		checkIfGameOver();
 		actorManager.removeOutOfBoundsProjectiles(1300);
+		inputHandler.update();
 	}
 
 	private void initializeTimeline() {

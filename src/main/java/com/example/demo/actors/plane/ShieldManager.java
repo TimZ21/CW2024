@@ -4,7 +4,7 @@ import com.example.demo.view.ShieldImage;
 import javafx.application.Platform;
 import javafx.scene.Group;
 
-import static com.example.demo.level.LevelParent.VOLECITY_CHANGE;
+import static com.example.demo.level.LevelParent.VELOCITY_CHANGE;
 
 /**
  * The `ShieldManager` class manages the shield's activation, deactivation,
@@ -15,8 +15,8 @@ public class ShieldManager {
     private final ShieldImage shieldImage;
     private boolean isShielded;
     private int framesWithShieldActivated;
-    private static final int MAX_FRAMES_WITH_SHIELD = 50*(int)VOLECITY_CHANGE;
-    private static final double SHIELD_PROBABILITY = 0.02/VOLECITY_CHANGE;
+    private static final int MAX_FRAMES_WITH_SHIELD = 50*(int) VELOCITY_CHANGE;
+    private static final double SHIELD_PROBABILITY = 0.02/ VELOCITY_CHANGE;
 
     /**
      * Constructs a `ShieldManager` with the specified root and initial position.

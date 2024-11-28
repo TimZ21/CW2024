@@ -21,6 +21,7 @@ public class InputHandler {
     private final Group root;
     private final List<ActiveActorDestructible> userProjectiles;
     private final Runnable pauseGameCallback; // A callback for pausing the game
+    private final KeyStateTracker keyStateTracker;
 
     /**
      * Constructs an {@code InputHandler} to handle user input for the specified user plane.
@@ -35,6 +36,7 @@ public class InputHandler {
         this.root = root;
         this.userProjectiles = userProjectiles;
         this.pauseGameCallback = pauseGameCallback;
+        this.keyStateTracker = new KeyStateTracker();
     }
 
     /**
@@ -69,6 +71,7 @@ public class InputHandler {
                     pauseGameCallback.run(); // Invoke the pause logic
                 }
             }
+            keyStateTracker.keyPressed(kc);
         };
     }
 
@@ -87,7 +90,29 @@ public class InputHandler {
             if (kc == KeyCode.LEFT || kc == KeyCode.RIGHT) {
                 userPlane.stopHorizontalMovement();
             }
+            keyStateTracker.keyReleased(kc);
         };
+    }
+
+    /**
+     * Updates the state of the user plane based on the current key states.
+     */
+    public void update() {
+        if (keyStateTracker.isKeyPressed(KeyCode.UP)) {
+            userPlane.moveUp();
+        } else if (keyStateTracker.isKeyPressed(KeyCode.DOWN)) {
+            userPlane.moveDown();
+        } else {
+            userPlane.stopVerticalMovement();
+        }
+
+        if (keyStateTracker.isKeyPressed(KeyCode.LEFT)) {
+            userPlane.moveLeft();
+        } else if (keyStateTracker.isKeyPressed(KeyCode.RIGHT)) {
+            userPlane.moveRight();
+        } else {
+            userPlane.stopHorizontalMovement();
+        }
     }
 
     /**
@@ -103,5 +128,4 @@ public class InputHandler {
             }
         }
     }
-
 }

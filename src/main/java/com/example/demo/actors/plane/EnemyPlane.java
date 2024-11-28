@@ -6,7 +6,7 @@ import com.example.demo.actors.projectile.EnemyProjectile;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.demo.level.LevelParent.VOLECITY_CHANGE;
+import static com.example.demo.level.LevelParent.VELOCITY_CHANGE;
 
 /**
  * The {@code EnemyPlane} class represents an enemy aircraft in the game.
@@ -17,11 +17,11 @@ public class EnemyPlane extends FighterPlane {
 
 	private static final String IMAGE_NAME = "enemyplane.png";
 	private static final int IMAGE_HEIGHT = 80;
-	private static final double HORIZONTAL_VELOCITY = (double) -6 /VOLECITY_CHANGE;
+	private static final double HORIZONTAL_VELOCITY = (double) -6 / VELOCITY_CHANGE;
 	private static final double PROJECTILE_X_POSITION_OFFSET = -100.0;
 	private static final double PROJECTILE_Y_POSITION_OFFSET = 50.0;
 	private static final int INITIAL_HEALTH = 1;
-	private static final double FIRE_RATE = .01/VOLECITY_CHANGE;
+	private static final double FIRE_RATE = .01/ VELOCITY_CHANGE;
 
 	/**
 	 * Constructs an {@code EnemyPlane} with the specified initial position.
