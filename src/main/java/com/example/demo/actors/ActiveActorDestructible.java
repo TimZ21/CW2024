@@ -71,4 +71,23 @@ public abstract class ActiveActorDestructible extends ActiveActor implements Des
 	public boolean isDestroyed() {
 		return isDestroyed;
 	}
+
+	/**
+	 * Returns the absolute X position of the plane including any translations.
+	 *
+	 * @return The absolute X position.
+	 */
+	public double getAbsoluteX() {
+		return getLayoutX() + getTranslateX();
+	}
+
+	/**
+	 * Returns the absolute Y position of the plane including any translations.
+	 *
+	 * @return The absolute Y position.
+	 */
+	public double getAbsoluteY() {
+		return getLayoutY() + getTranslateY();
+	}
+
 }

@@ -141,7 +141,7 @@ public abstract class LevelParent {
 	}
 
 	private void handleUserProjectileCollisions() {
-		collisionHandler.detectCollisionsWithSoundEffect(userProjectiles, enemyUnits);
+		collisionHandler.detectCollisionsWithSoundEffect(userProjectiles, enemyUnits, root);
 	}
 
 	private void handleEnemyProjectileCollisions() {
