@@ -43,6 +43,7 @@ public class AudioManager {
         backgroundMusicPlayer = new MediaPlayer(backgroundMusic);
         backgroundMusicPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         backgroundMusicPlayer.setVolume(0.5);
+        if (isMuted) backgroundMusicPlayer.setMute(true);
         backgroundMusicPlayer.play();
     }
 
@@ -56,19 +57,28 @@ public class AudioManager {
         if (backgroundMusicPlayer != null) {
             backgroundMusicPlayer.setVolume(volume);
         }
+        if (soundEffectPlayer != null) {
+            soundEffectPlayer.setVolume(volume);
+        }
     }
 
     public void mute() {
+        isMuted = true;
         if (backgroundMusicPlayer != null) {
             backgroundMusicPlayer.setMute(true);
-            isMuted = true;
+        }
+        if (soundEffectPlayer != null) {
+            soundEffectPlayer.setMute(true);
         }
     }
 
     public void unmute() {
+        isMuted = false;
         if (backgroundMusicPlayer != null) {
             backgroundMusicPlayer.setMute(false);
-            isMuted = false;
+        }
+        if (soundEffectPlayer != null) {
+            soundEffectPlayer.setMute(false);
         }
     }
 
@@ -100,6 +110,7 @@ public class AudioManager {
         Media soundEffect = new Media(resource.toString());
         soundEffectPlayer = new MediaPlayer(soundEffect);
         soundEffectPlayer.setVolume(0.5);
+        if (isMuted) soundEffectPlayer.setMute(true);
         soundEffectPlayer.play();
     }
 }
