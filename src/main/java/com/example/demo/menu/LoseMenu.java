@@ -2,6 +2,8 @@ package com.example.demo.menu;
 
 import com.example.demo.controller.Controller;
 import javafx.application.Platform;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -9,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -21,6 +24,7 @@ public class LoseMenu {
 
     private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/menu_background.jpg";
     private final Scene currentScene;
+
     /**
      * Constructs a {@code LoseMenu} with the given scene.
      *
@@ -34,7 +38,6 @@ public class LoseMenu {
      * Displays the "Game Over" menu within the current scene.
      */
     public void show() {
-        // Create the "Game Over" background image
         ImageView backgroundImage = new ImageView(
                 new Image(Objects.requireNonNull(getClass().getResource(BACKGROUND_IMAGE_NAME)).toExternalForm())
         );
@@ -42,32 +45,28 @@ public class LoseMenu {
         backgroundImage.setFitHeight(currentScene.getHeight());
         backgroundImage.setPreserveRatio(false);
 
-        Text title = new Text("Game Lose");
-        title.setFont(Font.font("Arial", 50)); // Set font size and style
-        title.setStyle("-fx-fill: red; -fx-stroke: black; -fx-stroke-width: 2;"); // Red text with black border
+        Text title = new Text("Game Over");
+        title.setFont(Font.font("Verdana", FontWeight.BOLD, 60));
+        title.setStyle("-fx-fill: white; -fx-stroke: black; -fx-stroke-width: 2;");
 
-        // Create buttons
-        Button restartButton = new Button("     Restart Game");
-        Button quitButton = new Button("            Quit");
+        Button restartButton = new Button("Restart Game");
+        Button quitButton = new Button("Quit");
 
-        // Style buttons to remove the gray background and center text
-        restartButton.setStyle("-fx-background-color: transparent; -fx-font-size: 24px; -fx-text-fill: white;");
-        quitButton.setStyle("-fx-background-color: transparent; -fx-font-size: 24px; -fx-text-fill: white;");
+        styleButton(restartButton);
+        styleButton(quitButton);
 
-        // Set button actions
         restartButton.setOnAction(e -> restartGame());
         quitButton.setOnAction(e -> Platform.exit());
 
-        // Layout for buttons
-        VBox buttonLayout = new VBox(10, title ,restartButton, quitButton);
-        buttonLayout.setStyle("-fx-alignment: top-left;"); // Align buttons to the top-left
-        buttonLayout.setTranslateX(500); // Shift buttons slightly right
-        buttonLayout.setTranslateY(250); // Shift buttons slightly down
+        VBox contentVBox = new VBox(30, title, restartButton, quitButton);
+        contentVBox.setAlignment(Pos.CENTER);
 
-        // Combine everything into a StackPane
-        StackPane root = new StackPane(backgroundImage, buttonLayout);
+        VBox vbox = new VBox(contentVBox);
+        vbox.setAlignment(Pos.TOP_LEFT);
+        vbox.setPadding(new Insets(250, 300, 0, 0)); // Adjust padding to move content to the top-left
 
-        // Set the new content on the existing scene
+        StackPane root = new StackPane(backgroundImage, vbox);
+
         currentScene.setRoot(root);
     }
 
@@ -76,10 +75,15 @@ public class LoseMenu {
      */
     private void restartGame() {
         try {
-            // Retrieve the stage from the scene and restart the game
             new Controller((Stage) currentScene.getWindow()).launchGame();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    private void styleButton(Button button) {
+        button.setStyle("-fx-background-color: #333; -fx-text-fill: white; -fx-font-size: 16px;");
+        button.setMinWidth(120);
+        button.setMinHeight(40);
     }
 }
