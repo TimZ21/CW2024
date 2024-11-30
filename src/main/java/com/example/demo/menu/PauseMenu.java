@@ -3,6 +3,8 @@ package com.example.demo.menu;
 import com.example.demo.controller.Controller;
 import com.example.demo.level.LevelParent;
 import javafx.application.Platform;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -10,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -31,7 +34,6 @@ public class PauseMenu {
     }
 
     public void show() {
-        // Create the "Pause" background image
         ImageView backgroundImage = new ImageView(
                 new Image(Objects.requireNonNull(getClass().getResource(BACKGROUND_IMAGE_NAME)).toExternalForm())
         );
@@ -40,18 +42,16 @@ public class PauseMenu {
         backgroundImage.setPreserveRatio(false);
 
         Text title = new Text("Game Paused");
-        title.setFont(Font.font("Arial", 50)); // Set font size and style
-        title.setStyle("-fx-fill: red; -fx-stroke: black; -fx-stroke-width: 2;"); // Red text with black border
+        title.setFont(Font.font("Verdana", FontWeight.BOLD, 60)); // Changed font to Verdana and made it bold
+        title.setStyle("-fx-fill: white; -fx-stroke: black; -fx-stroke-width: 2;");
 
-        // Create buttons for Resume, Restart, Quit
-        Button resumeButton = new Button("     Resume");
-        Button restartButton = new Button("     Restart");
-        Button quitButton = new Button("     Quit");
+        Button resumeButton = new Button("Resume");
+        Button restartButton = new Button("Restart");
+        Button quitButton = new Button("Quit");
 
-        // Style buttons to remove the gray background and center text
-        resumeButton.setStyle("-fx-background-color: transparent; -fx-font-size: 24px; -fx-text-fill: white;");
-        restartButton.setStyle("-fx-background-color: transparent; -fx-font-size: 24px; -fx-text-fill: white;");
-        quitButton.setStyle("-fx-background-color: transparent; -fx-font-size: 24px; -fx-text-fill: white;");
+        styleButton(resumeButton);
+        styleButton(restartButton);
+        styleButton(quitButton);
 
         resumeButton.setOnAction(e -> resumeGame());
         restartButton.setOnAction(e -> {
@@ -63,42 +63,40 @@ public class PauseMenu {
         });
         quitButton.setOnAction(e -> quitGame());
 
-        // Layout for the buttons
-        VBox vbox = new VBox(20, title, resumeButton, restartButton, quitButton);
-        vbox.setStyle("-fx-alignment: top-left;"); // Align buttons to the top-left
-        vbox.setTranslateX(500); // Shift buttons slightly right
-        vbox.setTranslateY(250); // Shift buttons slightly down
+        // Create a VBox for the content with center alignment and increased spacing
+        VBox contentVBox = new VBox(30, title, resumeButton, restartButton, quitButton); // Increased spacing to 50
+        contentVBox.setAlignment(Pos.CENTER);  // Center alignment for content inside VBox
 
-        // Combine everything into a StackPane
+        // Create a VBox to hold the contentVBox with top-left alignment
+        VBox vbox = new VBox(contentVBox);
+        vbox.setAlignment(Pos.TOP_LEFT);  // Top-left alignment for the VBox
+        vbox.setPadding(new Insets(250, 300, 0, 0));  // Adjust padding to move content to the top-left
+
         StackPane root = new StackPane(backgroundImage, vbox);
 
-        // Create the pause scene
         Scene pauseScene = new Scene(root, gameScene.getWidth(), gameScene.getHeight());
-
-        // Show the pause scene
         stage.setScene(pauseScene);
         stage.show();
     }
 
     private void resumeGame() {
-        // Resume the game (stop showing the pause menu and go back to the game scene)
         stage.setScene(gameScene);
-        onResume.run(); // Resumes the game logic (e.g., restarting the timeline or game loop)
+        onResume.run();
     }
 
     private void restartGame() throws Exception {
-        // Restart the game (you can reload the level or reset game variables)
         System.out.println("Restarting the game...");
-
-        // Clean up resources from the previous game session
         levelParent.cleanUp();
-
-        // Launch the new game
         new Controller(stage).launchGame();
     }
 
     private void quitGame() {
-        // Quit the game
         Platform.exit();
+    }
+
+    private void styleButton(Button button) {
+        button.setStyle("-fx-background-color: #333; -fx-text-fill: white; -fx-font-size: 16px;");
+        button.setMinWidth(120);
+        button.setMinHeight(40);
     }
 }
