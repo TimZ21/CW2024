@@ -15,6 +15,7 @@ public class LevelBoss extends LevelParent {
 	private static final int PLAYER_INITIAL_HEALTH = 5;
 	private final Boss boss;
 	private LevelViewLevelBoss levelView;
+	private static final String NEXT_LEVEL = "com.example.demo.level.LevelFinalBoss";
 
 	/**
 	 * Constructs a {@code LevelBoss} instance with the specified screen dimensions.
@@ -40,12 +41,21 @@ public class LevelBoss extends LevelParent {
 	 * Checks if the game is over. If the user is destroyed, it triggers a game loss.
 	 * If the boss is destroyed, it triggers a game win.
 	 */
+//	@Override
+//	protected void checkIfGameOver() {
+//		if (userIsDestroyed()) {
+//			loseGame();
+//		} else if (boss.isDestroyed()) {
+//			winGame();
+//		}
+//	}
+
 	@Override
 	protected void checkIfGameOver() {
 		if (userIsDestroyed()) {
 			loseGame();
 		} else if (boss.isDestroyed()) {
-			winGame();
+			goToNextLevel(NEXT_LEVEL);
 		}
 	}
 
