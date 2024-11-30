@@ -16,7 +16,7 @@ import static com.example.demo.level.LevelParent.VELOCITY_CHANGE;
 public class EnemyPlane extends FighterPlane {
 
 	private static final String IMAGE_NAME = "enemyplane.png";
-	private static final int IMAGE_HEIGHT = 80;
+	private static final int IMAGE_HEIGHT = 70;
 	private static final double HORIZONTAL_VELOCITY = (double) -6 / VELOCITY_CHANGE;
 	private static final double PROJECTILE_X_POSITION_OFFSET = -100.0;
 	private static final double PROJECTILE_Y_POSITION_OFFSET = 50.0;
