@@ -1,5 +1,6 @@
 package com.example.demo.menu;
 
+import com.example.demo.controller.AudioManager;
 import com.example.demo.controller.Controller;
 import com.example.demo.level.LevelParent;
 import javafx.application.Platform;
@@ -25,12 +26,14 @@ public class PauseMenu {
     private final Scene gameScene;  // The game scene to switch back to
     private final Runnable onResume;  // Action to resume the game
     private final LevelParent levelParent;  // Reference to the LevelParent instance
+    private final AudioManager audioManager; // Instance of AudioManager
 
     public PauseMenu(Stage stage, Scene gameScene, Runnable onResume, LevelParent levelParent) {
         this.stage = stage;
         this.gameScene = gameScene;
         this.onResume = onResume;
         this.levelParent = levelParent;
+        this.audioManager = AudioManager.getInstance(); // Initialize the AudioManager
     }
 
     public void show() {
@@ -48,10 +51,12 @@ public class PauseMenu {
         Button resumeButton = new Button("Resume");
         Button restartButton = new Button("Restart");
         Button quitButton = new Button("Quit");
+        Button muteButton = new Button(audioManager.isMuted() ? "Unmute" : "Mute"); // Mute button
 
         styleButton(resumeButton);
         styleButton(restartButton);
         styleButton(quitButton);
+        styleButton(muteButton);
 
         resumeButton.setOnAction(e -> resumeGame());
         restartButton.setOnAction(e -> {
@@ -62,9 +67,10 @@ public class PauseMenu {
             }
         });
         quitButton.setOnAction(e -> quitGame());
+        muteButton.setOnAction(e -> toggleMute(muteButton)); // Toggle mute when button is pressed
 
         // Create a VBox for the content with center alignment and increased spacing
-        VBox contentVBox = new VBox(30, title, resumeButton, restartButton, quitButton); // Increased spacing to 50
+        VBox contentVBox = new VBox(30, title, resumeButton, restartButton, muteButton, quitButton); // Added muteButton here
         contentVBox.setAlignment(Pos.CENTER);  // Center alignment for content inside VBox
 
         // Create a VBox to hold the contentVBox with top-left alignment
@@ -92,6 +98,16 @@ public class PauseMenu {
 
     private void quitGame() {
         Platform.exit();
+    }
+
+    private void toggleMute(Button muteButton) {
+        if (audioManager.isMuted()) {
+            audioManager.unmute();
+            muteButton.setText("Mute");
+        } else {
+            audioManager.mute();
+            muteButton.setText("Unmute");
+        }
     }
 
     private void styleButton(Button button) {
