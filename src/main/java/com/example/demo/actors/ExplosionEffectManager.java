@@ -13,14 +13,14 @@ public class ExplosionEffectManager extends ImageView {
 
     private static final String EXPLOSION_IMAGE_NAME = "explosion.png";
     private static final String IMAGE_LOCATION = "/com/example/demo/images/";
-    private static final int EXPLOSION_DURATION = 1000; // Duration in milliseconds
+    private static final int EXPLOSION_DURATION = 500; // Duration in milliseconds
 
     public ExplosionEffectManager(double x, double y, Group root) {
         super(new Image(Objects.requireNonNull(ExplosionEffectManager.class.getResource(IMAGE_LOCATION + EXPLOSION_IMAGE_NAME)).toExternalForm()));
 
         // Set explosion size and position
-        setFitWidth(100);  // Adjust as needed
-        setFitHeight(100);
+        setFitWidth(150);  // Adjust as needed
+        setFitHeight(150);
         setPreserveRatio(true);
         setX(x);
         setY(y);
