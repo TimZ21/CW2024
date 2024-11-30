@@ -19,7 +19,7 @@ import java.util.Objects;
  */
 public class WinMenu {
 
-    private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/startmenu.jpg";
+    private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/menu_background.jpg";
     private final Scene currentScene;
 
     /**

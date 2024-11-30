@@ -11,7 +11,7 @@ import com.example.demo.view.LevelViewLevelBoss;
  */
 public class LevelBoss extends LevelParent {
 
-	private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/background2.jpg";
+	private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/background_boss.jpg";
 	private static final int PLAYER_INITIAL_HEALTH = 5;
 	private final Boss boss;
 	private LevelViewLevelBoss levelView;

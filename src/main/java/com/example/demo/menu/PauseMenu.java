@@ -17,7 +17,7 @@ import java.util.Objects;
 
 public class PauseMenu {
 
-    private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/startmenu.jpg";
+    private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/menu_background.jpg";
     private final Stage stage;
     private final Scene gameScene;  // The game scene to switch back to
     private final Runnable onResume;  // Action to resume the game
