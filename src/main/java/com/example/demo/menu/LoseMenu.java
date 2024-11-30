@@ -2,12 +2,15 @@ package com.example.demo.menu;
 
 import com.example.demo.controller.Controller;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -55,6 +58,9 @@ public class LoseMenu {
         styleButton(restartButton);
         styleButton(quitButton);
 
+        preventSpaceActivation(restartButton);
+        preventSpaceActivation(quitButton);
+
         restartButton.setOnAction(e -> restartGame());
         quitButton.setOnAction(e -> Platform.exit());
 
@@ -85,5 +91,16 @@ public class LoseMenu {
         button.setStyle("-fx-background-color: #333; -fx-text-fill: white; -fx-font-size: 16px;");
         button.setMinWidth(120);
         button.setMinHeight(40);
+    }
+
+    /**
+     * Prevents a button from being activated by the space key.
+     */
+    private void preventSpaceActivation(Button button) {
+        button.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+            if (event.getCode() == KeyCode.SPACE) {
+                event.consume();
+            }
+        });
     }
 }
