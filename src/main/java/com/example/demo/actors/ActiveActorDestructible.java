@@ -1,7 +1,5 @@
 package com.example.demo.actors;
 
-import com.example.demo.Destructible;
-
 /**
  * The {@code ActiveActorDestructible} class is an abstract representation of an actor
  * in the game that can take damage and be destroyed. It extends the {@code ActiveActor} class
