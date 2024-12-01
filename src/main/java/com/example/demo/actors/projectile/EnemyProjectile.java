@@ -8,10 +8,18 @@ import static com.example.demo.level.LevelParent.VELOCITY_CHANGE;
  * and movement pattern, which contrasts with the player's projectiles by moving to the left.
  */
 public class EnemyProjectile extends Projectile {
-
-	private static final String IMAGE_NAME = "enemyFire.png";  // Visual representation of the projectile.
-	private static final int IMAGE_HEIGHT = 30;  // Scaled height of the projectile image.
-	private static final double HORIZONTAL_VELOCITY = -10.0 / VELOCITY_CHANGE;  // Adjusted horizontal speed.
+	/**
+	 * Image file for the projectile's appearance.
+	 */
+	private static final String IMAGE_NAME = "enemyFire.png";
+	/**
+	 * The display height of the projectile's image.
+	 */
+	private static final int IMAGE_HEIGHT = 30;
+	/**
+	 * Horizontal velocity of the projectile.
+	 */
+	private static final double HORIZONTAL_VELOCITY = -10.0 / VELOCITY_CHANGE;
 
 	/**
 	 * Constructs an {@code EnemyProjectile} instance at the specified initial position.
