@@ -6,10 +6,18 @@ package com.example.demo.actors.projectile;
  * and visual representation. It travels horizontally across the screen at a constant velocity.
  */
 public class UserProjectile extends Projectile {
-
-	private static final String IMAGE_NAME = "userfire.png";  // Image file for the projectile's appearance.
-	private static final int IMAGE_HEIGHT = 6;  // The display height of the projectile's image.
-	private static final int HORIZONTAL_VELOCITY = 6;  // Horizontal velocity of the projectile.
+	/**
+	 * Image file for the projectile's appearance.
+	 */
+	private static final String IMAGE_NAME = "userfire.png";
+	/**
+	 * The display height of the projectile's image.
+	 */
+	private static final int IMAGE_HEIGHT = 6;
+	/**
+	 * Horizontal velocity of the projectile.
+	 */
+	private static final int HORIZONTAL_VELOCITY = 6;
 
 	/**
 	 * Constructs a {@code UserProjectile} instance with the specified initial position.
