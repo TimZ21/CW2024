@@ -4,7 +4,7 @@ import com.example.demo.actors.ActiveActorDestructible;
 
 /**
  * The {@code Projectile} class is an abstract representation of projectiles in the game.
- * It extends {@code ActiveActorDestructible} and defines the common behavior and properties
+ * It extends {@link ActiveActorDestructible} and defines the common behavior and properties
  * for all projectiles, such as their appearance and how they interact with the game world.
  */
 public abstract class Projectile extends ActiveActorDestructible {
