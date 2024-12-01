@@ -2,8 +2,8 @@ package com.example.demo.actors;
 
 /**
  * The {@code ActiveActorDestructible} class is an abstract representation of an actor
- * in the game that can take damage and be destroyed. It extends the {@code ActiveActor} class
- * and implements the {@code Destructible} interface, providing additional functionality
+ * in the game that can take damage and be destroyed. It extends the {@link ActiveActor} class
+ * and implements the {@link  Destructible} interface, providing additional functionality
  * for managing the actor's destruction state.
  */
 public abstract class ActiveActorDestructible extends ActiveActor implements Destructible {
@@ -49,40 +49,38 @@ public abstract class ActiveActorDestructible extends ActiveActor implements Des
 	 */
 	@Override
 	public void destroy() {
-		setDestroyed(true);
+		setDestroyed();
 	}
 
 	/**
 	 * Sets the destruction state of the actor.
-	 *
-	 * @param isDestroyed {@code true} if the actor is destroyed, {@code false} otherwise.
 	 */
-	protected void setDestroyed(boolean isDestroyed) {
-		this.isDestroyed = isDestroyed;
+	protected void setDestroyed() {
+		this.isDestroyed = true;
 	}
 
 	/**
-	 * Returns whether the actor is destroyed.
+	 * Checks if the actor has been destroyed.
 	 *
-	 * @return {@code true} if the actor is destroyed, {@code false} otherwise.
+	 * @return true if the actor is destroyed, false otherwise
 	 */
 	public boolean isDestroyed() {
 		return isDestroyed;
 	}
 
 	/**
-	 * Returns the absolute X position of the plane including any translations.
+	 * Calculates the absolute x-coordinate of the actor, considering its layout and translation.
 	 *
-	 * @return The absolute X position.
+	 * @return the absolute x-coordinate
 	 */
 	public double getAbsoluteX() {
 		return getLayoutX() + getTranslateX();
 	}
 
 	/**
-	 * Returns the absolute Y position of the plane including any translations.
+	 * Calculates the absolute y-coordinate of the actor, considering its layout and translation.
 	 *
-	 * @return The absolute Y position.
+	 * @return the absolute y-coordinate
 	 */
 	public double getAbsoluteY() {
 		return getLayoutY() + getTranslateY();
