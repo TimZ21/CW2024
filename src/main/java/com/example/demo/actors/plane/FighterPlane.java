@@ -12,6 +12,9 @@ import java.util.List;
  */
 public abstract class FighterPlane extends ActiveActorDestructible {
 
+	/**
+	 * The health of the FighterPlane
+	 */
 	private int health;
 
 	/**
