@@ -5,23 +5,23 @@ import com.example.demo.actors.ActiveActorDestructible;
 import java.util.List;
 
 /**
- * The {@code FighterPlane} class is an abstract representation of a combat aircraft
- * in the game. It extends the {@code ActiveActorDestructible} class and introduces
- * common functionality such as health management and firing projectiles.
+ * Represents a combat aircraft within the game, providing mechanisms for health management,
+ * projectile firing, and damage handling. This abstract class extends {@code ActiveActorDestructible}
+ * to utilize advanced destructive capabilities and requires subclasses to implement specific
+ * projectile firing behavior.
  */
 public abstract class FighterPlane extends ActiveActorDestructible {
 
 	private int health;
 
 	/**
-	 * Constructs a {@code FighterPlane} with the specified image properties,
-	 * initial position, and health.
+	 * Constructs a FighterPlane with specified image properties, position, and health.
 	 *
-	 * @param imageName     The name of the image file used for this plane.
-	 * @param imageHeight   The height of the image.
-	 * @param initialXPos   The initial x-coordinate position of the plane.
-	 * @param initialYPos   The initial y-coordinate position of the plane.
-	 * @param health        The initial health of the plane.
+	 * @param imageName     the name of the image file for the plane's visual representation.
+	 * @param imageHeight   the display height of the plane's image.
+	 * @param initialXPos   the initial x-coordinate of the plane on the game screen.
+	 * @param initialYPos   the initial y-coordinate of the plane on the game screen.
+	 * @param health        the initial health value of the plane.
 	 */
 	public FighterPlane(String imageName, int imageHeight, double initialXPos, double initialYPos, int health) {
 		super(imageName, imageHeight, initialXPos, initialYPos);
@@ -29,60 +29,57 @@ public abstract class FighterPlane extends ActiveActorDestructible {
 	}
 
 	/**
-	 * Fires a projectile from the plane. This method must be implemented
-	 * by concrete subclasses to define specific projectile behavior.
+	 * Fires a projectile. The specific projectile characteristics and behavior are defined
+	 * in subclasses.
 	 *
-	 * @return An {@code ActiveActorDestructible} representing the fired projectile.
+	 * @return a list of {@code ActiveActorDestructible} objects representing the projectiles fired.
 	 */
 	public abstract List<ActiveActorDestructible> fireProjectile();
 
 	/**
-	 * Decreases the health of the plane when it takes damage. If the health
-	 * reaches zero, the plane is destroyed.
+	 * Reduces the plane's health by one. If health drops to zero, the plane is destroyed.
 	 */
 	@Override
 	public void takeDamage() {
 		health--;
-		if (healthAtZero()) {
-			this.destroy();
+		if (health <= 0) {
+			destroy();
 		}
 	}
 
 	/**
-	 * Calculates the x-coordinate for the initial position of a projectile,
-	 * based on the plane's current position and an offset.
+	 * Calculates the x-coordinate for launching a projectile, considering an offset.
 	 *
-	 * @param xPositionOffset The offset to be applied to the plane's x-coordinate.
-	 * @return The x-coordinate for the projectile.
+	 * @param xPositionOffset the horizontal offset from the plane's current x-coordinate.
+	 * @return the calculated x-coordinate for the projectile's initial position.
 	 */
 	protected double getProjectileXPosition(double xPositionOffset) {
 		return getLayoutX() + getTranslateX() + xPositionOffset;
 	}
 
 	/**
-	 * Calculates the y-coordinate for the initial position of a projectile,
-	 * based on the plane's current position and an offset.
+	 * Calculates the y-coordinate for launching a projectile, considering an offset.
 	 *
-	 * @param yPositionOffset The offset to be applied to the plane's y-coordinate.
-	 * @return The y-coordinate for the projectile.
+	 * @param yPositionOffset the vertical offset from the plane's current y-coordinate.
+	 * @return the calculated y-coordinate for the projectile's initial position.
 	 */
 	protected double getProjectileYPosition(double yPositionOffset) {
 		return getLayoutY() + getTranslateY() + yPositionOffset;
 	}
 
 	/**
-	 * Checks if the plane's health has reached zero.
+	 * Checks whether the plane's health has been depleted.
 	 *
-	 * @return {@code true} if health is zero, {@code false} otherwise.
+	 * @return {@code true} if health is zero or less, {@code false} otherwise.
 	 */
 	private boolean healthAtZero() {
-		return health == 0;
+		return health <= 0;
 	}
 
 	/**
-	 * Retrieves the current health of the plane.
+	 * Gets the current health status of the plane.
 	 *
-	 * @return The current health of the plane.
+	 * @return the current health.
 	 */
 	public int getHealth() {
 		return health;
