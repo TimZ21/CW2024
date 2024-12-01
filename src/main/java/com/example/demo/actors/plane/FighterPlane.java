@@ -5,8 +5,8 @@ import com.example.demo.actors.ActiveActorDestructible;
 import java.util.List;
 
 /**
- * Represents a combat aircraft within the game, providing mechanisms for health management,
- * projectile firing, and damage handling. This abstract class extends {@code ActiveActorDestructible}
+ * The {@code FighterPlane} represents a combat aircraft within the game, providing mechanisms for health management,
+ * projectile firing, and damage handling. This abstract class extends {@link ActiveActorDestructible}
  * to utilize advanced destructive capabilities and requires subclasses to implement specific
  * projectile firing behavior.
  */
@@ -15,7 +15,7 @@ public abstract class FighterPlane extends ActiveActorDestructible {
 	private int health;
 
 	/**
-	 * Constructs a FighterPlane with specified image properties, position, and health.
+	 * Constructs a {@code FighterPlane} with specified image properties, position, and health.
 	 *
 	 * @param imageName     the name of the image file for the plane's visual representation.
 	 * @param imageHeight   the display height of the plane's image.
