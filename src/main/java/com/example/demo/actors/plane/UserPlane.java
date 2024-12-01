@@ -1,6 +1,7 @@
 package com.example.demo.actors.plane;
 
 import com.example.demo.actors.ActiveActorDestructible;
+import com.example.demo.actors.projectile.Projectile;
 import com.example.demo.actors.projectile.UserProjectile;
 
 import java.util.ArrayList;
@@ -9,26 +10,66 @@ import java.util.List;
 import static com.example.demo.level.LevelParent.VELOCITY_CHANGE;
 
 /**
- * The {@code UserPlane} class represents the player's aircraft in the game.
+ * The {@code UserPlane} class extend {@link FighterPlane} to represent the player's aircraft in the game.
  * It extends the {@code FighterPlane} class and provides specific functionality
  * for user-controlled movement and projectile firing.
  */
 public class UserPlane extends FighterPlane {
-
+	/**
+	 * Image file for the user plane's appearance.
+	 */
 	private static final String IMAGE_NAME = "userplane.png";
+	/**
+	 * Upper boundary for vertical movement.
+	 */
 	private static final double Y_UPPER_BOUND = 0;
+	/**
+	 * Lower boundary for vertical movement.
+	 */
 	private static final double Y_LOWER_BOUND = 665;
+	/**
+	 * Left boundary for horizontal movement.
+	 */
 	private static final double X_LEFT_BOUND = 0;
+	/**
+	 * Right boundary for horizontal movement.
+	 */
 	private static final double X_RIGHT_BOUND = 1100;
+	/**
+	 * Initial X position of the user plane.
+	 */
 	private static final double INITIAL_X_POSITION = 5.0;
+	/**
+	 * Initial Y position of the user plane.
+	 */
 	private static final double INITIAL_Y_POSITION = 300.0;
+	/**
+	 * Height of the user plane's image.
+	 */
 	private static final int IMAGE_HEIGHT = 50;
+	/**
+	 * Movement velocity, adjusted for the game's velocity change factor.
+	 */
 	private static final double MOVEMENT_VELOCITY = (double) 9 / VELOCITY_CHANGE; // Used for both vertical and horizontal movement
+	/**
+	 * X position for projectile firing.
+	 */
 	private static final int PROJECTILE_X_POSITION = 110;
+	/**
+	 * Y position offset for projectile firing.
+	 */
 	private static final int PROJECTILE_Y_POSITION_OFFSET = 20;
-
+	/**
+	 * Multiplier for vertical velocity to control movement speed and direction.
+	 */
 	private int verticalVelocityMultiplier;
+	/**
+	 * Multiplier for horizontal velocity to control movement speed and direction.
+	 */
 	private int horizontalVelocityMultiplier;
+	/**
+	 * Number of enemy planes destroyed by this user plane.
+	 */
 	private int numberOfKills;
 
 	/**
@@ -45,6 +86,7 @@ public class UserPlane extends FighterPlane {
 	/**
 	 * Updates the position of the user plane based on the current velocity multipliers.
 	 * Prevents the plane from moving out of the defined bounds.
+	 * This method overrides the {@link FighterPlane#updatePosition()} method
 	 */
 	@Override
 	public void updatePosition() {
@@ -74,6 +116,7 @@ public class UserPlane extends FighterPlane {
 
 	/**
 	 * Updates the actor by updating its position.
+	 * This method overrides the {@link FighterPlane#updatePosition()} method
 	 */
 	@Override
 	public void updateActor() {
@@ -82,6 +125,7 @@ public class UserPlane extends FighterPlane {
 
 	/**
 	 * Fires a projectile from the user plane.
+	 * This method overrides the {@link FighterPlane#fireProjectile()} method
 	 *
 	 * @return A new {@code UserProjectile} object representing the fired projectile.
 	 */
