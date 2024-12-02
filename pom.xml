@@ -121,6 +121,8 @@
             --add-opens=com.example.demo/com.example.demo.actors.projectile=ALL-UNNAMED
             --add-opens=com.example.demo/com.example.demo.actors.manager=ALL-UNNAMED
             --add-opens=com.example.demo/com.example.demo.view=ALL-UNNAMED
+            --add-opens=com.example.demo/com.example.demo.level=ALL-UNNAMED
+
           </argLine>
         </configuration>
       </plugin>
