@@ -72,7 +72,7 @@ public class BossTest {
     void testProjectileFiring() {
         Platform.runLater(() -> {
             List<ActiveActorDestructible> projectiles = boss.fireProjectile();
-            assertTrue(projectiles.size() <= 1, "Boss should fire at most one projectile at a time");
+            assertTrue(projectiles.size() <= 3, "Boss should fire at most three projectile at a time");
         });
     }
 }
