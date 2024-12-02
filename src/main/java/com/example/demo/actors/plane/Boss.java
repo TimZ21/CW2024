@@ -93,6 +93,8 @@ public class Boss extends FighterPlane {
 	 */
 	private int indexOfCurrentMove;
 
+
+
 	/**
 	 * Manages the shield functionality of the Boss.
 	 */
@@ -233,4 +235,26 @@ public class Boss extends FighterPlane {
 	private double getProjectileInitialPosition() {
 		return getLayoutY() + getTranslateY() + PROJECTILE_Y_POSITION_OFFSET;
 	}
+	/**
+	 * Getter to get ShieldManager in the Boss class for testing in BossTest
+	 *
+	 * @return ShieldManager that used in this Class
+	 */
+	public ShieldManager getShieldManager() {
+		return shieldManager;
+	}
+
+	/**
+	 * Getter to get healthBarManager in the Boss class for testing in BossTest
+	 *
+	 * @return HealthBarManager that used in this Class
+	 */
+	public HealthBarManager getHealthBarManager() {
+		return healthBarManager;
+	}
+
+	public FirePatternManager getFirePatternManager() {
+		return firePatternManager;
+	}
+
 }
