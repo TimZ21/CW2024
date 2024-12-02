@@ -13,26 +13,99 @@ import static com.example.demo.level.LevelParent.VELOCITY_CHANGE;
  * such as shield management, movement patterns, and projectile firing.
  */
 public class Boss extends FighterPlane {
-
+	/**
+	 * Image file name for the boss plane's appearance.
+	 */
 	private static final String IMAGE_NAME = "bossplane.png";
+
+	/**
+	 * Initial horizontal position of the boss on the game screen.
+	 */
 	private static final double INITIAL_X_POSITION = 1000.0;
+
+	/**
+	 * Initial vertical position of the boss on the game screen.
+	 */
 	private static final double INITIAL_Y_POSITION = 400;
+
+	/**
+	 * Vertical offset for projectile firing position relative to the boss's current Y position.
+	 */
 	private static final double PROJECTILE_Y_POSITION_OFFSET = 75.0;
-	private static final double BOSS_FIRE_RATE = 0.04/ VELOCITY_CHANGE;
+
+	/**
+	 * Fire rate of the boss, determining how frequently projectiles are fired.
+	 */
+	private static final double BOSS_FIRE_RATE = 0.04 / VELOCITY_CHANGE;
+
+	/**
+	 * Image height for scaling the displayed boss plane.
+	 */
 	private static final int IMAGE_HEIGHT = 60;
+
+	/**
+	 * Vertical velocity for the boss's movement.
+	 */
 	private static final int VERTICAL_VELOCITY = 3;
+
+	/**
+	 * Initial health points of the boss.
+	 */
 	private static final int HEALTH = 10;
+
+	/**
+	 * Number of moves per cycle before potentially changing the movement pattern.
+	 */
 	private static final int MOVE_FREQUENCY_PER_CYCLE = 5;
-	private static final int ZERO = 0;
+
+	/**
+	 * Represents no movement; used in the movement pattern.
+	 */
+	private static final int STATIONARY_MOVE = 0;
+
+	/**
+	 * Maximum number of frames the boss moves in the same direction before changing.
+	 */
 	private static final int MAX_FRAMES_WITH_SAME_MOVE = 10;
+
+	/**
+	 * Upper boundary of the boss's allowed vertical movement.
+	 */
 	private static final int Y_POSITION_UPPER_BOUND = 0;
+
+	/**
+	 * Lower boundary of the boss's allowed vertical movement.
+	 */
 	private static final int Y_POSITION_LOWER_BOUND = 655;
 
+	/**
+	 * The pattern of movements that the Boss will follow.
+	 */
 	private final List<Integer> movePattern;
+
+	/**
+	 * Tracks the number of consecutive moves the Boss has made in the same direction according to the movement pattern.
+	 */
 	private int consecutiveMovesInSameDirection;
+
+	/**
+	 * The current index in the movePattern list.
+	 */
 	private int indexOfCurrentMove;
+
+	/**
+	 * Manages the shield functionality of the Boss.
+	 */
 	private final ShieldManager shieldManager;
+
+	/**
+	 * Manages the health bar of the Boss.
+	 */
 	private final HealthBarManager healthBarManager;
+
+	/**
+	 * Manages the firing patterns of projectiles from the Boss.
+	 */
 	private final FirePatternManager firePatternManager;
 
 	/**
@@ -77,18 +150,18 @@ public class Boss extends FighterPlane {
 	public void updateActor() {
 		updatePosition();
 		shieldManager.updateShield();
-		shieldManager.updateShieldPosition(getLayoutX() + getTranslateX(), getLayoutY() + getTranslateY());
+		shieldManager.updateShieldPosition(getAbsoluteX(), getAbsoluteY());
 	}
 
 	/**
 	 * Fires a projectile from the boss with a probability defined by {@code BOSS_FIRE_RATE}.
 	 *
-	 * @return A {@code BossProjectile} if the boss decides to fire; otherwise, {@code null}.
+	 * @return A {@link com.example.demo.actors.projectile.BossProjectile} if the boss decides to fire; otherwise, {@code null}.
 	 */
 	@Override
 	public List<ActiveActorDestructible> fireProjectile() {
 		if (bossFiresInCurrentFrame()) {
-			return firePatternManager.fireProjectiles(getLayoutX() + getTranslateX(), getLayoutY() + getTranslateY());
+			return firePatternManager.fireProjectiles(getAbsoluteX(), getAbsoluteY());
 		}
 		return Collections.emptyList();
 	}
@@ -118,7 +191,7 @@ public class Boss extends FighterPlane {
 		for (int i = 0; i < MOVE_FREQUENCY_PER_CYCLE; i++) {
 			movePattern.add(VERTICAL_VELOCITY);
 			movePattern.add(-VERTICAL_VELOCITY);
-			movePattern.add(ZERO);
+			movePattern.add(STATIONARY_MOVE );
 		}
 		Collections.shuffle(movePattern);
 	}
