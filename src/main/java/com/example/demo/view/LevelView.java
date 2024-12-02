@@ -47,4 +47,13 @@ public class LevelView {
 			heartDisplay.removeHeart();
 		}
 	}
+
+	/**
+	 * Returns the heart display instance.
+	 *
+	 * @return The {@code HeartDisplay} instance.
+	 */
+	public HeartDisplay getHeartDisplay() {
+		return heartDisplay;
+	}
 }
