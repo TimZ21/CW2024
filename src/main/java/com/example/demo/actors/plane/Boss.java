@@ -252,9 +252,4 @@ public class Boss extends FighterPlane {
 	public HealthBarManager getHealthBarManager() {
 		return healthBarManager;
 	}
-
-	public FirePatternManager getFirePatternManager() {
-		return firePatternManager;
-	}
-
 }
