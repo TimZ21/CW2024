@@ -194,4 +194,42 @@ public class UserPlane extends FighterPlane {
 	public void incrementKillCount() {
 		numberOfKills++;
 	}
+
+
+	/**
+	 * Checks if the user plane is moving up.
+	 *
+	 * @return True if the user plane is moving up, false otherwise.
+	 */
+	public boolean isMovingUp() {
+		return verticalVelocityMultiplier == -1;
+	}
+
+	/**
+	 * Checks if the user plane is moving down.
+	 *
+	 * @return True if the user plane is moving down, false otherwise.
+	 */
+	public boolean isMovingDown() {
+		return verticalVelocityMultiplier == 1;
+	}
+
+	/**
+	 * Checks if the user plane is moving left.
+	 *
+	 * @return True if the user plane is moving left, false otherwise.
+	 */
+	public boolean isMovingLeft() {
+		return horizontalVelocityMultiplier == -1;
+	}
+
+	/**
+	 * Checks if the user plane is moving right.
+	 *
+	 * @return True if the user plane is moving right, false otherwise.
+	 */
+	public boolean isMovingRight() {
+		return horizontalVelocityMultiplier == 1;
+	}
+
 }
