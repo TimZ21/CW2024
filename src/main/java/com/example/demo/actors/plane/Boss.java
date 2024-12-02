@@ -2,6 +2,7 @@ package com.example.demo.actors.plane;
 
 import com.example.demo.actors.ActiveActorDestructible;
 import com.example.demo.actors.manager.FirePatternManager;
+import com.example.demo.actors.manager.HealthBarManager;
 import com.example.demo.actors.manager.ShieldManager;
 import javafx.scene.Group;
 

@@ -1,4 +1,4 @@
-package com.example.demo.actors.plane;
+package com.example.demo.actors.manager;
 
 import javafx.application.Platform;
 import javafx.scene.control.ProgressBar;
