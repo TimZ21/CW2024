@@ -98,13 +98,6 @@ public class InputHandlerTest {
         assertFalse(userProjectiles.isEmpty());
     }
 
-//    @Test
-//    void testFireProjectile() {
-//        inputHandler.fireProjectile();
-//        assertFalse(userProjectiles.isEmpty());
-//        assertTrue(root.getChildren().contains(userProjectiles.get(0)));
-//    }
-
     @Test
     void testPauseGame() {
         KeyEvent keyEvent = new KeyEvent(KeyEvent.KEY_PRESSED, "", "", KeyCode.ESCAPE, false, false, false, false);
