@@ -3,7 +3,7 @@ package com.example.demo.level;
 import java.util.*;
 
 import com.example.demo.actors.ActiveActorDestructible;
-import com.example.demo.actors.mamager.*;
+import com.example.demo.actors.manager.*;
 import com.example.demo.menu.LoseMenu;
 import com.example.demo.menu.PauseMenu;
 import com.example.demo.menu.WinMenu;

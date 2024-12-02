@@ -1,4 +1,4 @@
-package com.example.demo.actors.mamager;
+package com.example.demo.actors.manager;
 
 import com.example.demo.actors.ActiveActorDestructible;
 import com.example.demo.actors.GameComponent;

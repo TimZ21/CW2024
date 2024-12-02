@@ -1,6 +1,4 @@
-package com.example.demo.actors.mamager;
-
-import com.example.demo.actors.mamager.ActorGroup;
+package com.example.demo.actors.manager;
 
 /**
  * The {@code ActorManager} class is responsible for managing different groups of game actors,

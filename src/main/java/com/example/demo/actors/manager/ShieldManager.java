@@ -1,4 +1,4 @@
-package com.example.demo.actors.mamager;
+package com.example.demo.actors.manager;
 
 import com.example.demo.view.ShieldImage;
 import javafx.application.Platform;
@@ -124,5 +124,9 @@ public class ShieldManager {
      */
     private boolean shieldExhausted() {
         return framesWithShieldActivated >= MAX_FRAMES_WITH_SHIELD;
+    }
+
+    public ShieldImage getShieldImage() {
+        return shieldImage;
     }
 }

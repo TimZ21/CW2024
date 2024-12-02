@@ -1,7 +1,7 @@
 package com.example.demo.actors.plane;
 
 import com.example.demo.actors.ActiveActorDestructible;
-import com.example.demo.actors.mamager.ShieldManager;
+import com.example.demo.actors.manager.ShieldManager;
 import javafx.scene.Group;
 
 import java.util.*;
@@ -93,8 +93,6 @@ public class Boss extends FighterPlane {
 	 * The current index in the movePattern list.
 	 */
 	private int indexOfCurrentMove;
-
-
 
 	/**
 	 * Manages the shield functionality of the Boss.
