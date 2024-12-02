@@ -42,14 +42,8 @@ public class BossProjectileTest {
             double initialX = bossProjectile.getLayoutX();
             double initialY = bossProjectile.getLayoutY();
             bossProjectile.updatePosition();
-                        try {
-                Thread.sleep(1000); // Pause for one second
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt(); // Handle interrupt properly
-                fail("Test interrupted");
-            }
-            assertEquals(initialX + HORIZONTAL_VELOCITY, bossProjectile.getLayoutX() + bossProjectile.getTranslateX(), "Projectile should move horizontally to the left by " + (-HORIZONTAL_VELOCITY) + " units.");
-            assertEquals(initialY + VERTICAL_VELOCITY, bossProjectile.getLayoutY() + bossProjectile.getTranslateY(), "Projectile should move vertically to the left by " + (-HORIZONTAL_VELOCITY) + " units.");
+            assertEquals(initialX + HORIZONTAL_VELOCITY, bossProjectile.getAbsoluteX(), "Projectile should move horizontally to the left by " + (-HORIZONTAL_VELOCITY) + " units.");
+            assertEquals(initialY + VERTICAL_VELOCITY, bossProjectile.getAbsoluteY(), "Projectile should move vertically to the left by " + (-HORIZONTAL_VELOCITY) + " units.");
         });
     }
 
@@ -62,8 +56,8 @@ public class BossProjectileTest {
             double initialX = customBossProjectile.getLayoutX();
             double initialY = customBossProjectile.getLayoutY();
             customBossProjectile.updatePosition();
-            assertEquals(initialX + customXVelocity, customBossProjectile.getLayoutX() + customBossProjectile.getTranslateX(), "Projectile should move to the left with custom velocity");
-            assertEquals(initialY + customYVelocity, customBossProjectile.getLayoutY() + customBossProjectile.getTranslateY(), "Projectile should move vertically with custom velocity");
+            assertEquals(initialX + customXVelocity, customBossProjectile.getAbsoluteX(), "Projectile should move to the left with custom velocity");
+            assertEquals(initialY + customYVelocity, customBossProjectile.getAbsoluteY(), "Projectile should move vertically with custom velocity");
         });
     }
 }

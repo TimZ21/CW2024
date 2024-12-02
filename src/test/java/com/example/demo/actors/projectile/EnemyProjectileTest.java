@@ -39,13 +39,7 @@ public class EnemyProjectileTest {
         Platform.runLater(() -> {
             double initialX = enemyProjectile.getLayoutX();
             enemyProjectile.updatePosition();
-            try {
-                Thread.sleep(1000); // Pause for one second
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt(); // Handle interrupt properly
-                fail("Test interrupted");
-            }
-            assertEquals(initialX + HORIZONTAL_VELOCITY, enemyProjectile.getLayoutX(), "Projectile should move horizontally to the right by " + HORIZONTAL_VELOCITY + " units.");
+            assertEquals(initialX + HORIZONTAL_VELOCITY, enemyProjectile.getAbsoluteX(), "Projectile should move horizontally to the right by " + HORIZONTAL_VELOCITY + " units.");
         });
     }
 

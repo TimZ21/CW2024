@@ -100,27 +100,27 @@ public class UserPlaneTest {
         for (int i = 0; i < 100; i++) {
             userPlane.updatePosition();
         }
-        assertTrue(userPlane.getLayoutY() + userPlane.getTranslateY() >= 0, "Plane should not move above the upper boundary");
+        assertTrue(userPlane.getAbsoluteY() >= 0, "Plane should not move above the upper boundary");
 
         // Move to the lower boundary
         userPlane.moveDown();
         for (int i = 0; i < 100; i++) {
             userPlane.updatePosition();
         }
-        assertTrue(userPlane.getLayoutY() + userPlane.getTranslateY() <= 665, "Plane should not move below the lower boundary");
+        assertTrue(userPlane.getAbsoluteY() <= 665, "Plane should not move below the lower boundary");
 
         // Move to the left boundary
         userPlane.moveLeft();
         for (int i = 0; i < 100; i++) {
             userPlane.updatePosition();
         }
-        assertTrue(userPlane.getLayoutX() + userPlane.getTranslateX() >= 0, "Plane should not move left of the left boundary");
+        assertTrue(userPlane.getAbsoluteX() >= 0, "Plane should not move left of the left boundary");
 
         // Move to the right boundary
         userPlane.moveRight();
         for (int i = 0; i < 100; i++) {
             userPlane.updatePosition();
         }
-        assertTrue(userPlane.getLayoutX() + userPlane.getTranslateX() <= 1100, "Plane should not move right of the right boundary");
+        assertTrue(userPlane.getAbsoluteX() <= 1100, "Plane should not move right of the right boundary");
     }
 }
