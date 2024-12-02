@@ -36,18 +36,11 @@ public class LevelViewLevelBoss extends LevelView {
 	}
 
 	/**
-	 * Shows the shield image by making it visible. This method is used to display the
-	 * shield when it is activated during gameplay.
+	 * Returns the root {@code Group} for the level view.
+	 *
+	 * @return The root {@code Group} for the level view.
 	 */
-	public void showShield() {
-		shieldImage.showShield();
-	}
-
-	/**
-	 * Hides the shield image by making it invisible. This method is used to hide the
-	 * shield when it is deactivated during gameplay.
-	 */
-	public void hideShield() {
-		shieldImage.hideShield();
+	public Group getRoot() {
+		return root;
 	}
 }
