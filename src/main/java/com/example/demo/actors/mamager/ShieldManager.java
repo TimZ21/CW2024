@@ -1,4 +1,4 @@
-package com.example.demo.actors.plane;
+package com.example.demo.actors.mamager;
 
 import com.example.demo.view.ShieldImage;
 import javafx.application.Platform;
@@ -7,19 +7,39 @@ import javafx.scene.Group;
 import static com.example.demo.level.LevelParent.VELOCITY_CHANGE;
 
 /**
- * The `ShieldManager` class manages the shield's activation, deactivation,
+ * The {@code ShieldManager} class manages the shield's activation, deactivation,
  * position updates, and status checks for an entity with a shield.
  */
 public class ShieldManager {
 
+    /**
+     * Visual representation of the shield.
+     */
     private final ShieldImage shieldImage;
-    private boolean isShielded;
-    private int framesWithShieldActivated;
-    private static final int MAX_FRAMES_WITH_SHIELD = 50*(int) VELOCITY_CHANGE;
-    private static final double SHIELD_PROBABILITY = 0.02/ VELOCITY_CHANGE;
 
     /**
-     * Constructs a `ShieldManager` with the specified root and initial position.
+     * Indicates whether the shield is currently active.
+     */
+    private boolean isShielded;
+
+    /**
+     * Counts the number of frames the shield has been active.
+     */
+    private int framesWithShieldActivated;
+
+    /**
+     * Maximum number of frames the shield can be active before it must be deactivated.
+     */
+    private static final int MAX_FRAMES_WITH_SHIELD = 50 * (int) VELOCITY_CHANGE;
+
+    /**
+     * Probability that the shield becomes activated in any given frame when not already active.
+     */
+    private static final double SHIELD_PROBABILITY = 0.02 / VELOCITY_CHANGE;
+
+
+    /**
+     * Constructs {@code ShieldManager} with the specified root and initial position.
      *
      * @param root The root group to add the shield image.
      * @param xPosition The initial X position of the shield.
@@ -63,7 +83,7 @@ public class ShieldManager {
     /**
      * Checks if the shield is currently active.
      *
-     * @return `true` if the shield is active, `false` otherwise.
+     * @return true if the shield is active, false otherwise.
      */
     public boolean isShielded() {
         return isShielded;
@@ -91,7 +111,7 @@ public class ShieldManager {
     /**
      * Checks if the shield should be activated based on a random probability.
      *
-     * @return `true` if the shield should be activated, `false` otherwise.
+     * @return true if the shield should be activated, false otherwise.
      */
     private boolean shieldShouldBeActivated() {
         return Math.random() < SHIELD_PROBABILITY;
@@ -100,7 +120,7 @@ public class ShieldManager {
     /**
      * Checks if the shield has been active for the maximum duration.
      *
-     * @return `true` if the shield is exhausted, `false` otherwise.
+     * @return true if the shield is exhausted, false otherwise.
      */
     private boolean shieldExhausted() {
         return framesWithShieldActivated >= MAX_FRAMES_WITH_SHIELD;
