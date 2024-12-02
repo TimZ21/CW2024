@@ -12,10 +12,21 @@ import java.net.URL;
  * It handles the initialization, positioning, and visibility of the shield image.
  */
 public class ShieldImage {
-
+	/**
+	 * Resource path for the shield image.
+	 */
 	private static final String IMAGE_NAME = "/com/example/demo/images/shield.png";
+	/**
+	 * Size for the shield image, used for both width and height.
+	 */
 	private static final int SHIELD_SIZE = 200;
+	/**
+	 * Container for the shield image, allowing for easy positioning and visibility changes.
+	 */
 	private HBox container;
+	/**
+	 * Image view that actually displays the shield image.
+	 */
 	private ImageView shieldImageView;
 
 	/**
@@ -45,8 +56,7 @@ public class ShieldImage {
 	}
 
 	/**
-	 * Initializes the shield image. Loads the image from the specified resource path
-	 * and sets its size, opacity, and aspect ratio preservation.
+	 * Initializes and loads the shield image, setting up the visual properties such as size and opacity.
 	 */
 	private void initializeShieldImage() {
 		shieldImageView = new ImageView();
@@ -64,11 +74,10 @@ public class ShieldImage {
 	}
 
 	/**
-	 * Sets the position of the shield container. Uses {@code Platform.runLater()}
-	 * to ensure that the UI update occurs on the JavaFX application thread.
+	 * Updates the position of the shield on the JavaFX application thread.
 	 *
-	 * @param x The new X position of the shield container.
-	 * @param y The new Y position of the shield container.
+	 * @param x the new X position for the shield
+	 * @param y the new Y position for the shield
 	 */
 	public void setPosition(double x, double y) {
 		Platform.runLater(() -> {
@@ -78,8 +87,7 @@ public class ShieldImage {
 	}
 
 	/**
-	 * Shows the shield image by making the container visible and bringing it to the front.
-	 * Uses {@code Platform.runLater()} to update the UI on the JavaFX application thread.
+	 * Makes the shield visible and ensures it is rendered in front of other elements.
 	 */
 	public void showShield() {
 		Platform.runLater(() -> {
@@ -89,8 +97,7 @@ public class ShieldImage {
 	}
 
 	/**
-	 * Hides the shield image by setting the container's visibility to false.
-	 * Uses {@code Platform.runLater()} to update the UI on the JavaFX application thread.
+	 * Hides the shield by setting the container's visibility to false.
 	 */
 	public void hideShield() {
 		Platform.runLater(() -> {
@@ -99,9 +106,9 @@ public class ShieldImage {
 	}
 
 	/**
-	 * Returns the container holding the shield image.
+	 * Gets the container that holds the shield image, primarily for positioning and visibility manipulation.
 	 *
-	 * @return The {@code HBox} container for the shield image.
+	 * @return the HBox container of the shield image
 	 */
 	public HBox getContainer() {
 		return container;
