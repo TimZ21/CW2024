@@ -119,6 +119,7 @@
             --add-exports=javafx.swing/com.sun.javafx.embed.swing=ALL-UNNAMED
             --add-opens=com.example.demo/com.example.demo.actors.plane=ALL-UNNAMED
             --add-opens=com.example.demo/com.example.demo.actors.projectile=ALL-UNNAMED
+            --add-opens=com.example.demo/com.example.demo.view=ALL-UNNAMED
           </argLine>
         </configuration>
       </plugin>
