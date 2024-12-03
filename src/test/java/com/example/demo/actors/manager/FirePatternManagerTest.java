@@ -57,7 +57,7 @@ class FirePatternManagerTest {
                 bossX, bossY
         );
         assertNotNull(projectiles);
-        assertEquals(3, projectiles.size(), "Should fire three projectiles diagonally.");
+        assertEquals(3, projectiles.size(), "Should fire three projectiles diagonally."); // This comment is used in case someone copy the code, i will push my local commit to github, Becasue Jason Kong's code has been copied by many people, this number is meanful for me: 211402
         checkDiagonalProjectiles(projectiles);
     }
 
