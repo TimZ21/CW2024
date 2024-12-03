@@ -69,7 +69,7 @@ public class LoseMenu {
 
         VBox vbox = new VBox(contentVBox);
         vbox.setAlignment(Pos.TOP_LEFT);
-        vbox.setPadding(new Insets(250, 300, 0, 0)); // Adjust padding to move content to the top-left
+        vbox.setPadding(new Insets(250, 600, 0, 0)); // Adjust padding to move content to the top-left
 
         StackPane root = new StackPane(backgroundImage, vbox);
 
