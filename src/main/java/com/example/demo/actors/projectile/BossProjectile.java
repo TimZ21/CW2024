@@ -40,6 +40,7 @@ public class BossProjectile extends Projectile {
 		this.yVelocity = 0;
 	}
 
+
 	/**
 	 * Constructs a {@code BossProjectile} with the specified initial position and velocities.
 	 *
@@ -71,5 +72,13 @@ public class BossProjectile extends Projectile {
 	@Override
 	public void updateActor() {
 		updatePosition();
+	}
+
+	public double getXVelocity() {
+		return xVelocity;
+	}
+
+	public double getYVelocity() {
+		return yVelocity;
 	}
 }
