@@ -1,5 +1,6 @@
 package com.example.demo.menu;
 
+import com.example.demo.actors.manager.ScaleUtils;
 import com.example.demo.controller.AudioManager;
 import com.example.demo.controller.Controller;
 import com.example.demo.level.LevelParent;
@@ -76,7 +77,9 @@ public class PauseMenu {
         // Create a VBox to hold the contentVBox with top-left alignment
         VBox vbox = new VBox(contentVBox);
         vbox.setAlignment(Pos.TOP_LEFT);  // Top-left alignment for the VBox
-        vbox.setPadding(new Insets(250, 600, 0, 0));  // Adjust padding to move content to the top-left
+        ScaleUtils.updateScale();
+        System.out.println(ScaleUtils.scale+" " + ScaleUtils.incrementX+" " + ScaleUtils.incrementY);
+        vbox.setPadding(new Insets(ScaleUtils.scaleYRelocate(200), ScaleUtils.scaleXRelocate(650), 0, 0));  // Adjust padding to move content to the top-left
 
         StackPane root = new StackPane(backgroundImage, vbox);
 
