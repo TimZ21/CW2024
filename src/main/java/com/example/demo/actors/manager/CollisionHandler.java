@@ -74,6 +74,15 @@ public class CollisionHandler {
         }
     }
 
+    /**
+     * Detects collisions between two lists of {@code ActiveActorDestructible} objects and manages effects upon collision.
+     * <p>This method also handles sound effects and visual effects when a destructive collision occurs,
+     * only for collision between {@link com.example.demo.actors.projectile.UserProjectile} and {@link com.example.demo.actors.plane.EnemyPlane}.</p>
+     *
+     * @param list1 The first list of {@code ActiveActorDestructible} objects.
+     * @param list2 The second list of {@code ActiveActorDestructible} objects.
+     * @param root The root group where visual effects should be added.
+     */
     public void detectCollisionsWithSoundEffect(List<ActiveActorDestructible> list1, List<ActiveActorDestructible> list2, Group root) {
         for (ActiveActorDestructible actor1 : list1) {
             for (ActiveActorDestructible actor2 : list2) {
