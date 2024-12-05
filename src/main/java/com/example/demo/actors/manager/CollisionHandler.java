@@ -83,7 +83,7 @@ public class CollisionHandler {
      * @param list2 The second list of {@code ActiveActorDestructible} objects.
      * @param root The root group where visual effects should be added.
      */
-    public void detectCollisionsWithSoundEffect(List<ActiveActorDestructible> list1, List<ActiveActorDestructible> list2, Group root) {
+    public void detectCollisionsWithEffect(List<ActiveActorDestructible> list1, List<ActiveActorDestructible> list2, Group root) {
         for (ActiveActorDestructible actor1 : list1) {
             for (ActiveActorDestructible actor2 : list2) {
                 if (actor1.getBoundsInParent().intersects(actor2.getBoundsInParent())) {
