@@ -8,12 +8,30 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Manages the firing patterns for bosses, effectively implementing a variation of the Strategy pattern,
+ * where each firing pattern can be considered a strategy.
+ */
 public class FirePatternManager {
 
+    /**
+     * Code representing the horizontal firing pattern.
+     */
     private static final int FIRE_PATTERN_HORIZONTAL = 0;
+
+    /**
+     * Code representing the vertical firing pattern.
+     */
     private static final int FIRE_PATTERN_VERTICAL = 1;
+
+    /**
+     * Code representing the diagonal firing pattern.
+     */
     private static final int FIRE_PATTERN_DIAGONAL = 2;
 
+    /**
+     * Offset for projectile positioning along the Y-axis.
+     */
     private final double projectileYPositionOffset;
 
     public FirePatternManager(double projectileYPositionOffset) {
