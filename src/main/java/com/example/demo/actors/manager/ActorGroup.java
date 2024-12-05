@@ -14,7 +14,16 @@ import java.util.List;
  */
 public class ActorGroup implements GameComponent {
 
+    /**
+     * A list of actors that this group manages. Each actor is an instance of {@code ActiveActorDestructible},
+     * which contains logic for its own update and render methods, and tracks its destruction state.
+     */
     private final List<ActiveActorDestructible> actors;
+
+    /**
+     * The root group where all actors are added for rendering in the scene. This group acts as the
+     * primary node that contains all child actor nodes, allowing for collective manipulation of visibility or removal.
+     */
     private final Group root;
 
     /**
