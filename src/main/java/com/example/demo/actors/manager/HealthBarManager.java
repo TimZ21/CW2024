@@ -5,15 +5,29 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.HBox;
 
 /**
- * The {@code HealthBarManager} class manages the health bar for a game entity (e.g., the boss).
+ * The {@code HealthBarManager} class manages the health bar for {@link com.example.demo.actors.plane.Boss}.
  * It handles the initialization, positioning, visibility, and updating of the health bar.
  */
 public class HealthBarManager {
 
-    private static final int HEALTH_BAR_WIDTH = 500; // Default width of the health bar
-    private static final int HEALTH_BAR_HEIGHT = 20; // Default height of the health bar
+    /**
+     * Default width of the health bar.
+     */
+    private static final int HEALTH_BAR_WIDTH = 500;
 
+    /**
+     * Default height of the health bar.
+     */
+    private static final int HEALTH_BAR_HEIGHT = 20;
+
+    /**
+     * Container for the health bar, allowing for positioning and styling.
+     */
     private final HBox container;
+
+    /**
+     * The health bar UI component that visually represents health as a progress bar.
+     */
     private final ProgressBar healthBar;
 
     /**
@@ -34,19 +48,6 @@ public class HealthBarManager {
         healthBar.setStyle("-fx-accent: red;"); // Set the health bar color
 
         container.getChildren().add(healthBar);
-    }
-
-    /**
-     * Sets the position of the health bar container.
-     *
-     * @param x The new X position of the health bar.
-     * @param y The new Y position of the health bar.
-     */
-    public void setPosition(double x, double y) {
-        Platform.runLater(() -> {
-            container.setLayoutX(x);
-            container.setLayoutY(y);
-        });
     }
 
     /**
@@ -79,9 +80,7 @@ public class HealthBarManager {
      * Hides the health bar by setting the container's visibility to false.
      */
     public void hideHealthBar() {
-        Platform.runLater(() -> {
-            container.setVisible(false);
-        });
+        Platform.runLater(() -> container.setVisible(false));
     }
 
     /**
