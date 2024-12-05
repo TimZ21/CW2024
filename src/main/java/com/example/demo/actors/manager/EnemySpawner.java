@@ -7,15 +7,30 @@ import javafx.scene.Group;
 import java.util.List;
 
 /**
- * The {@code EnemySpawner} class is responsible for managing the logic
- * of adding enemy units and generating their projectiles.
+ * The {@code EnemySpawner} is responsible for managing the spawning and positioning of enemy units in the game.
+ * This class is responsible for adding enemy units to the game scene, positioning them within valid bounds, and managing their projectile firing.
  */
 public class EnemySpawner {
 
+    /**
+     * List of all active enemy units currently in the game.
+     */
     private final List<ActiveActorDestructible> enemyUnits;
+
+    /**
+     * The main group root of the game scene where all game elements are added.
+     */
     private final Group root;
+
+    /**
+     * List of all projectiles fired by enemy units.
+     */
     private final List<ActiveActorDestructible> enemyProjectiles;
-    private static final double Y_LOWER_BOUND = 665.0; // Prevent enemies from being generated below this line
+
+    /**
+     * Lower boundary on the Y-axis to prevent enemy spawn below this line. Helps maintain enemies within visible game area.
+     */
+    private static final double Y_LOWER_BOUND = 665.0;
 
     /**
      * Constructs an {@code EnemySpawner} with the specified list of enemy units and the root group.
@@ -31,8 +46,7 @@ public class EnemySpawner {
     }
 
     /**
-     * Adds an enemy unit to the list and the scene graph, ensuring no overlap with existing enemies
-     * and placing them at the right boundary of the game screen within the vertical boundary.
+     * Attempts to add an enemy unit to the game scene ensuring no overlapping with existing units and within the right game boundaries.
      *
      * @param enemy The enemy unit to add.
      */
