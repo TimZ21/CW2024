@@ -21,7 +21,7 @@ public class InputHandler {
     private final UserPlane userPlane;
 
     /**
-     * The root group of the JavaFX scene graph where game elements like projectiles are added.
+     * The root group of the JavaFX scene graph where game elements like UserPlane are added.
      */
     private final Group root;
 

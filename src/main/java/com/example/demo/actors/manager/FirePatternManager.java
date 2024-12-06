@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Manages the firing patterns for bosses, effectively implementing a variation of the Strategy pattern,
+ * The {@code FirePatternManager} manages the firing patterns for bosses, effectively implementing a variation of the Strategy pattern,
  * where each firing pattern can be considered a strategy.
  */
 public class FirePatternManager {

@@ -8,6 +8,7 @@ import java.util.Map;
 /**
  * The {@code KeyStateTracker} tracks the state of keyboard keys.
  * Allows registering key presses and releases to track which keys are currently pressed.
+ * Optimize the game experience when multiple keys are pressed together.
  */
 public class KeyStateTracker {
     /**
