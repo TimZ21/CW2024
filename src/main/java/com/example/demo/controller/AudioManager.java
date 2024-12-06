@@ -5,21 +5,47 @@ import javafx.scene.media.MediaPlayer;
 
 import java.net.URL;
 
+/**
+ * The AudioManager class manages all audio related functionalities within the application.
+ * It handles playing, stopping, and managing volume for background music and sound effects.
+ * This class follows the Singleton design pattern to ensure there is only one instance managing audio throughout the application.
+ */
 public class AudioManager {
 
-    private static AudioManager instance; // Singleton instance
-    private MediaPlayer backgroundMusicPlayer;
-    private MediaPlayer soundEffectPlayer;
-    private boolean isMuted = false;
-    private final String SOUND_EFFECT_PATH = "/com/example/demo/sounds/explosion.mp3";
 
-    // Private constructor to prevent instantiation
+    /**
+     * The single instance of AudioManager, implementing the Singleton pattern to ensure it is the only one created.
+     */
+    private static AudioManager instance;
+
+    /**
+     * MediaPlayer used to play background music across the application.
+     */
+    private MediaPlayer backgroundMusicPlayer;
+
+    /**
+     * MediaPlayer used to play sound effects across the application.
+     */
+    private MediaPlayer soundEffectPlayer;
+
+    /**
+     * Flag to indicate whether all sounds should be muted or not.
+     */
+    private boolean isMuted = false;
+
+    /**
+     * Path to the default background music file.
+     */
+    private static final String BACKGROUND_MUSIC = "/com/example/demo/sounds/bg.mp3";
+
+    /**
+     * Private constructor to prevent instantiation from outside the class.
+     */
     private AudioManager() {}
 
     /**
-     * Gets the singleton instance of the {@code AudioManager}.
-     *
-     * @return The singleton instance.
+     * Provides a global access point to the AudioManager instance.
+     * @return the single instance of AudioManager
      */
     public static AudioManager getInstance() {
         if (instance == null) {
@@ -28,31 +54,42 @@ public class AudioManager {
         return instance;
     }
 
-    public void playBackgroundMusic(String audioFilePath) {
+    /**
+     * Plays the background music continuously.
+     * If the music is already playing, it will stop and restart.
+     */
+    public void playBackgroundMusic() {
         if (backgroundMusicPlayer != null) {
             backgroundMusicPlayer.stop();
         }
 
-        URL resource = getClass().getResource(audioFilePath);
+        URL resource = getClass().getResource(BACKGROUND_MUSIC);
         if (resource == null) {
-            System.err.println("Error: Audio file not found at " + audioFilePath);
+            System.err.println("Error: Audio file not found at " + BACKGROUND_MUSIC);
             return;
         }
 
         Media backgroundMusic = new Media(resource.toString());
         backgroundMusicPlayer = new MediaPlayer(backgroundMusic);
         backgroundMusicPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        backgroundMusicPlayer.setVolume(0.5);
+        backgroundMusicPlayer.setVolume(0.3);
         if (isMuted) backgroundMusicPlayer.setMute(true);
         backgroundMusicPlayer.play();
     }
 
+    /**
+     * Stops the background music if it is currently playing.
+     */
     public void stopBackgroundMusic() {
         if (backgroundMusicPlayer != null) {
             backgroundMusicPlayer.stop();
         }
     }
 
+    /**
+     * Sets the volume for all audio output.
+     * @param volume the volume level between 0.0 (silent) and 1.0 (maximum)
+     */
     public void setVolume(double volume) {
         if (backgroundMusicPlayer != null) {
             backgroundMusicPlayer.setVolume(volume);
@@ -62,6 +99,9 @@ public class AudioManager {
         }
     }
 
+    /**
+     * Mutes all audio output.
+     */
     public void mute() {
         isMuted = true;
         if (backgroundMusicPlayer != null) {
@@ -72,6 +112,9 @@ public class AudioManager {
         }
     }
 
+    /**
+     * Unmutes all audio output.
+     */
     public void unmute() {
         isMuted = false;
         if (backgroundMusicPlayer != null) {
@@ -82,12 +125,16 @@ public class AudioManager {
         }
     }
 
+    /**
+     * Checks if the audio is currently muted.
+     * @return true if muted, false otherwise
+     */
     public boolean isMuted() {
         return isMuted;
     }
 
     /**
-     * Stops the currently playing sound effect.
+     * Stops any currently playing sound effects.
      */
     public void stopSoundEffect() {
         if (soundEffectPlayer != null) {
@@ -96,11 +143,12 @@ public class AudioManager {
     }
 
     /**
-     * Plays a sound effect.
+     * Plays a specific sound effect.
      */
     public void playSoundEffect() {
         stopSoundEffect(); // Stop the current sound effect if it's playing
 
+        String SOUND_EFFECT_PATH = "/com/example/demo/sounds/explosion.mp3";
         URL resource = getClass().getResource(SOUND_EFFECT_PATH);
         if (resource == null) {
             System.err.println("Error: Sound effect file not found at " + SOUND_EFFECT_PATH);
@@ -112,5 +160,23 @@ public class AudioManager {
         soundEffectPlayer.setVolume(0.5);
         if (isMuted) soundEffectPlayer.setMute(true);
         soundEffectPlayer.play();
+    }
+
+    /**
+     * Plays the button click sound effect.
+     */
+    public void playButtonClickSound() {
+        String BUTTON_CLICK_EFFECT = "/com/example/demo/sounds/click.mp3";
+        URL resource = getClass().getResource(BUTTON_CLICK_EFFECT);
+        if (resource == null) {
+            System.err.println("Error: Button click sound file not found at " + BUTTON_CLICK_EFFECT);
+            return;
+        }
+
+        Media clickSound = new Media(resource.toString());
+        MediaPlayer clickSoundPlayer = new MediaPlayer(clickSound);
+        clickSoundPlayer.setVolume(1.0);
+        if (isMuted) clickSoundPlayer.setMute(true);
+        clickSoundPlayer.play();
     }
 }

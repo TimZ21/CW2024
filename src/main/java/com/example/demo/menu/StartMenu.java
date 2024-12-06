@@ -20,7 +20,6 @@ public class StartMenu {
     private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/menu_background.jpg";
     private static final String TITLE_TEXT = "Sky Battle";
     private final Stage stage;
-    private static final String BACKGROUND_MUSIC = "/com/example/demo/sounds/bg.mp3";
     private Scene scene;
     private StackPane mainLayout;  // Store the main layout
 
@@ -70,6 +69,7 @@ public class StartMenu {
     }
 
     private void showTutorial() {
+        AudioManager.getInstance().playButtonClickSound();
         // Use the same background image
         ImageView backgroundImage = new ImageView(new Image(Objects.requireNonNull(getClass().getResource(BACKGROUND_IMAGE_NAME)).toExternalForm()));
         backgroundImage.setFitWidth(stage.getWidth());
@@ -106,7 +106,8 @@ public class StartMenu {
 
         // Create the close button
         Button closeButton = new Button("Close");
-        closeButton.setOnAction(e -> scene.setRoot(mainLayout));  // Reset to the main layout
+        closeButton.setOnAction(e ->
+                scene.setRoot(mainLayout));  // Reset to the main layout
 
         // Create a layout for the tutorial content
         VBox layout = new VBox(20, tutorialText, closeButton);
@@ -128,6 +129,7 @@ public class StartMenu {
 
     private void startGame() {
         try {
+            AudioManager.getInstance().playButtonClickSound();
             new com.example.demo.controller.Controller(stage).launchGame();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -137,16 +139,19 @@ public class StartMenu {
     private void toggleMute(Button muteButton) {
         AudioManager audioManager = AudioManager.getInstance();
         if (audioManager.isMuted()) {
+            AudioManager.getInstance().playButtonClickSound();
+
             audioManager.unmute();
             muteButton.setText("Mute");
         } else {
+            AudioManager.getInstance().playButtonClickSound();
             audioManager.mute();
             muteButton.setText("Unmute");
         }
     }
 
     public void show() {
-        AudioManager.getInstance().playBackgroundMusic(BACKGROUND_MUSIC);
+        AudioManager.getInstance().playBackgroundMusic();
         stage.show();
     }
 }
