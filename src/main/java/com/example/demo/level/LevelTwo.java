@@ -12,6 +12,7 @@ public class LevelTwo extends LevelParent {
 
     private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/background2.jpg";
     private static final String NEXT_LEVEL = "com.example.demo.level.LevelBoss";
+    private static final String IMAGE_NAME = "enemyplane2.png";
     private static final int TOTAL_ENEMIES = 7;
     private static final int KILLS_TO_ADVANCE = 15;
     private static final double ENEMY_SPAWN_PROBABILITY = 0.25;
@@ -47,7 +48,7 @@ public class LevelTwo extends LevelParent {
         for (int i = 0; i < TOTAL_ENEMIES - currentNumberOfEnemies; i++) {
             if (Math.random() < ENEMY_SPAWN_PROBABILITY) {
                 double newEnemyInitialYPosition = Math.random() * getEnemyMaximumYPosition();
-                EnemyPlane newEnemy = new EnemyPlane(getScreenWidth(), newEnemyInitialYPosition, 2); // Health is 2
+                EnemyPlane newEnemy = new EnemyPlane(getScreenWidth(), newEnemyInitialYPosition, 2, IMAGE_NAME); // Health is 2
                 addEnemyUnit(newEnemy);
             }
         }

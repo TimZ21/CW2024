@@ -73,8 +73,8 @@ public class EnemyPlane extends FighterPlane {
 	 * @param initialYPos the initial y-coordinate of the enemy plane
 	 * @param health the health level with which the enemy plane starts
 	 */
-	public EnemyPlane(double initialXPos, double initialYPos, int health) {
-		super(IMAGE_NAME, IMAGE_HEIGHT, initialXPos, initialYPos, health);
+	public EnemyPlane(double initialXPos, double initialYPos, int health, String imageName) {
+		super(imageName, IMAGE_HEIGHT, initialXPos, initialYPos, health);
 	}
 
 	/**

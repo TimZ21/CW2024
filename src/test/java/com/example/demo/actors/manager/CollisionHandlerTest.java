@@ -34,9 +34,9 @@ class CollisionHandlerTest {
     void testDetectCollisionsUserProjectileEnemyPlane() {
         Platform.runLater(() -> {
             // Mock setup
-            EnemyPlane enemyPlane1 = new EnemyPlane(100,100, 1);
-            EnemyPlane enemyPlane2 = new EnemyPlane(100, 200,2);
-            EnemyPlane enemyPlane3 = new EnemyPlane(500, 500,2);
+            EnemyPlane enemyPlane1 = new EnemyPlane(100,100, 1, "enemyplane.png");
+            EnemyPlane enemyPlane2 = new EnemyPlane(100, 200,2, "enemyplane.png");
+            EnemyPlane enemyPlane3 = new EnemyPlane(500, 500,2, "enemyplane.png");
 
             UserProjectile userProjectile1 = new UserProjectile(100, 100);
             UserProjectile userProjectile2 = new UserProjectile(100, 200);
@@ -147,8 +147,8 @@ class CollisionHandlerTest {
     void testDetectCollisionse() {
         Platform.runLater(() -> {
             // Mock setup
-            EnemyPlane enemyPlane1 = new EnemyPlane(100,100, 1);
-            EnemyPlane enemyPlane2 = new EnemyPlane(100, 200,2);
+            EnemyPlane enemyPlane1 = new EnemyPlane(100,100, 1, "enemyplane.png");
+            EnemyPlane enemyPlane2 = new EnemyPlane(100, 200,2, "enemyplane.png");
             UserProjectile userProjectile1 = new UserProjectile(100, 100);
             UserProjectile userProjectile2 = new UserProjectile(100, 200);
             // List setup
