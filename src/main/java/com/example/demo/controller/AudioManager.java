@@ -28,6 +28,7 @@ public class AudioManager {
      */
     private MediaPlayer soundEffectPlayer;
 
+    private MediaPlayer clickSoundPlayer;
     /**
      * Flag to indicate whether all sounds should be muted or not.
      */
@@ -41,6 +42,10 @@ public class AudioManager {
     /**
      * Private constructor to prevent instantiation from outside the class.
      */
+
+    private double musicVolume = 0.5; // Default volume for background music
+    private double explosionEffectVolume = 0.5; // Default volume for sound effects
+    private double clickEffectVolume = 0.5;
     private AudioManager() {}
 
     /**
@@ -72,7 +77,7 @@ public class AudioManager {
         Media backgroundMusic = new Media(resource.toString());
         backgroundMusicPlayer = new MediaPlayer(backgroundMusic);
         backgroundMusicPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        backgroundMusicPlayer.setVolume(0.3);
+        backgroundMusicPlayer.setVolume(0.5);
         if (isMuted) backgroundMusicPlayer.setMute(true);
         backgroundMusicPlayer.play();
     }
@@ -98,6 +103,57 @@ public class AudioManager {
             soundEffectPlayer.setVolume(volume);
         }
     }
+
+    /**
+     * Sets the volume for background music.
+     *
+     * @param volume Volume level between 0.0 and 1.0.
+     */
+    public void setBackgroundMusicVolume(double volume) {
+        musicVolume = volume;
+        if (backgroundMusicPlayer != null) {
+            backgroundMusicPlayer.setVolume(volume);
+            System.out.println("BGM volume:" + volume);
+        }
+    }
+
+    /**
+     * Sets the volume for sound effects.
+     *
+     * @param volume Volume level between 0.0 and 1.0.
+     */
+    public void setExplosionEffectsVolume(double volume) {
+        explosionEffectVolume = volume;
+            System.out.println("Explosion volume:" + volume);
+    }
+
+    public void setClickEffectVolume(double volume) {
+        clickEffectVolume = volume;
+            System.out.println("Click volume:" + volume);
+    }
+
+    /**
+     * Gets the current volume level for background music.
+     *
+     * @return The volume level.
+     */
+    public double getMusicVolume() {
+        return musicVolume;
+    }
+
+    /**
+     * Gets the current volume level for sound effects.
+     *
+     * @return The volume level.
+     */
+    public double getExplosionEffectsVolume() {
+        return explosionEffectVolume;
+    }
+
+    public double getClickEffectVolume() {
+        return clickEffectVolume;
+    }
+
 
     /**
      * Mutes all audio output.
@@ -157,7 +213,7 @@ public class AudioManager {
 
         Media soundEffect = new Media(resource.toString());
         soundEffectPlayer = new MediaPlayer(soundEffect);
-        soundEffectPlayer.setVolume(0.5);
+        soundEffectPlayer.setVolume(explosionEffectVolume); // Use stored volume
         if (isMuted) soundEffectPlayer.setMute(true);
         soundEffectPlayer.play();
     }
@@ -165,6 +221,7 @@ public class AudioManager {
     /**
      * Plays the button click sound effect.
      */
+
     public void playButtonClickSound() {
         String BUTTON_CLICK_EFFECT = "/com/example/demo/sounds/click.mp3";
         URL resource = getClass().getResource(BUTTON_CLICK_EFFECT);
@@ -174,8 +231,8 @@ public class AudioManager {
         }
 
         Media clickSound = new Media(resource.toString());
-        MediaPlayer clickSoundPlayer = new MediaPlayer(clickSound);
-        clickSoundPlayer.setVolume(1.0);
+        clickSoundPlayer = new MediaPlayer(clickSound);
+        clickSoundPlayer.setVolume(clickEffectVolume); // Use stored volume
         if (isMuted) clickSoundPlayer.setMute(true);
         clickSoundPlayer.play();
     }

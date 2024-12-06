@@ -2,8 +2,12 @@ package com.example.demo.menu;
 
 import com.example.demo.controller.AudioManager;
 import javafx.application.Platform;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
@@ -42,19 +46,22 @@ public class StartMenu {
         Button startButton = new Button("Start");
         Button quitButton = new Button("Quit");
         Button muteButton = new Button("Mute");
+        Button volumeButton = new Button("Volume");
         Button tutorialButton = new Button("Tutorial");
 
         styleButton(startButton);
         styleButton(quitButton);
         styleButton(muteButton);
+        styleButton(volumeButton);
         styleButton(tutorialButton);
 
         startButton.setOnAction(e -> startGame());
         quitButton.setOnAction(e -> Platform.exit());
         muteButton.setOnAction(e -> toggleMute(muteButton));
+        volumeButton.setOnAction(e -> showVolumeSettings());
         tutorialButton.setOnAction(e -> showTutorial());
 
-        VBox buttonLayout = new VBox(20, startButton, tutorialButton, muteButton, quitButton);
+        VBox buttonLayout = new VBox(20, startButton, tutorialButton, muteButton, volumeButton, quitButton);
         buttonLayout.setStyle("-fx-alignment: center; -fx-padding: 50;");
 
         VBox contentLayout = new VBox(50, title, buttonLayout);
@@ -149,6 +156,59 @@ public class StartMenu {
             muteButton.setText("Unmute");
         }
     }
+
+    private void showVolumeSettings() {
+        VBox layout = new VBox(20);
+        layout.setAlignment(Pos.CENTER);
+        layout.setPadding(new Insets(10));
+
+        // Volume controls for background music
+        Slider musicVolumeSlider = new Slider(0, 1, AudioManager.getInstance().getMusicVolume());
+        musicVolumeSlider.setShowTickLabels(true);
+        musicVolumeSlider.setShowTickMarks(true);
+        musicVolumeSlider.setMajorTickUnit(0.1);
+        musicVolumeSlider.setBlockIncrement(0.05);
+
+        Label musicVolumeLabel = new Label("Background Music Volume: " + (int) (musicVolumeSlider.getValue() * 100));
+        musicVolumeSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
+            AudioManager.getInstance().setBackgroundMusicVolume(newVal.doubleValue());
+            musicVolumeLabel.setText("Background Music Volume: " + (int) (newVal.doubleValue() * 100));
+        });
+
+        // Volume controls for collision explosion sound effects
+        Slider explosionEffectVolumeSlider = new Slider(0, 1, AudioManager.getInstance().getExplosionEffectsVolume());
+        explosionEffectVolumeSlider.setShowTickLabels(true);
+        explosionEffectVolumeSlider.setShowTickMarks(true);
+        explosionEffectVolumeSlider.setMajorTickUnit(0.1);
+        explosionEffectVolumeSlider.setBlockIncrement(0.05);
+
+        Label explosionEffectsVolumeLabel = new Label("Explosion Effect Volume: " + (int) (explosionEffectVolumeSlider.getValue() * 100));
+        explosionEffectVolumeSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
+            AudioManager.getInstance().setExplosionEffectsVolume(newVal.doubleValue());
+            explosionEffectsVolumeLabel.setText("Explosion Effect Volume: " + (int) (newVal.doubleValue() * 100));
+        });
+
+        // Volume controls for collision explosion sound effects
+        Slider clickEffectsVolumeSlider = new Slider(0, 1, AudioManager.getInstance().getClickEffectVolume());
+        clickEffectsVolumeSlider.setShowTickLabels(true);
+        clickEffectsVolumeSlider.setShowTickMarks(true);
+        clickEffectsVolumeSlider.setMajorTickUnit(0.1);
+        clickEffectsVolumeSlider.setBlockIncrement(0.05);
+
+        Label clickEffectsVolumeLabel = new Label("Click Effect Volume: " + (int) (clickEffectsVolumeSlider.getValue() * 100));
+        clickEffectsVolumeSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
+            AudioManager.getInstance().setClickEffectVolume(newVal.doubleValue());
+            clickEffectsVolumeLabel.setText("Click Effect Volume: " + (int) (newVal.doubleValue() * 100));
+        });
+
+        layout.getChildren().addAll(new Label("Adjust Volume"), musicVolumeLabel, musicVolumeSlider, explosionEffectsVolumeLabel, explosionEffectVolumeSlider, clickEffectsVolumeLabel, clickEffectsVolumeSlider);
+
+        Stage settingsStage = new Stage();
+        settingsStage.setTitle("Volume Settings");
+        settingsStage.setScene(new Scene(layout, 300, 500));
+        settingsStage.show();
+    }
+
 
     public void show() {
         AudioManager.getInstance().playBackgroundMusic();
