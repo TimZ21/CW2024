@@ -12,7 +12,7 @@ import static com.example.demo.level.LevelParent.VELOCITY_CHANGE;
 
 /**
  * Represents a boss enemy in the game.
- * The {@code Boss} class extends {@code FighterPlane} and implements special behavior
+ * The {@code Boss} class extends {@link FighterPlane} and implements special behavior
  * such as shield management, movement patterns, and projectile firing.
  */
 public class Boss extends FighterPlane {
@@ -97,17 +97,17 @@ public class Boss extends FighterPlane {
 	private int indexOfCurrentMove;
 
 	/**
-	 * Manages the shield functionality of the Boss.
+	 * {@link ShieldManager} manages the shield functionality of the Boss.
 	 */
 	private final ShieldManager shieldManager;
 
 	/**
-	 * Manages the health bar of the Boss.
+	 * {@link HealthBarManager} manages the health bar of the Boss.
 	 */
 	private final HealthBarManager healthBarManager;
 
 	/**
-	 * Manages the firing patterns of projectiles from the Boss.
+	 * {@link FirePatternManager} manages the firing patterns of projectiles from the Boss.
 	 */
 	private final FirePatternManager firePatternManager;
 
@@ -159,7 +159,7 @@ public class Boss extends FighterPlane {
 	/**
 	 * Fires a projectile from the boss with a probability defined by {@code BOSS_FIRE_RATE}.
 	 *
-	 * @return A {@link com.example.demo.actors.projectile.BossProjectile} if the boss decides to fire; otherwise, {@code null}.
+	 * @return A boss projectile if the boss decides to fire; otherwise, {@code null}.
 	 */
 	@Override
 	public List<ActiveActorDestructible> fireProjectile() {
