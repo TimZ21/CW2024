@@ -33,6 +33,8 @@ public class AudioManager {
     private MediaPlayer userShootPlayer;
     private MediaPlayer bossShootPlayer;
     private MediaPlayer winEffectPlayer;
+    private MediaPlayer loseEffectPlayer;
+
     /**
      * Flag to indicate whether all sounds should be muted or not.
      */
@@ -54,6 +56,7 @@ public class AudioManager {
 
     private double bossShootEffectVolume = 0.5;
     private double winEffectVolume = 0.5;
+    private double loseEffectVolume = 0.5;
     private AudioManager() {}
 
     /**
@@ -85,7 +88,7 @@ public class AudioManager {
         Media backgroundMusic = new Media(resource.toString());
         backgroundMusicPlayer = new MediaPlayer(backgroundMusic);
         backgroundMusicPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        backgroundMusicPlayer.setVolume(0.5);
+        backgroundMusicPlayer.setVolume(musicVolume);
         if (isMuted) backgroundMusicPlayer.setMute(true);
         backgroundMusicPlayer.play();
     }
@@ -155,6 +158,11 @@ public class AudioManager {
         System.out.println("Win Effect volume:" + volume);
     }
 
+    public void setLoseEffectVolume(double volume) {
+        loseEffectVolume = volume;
+        System.out.println("Win Effect volume:" + volume);
+    }
+
     /**
      * Gets the current volume level for background music.
      *
@@ -188,6 +196,11 @@ public class AudioManager {
     public double getWinEffectVolume() {
         return winEffectVolume;
     }
+
+    public double getLoseEffectVolume() {
+        return loseEffectVolume;
+    }
+
     /**
      * Mutes all audio output.
      */
@@ -321,7 +334,7 @@ public class AudioManager {
     }
 
     /**
-     * Plays the boss fire projectile sound effect.
+     * Plays the game win sound effect.
      */
     public void playWinEffect() {
         stopBackgroundMusic();
@@ -337,5 +350,24 @@ public class AudioManager {
         winEffectPlayer.setVolume(winEffectVolume); // Use stored volume
         if (isMuted) winEffectPlayer.setMute(true);
         winEffectPlayer.play();
+    }
+
+    /**
+     * Plays the game lose sound effect.
+     */
+    public void playLoseEffect() {
+        stopBackgroundMusic();
+        String LOSE_EFFECT = "/com/example/demo/sounds/lose.mp3";
+        URL resource = getClass().getResource(LOSE_EFFECT);
+        if (resource == null) {
+            System.err.println("Error: Button click sound file not found at " + LOSE_EFFECT);
+            return;
+        }
+
+        Media loseEffect = new Media(resource.toString());
+        loseEffectPlayer = new MediaPlayer(loseEffect);
+        loseEffectPlayer.setVolume(loseEffectVolume); // Use stored volume
+        if (isMuted) loseEffectPlayer.setMute(true);
+        loseEffectPlayer.play();
     }
 }

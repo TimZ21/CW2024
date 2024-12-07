@@ -32,9 +32,7 @@ public class WinMenu {
     }
 
     public void show() {
-        if (AudioManager.getInstance().getWinEffectVolume() != 0) {
-            AudioManager.getInstance().playWinEffect();
-        }
+        AudioManager.getInstance().playWinEffect();
         ImageView backgroundImage = new ImageView(
                 new Image(Objects.requireNonNull(getClass().getResource(BACKGROUND_IMAGE_NAME)).toExternalForm())
         );

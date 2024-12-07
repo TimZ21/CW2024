@@ -1,5 +1,6 @@
 package com.example.demo.menu;
 
+import com.example.demo.actors.manager.AudioManager;
 import com.example.demo.controller.Controller;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -41,6 +42,7 @@ public class LoseMenu {
      * Displays the "Game Over" menu within the current scene.
      */
     public void show() {
+        AudioManager.getInstance().playLoseEffect();
         ImageView backgroundImage = new ImageView(
                 new Image(Objects.requireNonNull(getClass().getResource(BACKGROUND_IMAGE_NAME)).toExternalForm())
         );
@@ -81,6 +83,7 @@ public class LoseMenu {
      */
     private void restartGame() {
         try {
+            AudioManager.getInstance().playBackgroundMusic();
             new Controller((Stage) currentScene.getWindow()).launchGame();
         } catch (Exception ex) {
             ex.printStackTrace();

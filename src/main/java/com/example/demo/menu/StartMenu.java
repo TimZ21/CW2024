@@ -240,17 +240,31 @@ public class StartMenu {
             winEffectsVolumeLabel.setText("Win Effect Volume: " + (int) (newVal.doubleValue() * 100));
         });
 
+        // Volume controls for lose sound effects
+        Slider loseEffectsVolumeSlider = new Slider(0, 1, AudioManager.getInstance().getLoseEffectVolume());
+        loseEffectsVolumeSlider.setShowTickLabels(true);
+        loseEffectsVolumeSlider.setShowTickMarks(true);
+        loseEffectsVolumeSlider.setMajorTickUnit(0.1);
+        loseEffectsVolumeSlider.setBlockIncrement(0.05);
+
+        Label loseEffectsVolumeLabel = new Label("Lose Effect Volume: " + (int) (loseEffectsVolumeSlider.getValue() * 100));
+        loseEffectsVolumeSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
+            AudioManager.getInstance().setLoseEffectVolume(newVal.doubleValue());
+            loseEffectsVolumeLabel.setText("Lose Effect Volume: " + (int) (newVal.doubleValue() * 100));
+        });
+
         layout.getChildren().addAll(new Label("Adjust Volume"),
                 musicVolumeLabel, musicVolumeSlider,
                 explosionEffectsVolumeLabel, explosionEffectVolumeSlider,
                 clickEffectsVolumeLabel, clickEffectsVolumeSlider,
                 userShootEffectsVolumeLabel, userShottEffectsVolumeSlider,
                 bossShootEffectsVolumeLabel, bossShottEffectsVolumeSlider,
-                winEffectsVolumeLabel, winEffectsVolumeSlider);
+                winEffectsVolumeLabel, winEffectsVolumeSlider,
+                loseEffectsVolumeLabel, loseEffectsVolumeSlider);
 
         Stage settingsStage = new Stage();
         settingsStage.setTitle("Volume Settings");
-        settingsStage.setScene(new Scene(layout, 300, 500));
+        settingsStage.setScene(new Scene(layout, 300, 750));
         settingsStage.show();
     }
 
