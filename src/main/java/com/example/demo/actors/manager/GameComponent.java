@@ -1,4 +1,4 @@
-package com.example.demo.actors;
+package com.example.demo.actors.manager;
 
 /**
  * The {@code GameComponent} interface defines the essential methods

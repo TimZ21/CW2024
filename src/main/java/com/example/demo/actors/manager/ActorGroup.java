@@ -1,7 +1,6 @@
 package com.example.demo.actors.manager;
 
 import com.example.demo.actors.ActiveActorDestructible;
-import com.example.demo.actors.GameComponent;
 import javafx.scene.Group;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.demo.actors;
+package com.example.demo.actors.manager;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
