@@ -3,9 +3,11 @@ package com.example.demo.actors.projectile;
 import static com.example.demo.level.LevelParent.VELOCITY_CHANGE;
 
 /**
- * The {@code BossProjectile} extend {@link Projectile}class represents a projectile fired by the boss in the game.
- * It extends the {@code Projectile} class and defines specific behavior for the boss's projectile.
+ * The {@code BossProjectile} class represents a projectile fired by a boss character in the game.
+ * It extends the {@link Projectile} class, providing custom behaviors tailored for the boss's attacks,
+ * such as special movement patterns, differentiating it from standard projectiles.
  */
+
 public class BossProjectile extends Projectile {
 	/**
 	 * Image file for the boss's projectile appearance.
@@ -56,8 +58,9 @@ public class BossProjectile extends Projectile {
 	}
 
 	/**
-	 * Updates the position of the projectile by moving it horizontally to the left.
-	 * This method overrides the {@link Projectile#updatePosition()} method to provide the specific horizontal movement behavior.
+	 * Updates the position of the projectile by applying horizontal and vertical velocities.
+	 * This method overrides the {@link Projectile#updatePosition()} to specify the movement behavior,
+	 * moving the projectile based on the velocities provided at construction or defaults.
 	 */
 	@Override
 	public void updatePosition() {
@@ -74,10 +77,22 @@ public class BossProjectile extends Projectile {
 		updatePosition();
 	}
 
+	/**
+	 * Returns the horizontal velocity of the projectile.
+	 * This velocity determines how fast and in which direction (left or right) the projectile moves horizontally.
+	 *
+	 * @return The horizontal velocity of the projectile.
+	 */
 	public double getXVelocity() {
 		return xVelocity;
 	}
 
+	/**
+	 * Returns the vertical velocity of the projectile.
+	 * This velocity determines how fast and in which direction (up or down) the projectile moves vertically.
+	 *
+	 * @return The vertical velocity of the projectile.
+	 */
 	public double getYVelocity() {
 		return yVelocity;
 	}

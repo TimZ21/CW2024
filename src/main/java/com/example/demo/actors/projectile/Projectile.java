@@ -1,11 +1,13 @@
 package com.example.demo.actors.projectile;
 
 import com.example.demo.actors.ActiveActorDestructible;
+import com.example.demo.actors.plane.FighterPlane;
 
 /**
- * The {@code Projectile} class is an abstract representation of projectiles in the game.
- * It extends {@link ActiveActorDestructible} and defines the common behavior and properties
- * for all projectiles, such as their appearance and how they interact with the game world.
+ * The {@code Projectile} class is an abstract representation of projectiles within the game,
+ * extending {@link ActiveActorDestructible}. This class provides a foundational framework for defining the
+ * appearance, behavior, and interaction of projectiles with other entities in the game, such as how they
+ * move, how they impact targets, and how they are visualized.
  */
 public abstract class Projectile extends ActiveActorDestructible {
 
@@ -24,6 +26,7 @@ public abstract class Projectile extends ActiveActorDestructible {
 	/**
 	 * Handles the logic for when the projectile takes damage.
 	 * A projectile is destroyed immediately upon taking damage.
+	 * This method overrides the {@link ActiveActorDestructible#destroy()} method
 	 */
 	@Override
 	public void takeDamage() {
@@ -33,6 +36,7 @@ public abstract class Projectile extends ActiveActorDestructible {
 	/**
 	 * Updates the position of the projectile. This method must be implemented
 	 * by subclasses to define the specific movement behavior of the projectile.
+	 * This method overrides the {@link ActiveActorDestructible#updatePosition()} method
 	 */
 	@Override
 	public abstract void updatePosition();

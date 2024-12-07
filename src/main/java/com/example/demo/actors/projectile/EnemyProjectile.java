@@ -21,19 +21,23 @@ public class EnemyProjectile extends Projectile {
 	 */
 	private static final double HORIZONTAL_VELOCITY = -10.0 / VELOCITY_CHANGE;
 
-	/**
-	 * Constructs an {@code EnemyProjectile} instance at the specified initial position.
+	 /**
+	 * Constructs an {@code EnemyProjectile} instance at the specified initial position, ready to be launched.
+	 * This position determines where on the screen the projectile will initially appear, directly affecting gameplay
+	 * by impacting how the player perceives and reacts to the threat.
 	 *
-	 * @param initialXPos the initial x-coordinate where the projectile is created.
-	 * @param initialYPos the initial y-coordinate where the projectile is created.
+	 * @param initialXPos the initial x-coordinate where the projectile is created, typically off the enemy entity.
+	 * @param initialYPos the initial y-coordinate where the projectile is created, aligning with the firing entity's position.
 	 */
+
 	public EnemyProjectile(double initialXPos, double initialYPos) {
 		super(IMAGE_NAME, IMAGE_HEIGHT, initialXPos, initialYPos);
 	}
 
 	/**
 	 * Updates the position of the projectile by moving it horizontally to the left.
-	 * This method overrides the {@link Projectile#updatePosition()} method to provide the specific horizontal movement behavior.
+	 * This leftward movement is typical for enemy attacks, aiming to collide with the player's plane from the right.
+	 * This method overrides the {@link Projectile#updatePosition()} method to provide specific behavior tailored to enemy projectiles.
 	 */
 	@Override
 	public void updatePosition() {
