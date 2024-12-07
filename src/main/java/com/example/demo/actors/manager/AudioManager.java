@@ -24,15 +24,28 @@ public class AudioManager {
     private MediaPlayer backgroundMusicPlayer;
 
     /**
-     * MediaPlayer used to play sound effects across the application.
+     * MediaPlayer used to play explosion sound effects across the application.
      */
     private MediaPlayer soundEffectPlayer;
-
+    /**
+     * MediaPlayer used to play button click sound effects across the application.
+     */
     private MediaPlayer clickSoundPlayer;
-
+    /**
+     * MediaPlayer used to play user shoot sound effects across the application.
+     */
     private MediaPlayer userShootPlayer;
+    /**
+     * MediaPlayer used to boss user shoot sound effects across the application.
+     */
     private MediaPlayer bossShootPlayer;
+    /**
+     * MediaPlayer used to play win menu sound effects across the application.
+     */
     private MediaPlayer winEffectPlayer;
+    /**
+     * MediaPlayer used to play lose menu sound effects across the application.
+     */
     private MediaPlayer loseEffectPlayer;
 
     /**
@@ -46,17 +59,58 @@ public class AudioManager {
     private static final String BACKGROUND_MUSIC = "/com/example/demo/sounds/bg.mp3";
 
     /**
+     * The volume level for background music.
+     * This field controls the volume for all background music within the application,
+     * ranging from 0.0 (silent) to 1.0 (maximum volume).
+     */
+    private double musicVolume = 0.5; // Default volume for background music
+
+    /**
+     * The volume level for explosion sound effects.
+     * Controls the volume of explosion-related audio effects,
+     * with a range from 0.0 (silent) to 1.0 (maximum volume).
+     */
+    private double explosionEffectVolume = 0.5; // Default volume for sound effects
+
+    /**
+     * The volume level for click sound effects.
+     * This adjusts the volume for UI click sounds within the application,
+     * ranging from 0.0 (silent) to 1.0 (maximum volume).
+     */
+    private double clickEffectVolume = 0.5;
+
+    /**
+     * The volume level for user shoot sound effects.
+     * Controls the volume of the sound effects generated when the user's character
+     * or vehicle fires a weapon, with a volume range from 0.0 (silent) to 1.0 (full volume).
+     */
+    private double userShootEffectVolume = 0.5;
+
+    /**
+     * The volume level for boss shoot sound effects.
+     * Controls the volume of sound effects associated with boss characters firing weapons,
+     * with a range from 0.0 (silent) to 1.0 (maximum volume).
+     */
+    private double bossShootEffectVolume = 0.5;
+
+    /**
+     * The volume level for win sound effects.
+     * This volume control affects the audio played during a win condition in the game,
+     * with settings ranging from 0.0 (silent) to 1.0 (maximum volume).
+     */
+    private double winEffectVolume = 0.5;
+
+    /**
+     * The volume level for lose sound effects.
+     * Controls the volume of audio played when the player loses or fails a level,
+     * ranging from 0.0 (silent) to 1.0 (maximum volume).
+     */
+    private double loseEffectVolume = 0.5;
+
+    /**
      * Private constructor to prevent instantiation from outside the class.
      */
 
-    private double musicVolume = 0.5; // Default volume for background music
-    private double explosionEffectVolume = 0.5; // Default volume for sound effects
-    private double clickEffectVolume = 0.5;
-    private double userShootEffectVolume = 0.5;
-
-    private double bossShootEffectVolume = 0.5;
-    private double winEffectVolume = 0.5;
-    private double loseEffectVolume = 0.5;
     private AudioManager() {}
 
     /**
@@ -102,12 +156,18 @@ public class AudioManager {
         }
     }
 
+    /**
+     * Pauses the background music if it is currently playing.
+     */
     public void pauseBackgroundMusic() {
         if (backgroundMusicPlayer != null && backgroundMusicPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
             backgroundMusicPlayer.pause();
         }
     }
 
+    /**
+     * Resumes the background music if it has been paused.
+     */
     public void resumeBackgroundMusic() {
         if (backgroundMusicPlayer != null && backgroundMusicPlayer.getStatus() == MediaPlayer.Status.PAUSED) {
             backgroundMusicPlayer.play();
@@ -141,7 +201,7 @@ public class AudioManager {
     }
 
     /**
-     * Sets the volume for sound effects.
+     * Sets the volume for explosion sound effects.
      *
      * @param volume Volume level between 0.0 and 1.0.
      */
@@ -150,26 +210,51 @@ public class AudioManager {
             System.out.println("Explosion volume:" + volume);
     }
 
+    /**
+     * Sets the volume for button click sound effects.
+     *
+     * @param volume Volume level between 0.0 and 1.0.
+     */
     public void setClickEffectVolume(double volume) {
         clickEffectVolume = volume;
             System.out.println("Click volume:" + volume);
     }
 
+    /**
+     * Sets the volume for user shoot sound effects.
+     *
+     * @param volume Volume level between 0.0 and 1.0.
+     */
     public void setUserShootEffectVolume(double volume) {
         userShootEffectVolume = volume;
         System.out.println("User Shoot volume:" + volume);
     }
 
+    /**
+     * Sets the volume for boss shoot sound effects.
+     *
+     * @param volume Volume level between 0.0 and 1.0.
+     */
     public void setBossShootEffectVolume(double volume) {
         bossShootEffectVolume = volume;
         System.out.println("Boss Shoot volume:" + volume);
     }
 
+    /**
+     * Sets the volume for win game sound effects.
+     *
+     * @param volume Volume level between 0.0 and 1.0.
+     */
     public void setWinEffectVolume(double volume) {
         winEffectVolume = volume;
         System.out.println("Win Effect volume:" + volume);
     }
 
+    /**
+     * Sets the volume for lose game sound effects.
+     *
+     * @param volume Volume level between 0.0 and 1.0.
+     */
     public void setLoseEffectVolume(double volume) {
         loseEffectVolume = volume;
         System.out.println("Win Effect volume:" + volume);
@@ -185,30 +270,55 @@ public class AudioManager {
     }
 
     /**
-     * Gets the current volume level for sound effects.
+     * Gets the current volume for explosion sound effects.
      *
-     * @return The volume level.
+     * @return The explosionEffectVolume.
      */
     public double getExplosionEffectsVolume() {
         return explosionEffectVolume;
     }
 
+    /**
+     * Gets the current volume for button click sound effects.
+     *
+     * @return The clickEffectVolume.
+     */
     public double getClickEffectVolume() {
         return clickEffectVolume;
     }
 
+    /**
+     * Gets the current volume for user shoot sound effects.
+     *
+     * @return The userShootEffectVolume.
+     */
     public double getUserShootEffectVolume() {
         return userShootEffectVolume;
     }
 
+    /**
+     * Gets the current volume for boss shoot sound effects.
+     *
+     * @return The bossShootEffectVolume.
+     */
     public double getBossShootEffectVolume() {
         return bossShootEffectVolume;
     }
 
+    /**
+     * Gets the current volume for win game sound effects.
+     *
+     * @return The winEffectVolume.
+     */
     public double getWinEffectVolume() {
         return winEffectVolume;
     }
 
+    /**
+     * Gets the current volume for lose game sound effects.
+     *
+     * @return The loseEffectVolume.
+     */
     public double getLoseEffectVolume() {
         return loseEffectVolume;
     }
@@ -248,7 +358,7 @@ public class AudioManager {
     }
 
     /**
-     * Stops any currently playing sound effects.
+     * Stops currently playing explosion sound effects.
      */
     public void stopSoundEffect() {
         if (soundEffectPlayer != null) {
@@ -256,12 +366,18 @@ public class AudioManager {
         }
     }
 
+    /**
+     * Stops currently playing user shooting sound effects.
+     */
     public void stopUserShootEffect() {
         if (userShootPlayer != null) {
             userShootPlayer.stop();
         }
     }
 
+    /**
+     * Stops currently playing boss shooting sound effects.
+     */
     public void stopBossShootEffect() {
         if (bossShootPlayer != null) {
             bossShootPlayer.stop();
