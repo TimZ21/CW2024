@@ -32,10 +32,10 @@ public abstract class FighterPlane extends ActiveActorDestructible {
 	}
 
 	/**
-	 * Fires a projectile. The specific projectile characteristics and behavior are defined
-	 * in subclasses.
+	 * Fires a projectile. The specific characteristics and behavior of the projectile, such as speed, damage, and direction,
+	 * are defined in subclasses, tailored to the specific type of fighter plane.
 	 *
-	 * @return a list of {@code ActiveActorDestructible} objects representing the projectiles fired.
+	 * @return a list of {@code ActiveActorDestructible} objects representing the projectiles fired, which may be empty if no projectiles are fired.
 	 */
 	public abstract List<ActiveActorDestructible> fireProjectile();
 
@@ -68,15 +68,6 @@ public abstract class FighterPlane extends ActiveActorDestructible {
 	 */
 	protected double getProjectileYPosition(double yPositionOffset) {
 		return getLayoutY() + getTranslateY() + yPositionOffset;
-	}
-
-	/**
-	 * Checks whether the plane's health has been depleted.
-	 *
-	 * @return {@code true} if health is zero or less, {@code false} otherwise.
-	 */
-	private boolean healthAtZero() {
-		return health <= 0;
 	}
 
 	/**
