@@ -159,8 +159,10 @@ public class Boss extends FighterPlane {
 
 	/**
 	 * Fires a projectile from the boss with a probability defined by {@code BOSS_FIRE_RATE}.
+	 * This method determines whether to fire based on a random chance and returns a list of projectiles.
+	 * If no projectile is fired, it returns an empty list.
 	 *
-	 * @return A boss projectile if the boss decides to fire; otherwise, {@code null}.
+	 * @return A list containing the boss projectiles if fired; otherwise, an empty list.
 	 */
 	@Override
 	public List<ActiveActorDestructible> fireProjectile() {
@@ -183,11 +185,18 @@ public class Boss extends FighterPlane {
 		}
 	}
 
+	/**
+	 * Destroys the boss instance, marking it as inactive in the game.
+	 * This method overrides the default destroy behavior to include additional cleanup tasks,
+	 * such as hiding the health bar associated with the boss when it is destroyed.
+	 * This is critical for ensuring that the boss's health bar is no longer displayed once the boss is defeated.
+	 */
 	@Override
 	public void destroy() {
-		super.destroy();
-		healthBarManager.hideHealthBar(); // Hide health bar when the boss is destroyed
+		super.destroy(); // Call the superclass method to handle common destroy functionalities.
+		healthBarManager.hideHealthBar(); // Hide the health bar when the boss is destroyed.
 	}
+
 	/**
 	 * Initializes the movement pattern for the boss.
 	 * The pattern alternates between upward, downward, and stationary movements.
@@ -202,10 +211,11 @@ public class Boss extends FighterPlane {
 	}
 
 	/**
-	 * Retrieves the next movement direction for the boss based on its movement pattern.
-	 * Shuffles the movement pattern after a set number of consecutive moves in the same direction.
+	 * Retrieves the next movement direction for the boss based on its current position in the movement pattern.
+	 * It cycles through a predefined pattern and shuffles the pattern if the boss has moved in the same direction
+	 * for a maximum allowed number of frames. If the end of the pattern list is reached, it resets to the beginning.
 	 *
-	 * @return The next movement direction.
+	 * @return The next movement direction, either positive, negative, or stationary.
 	 */
 	private int getNextMove() {
 		int currentMove = movePattern.get(indexOfCurrentMove);
