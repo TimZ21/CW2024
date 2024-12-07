@@ -9,12 +9,37 @@ import javafx.util.Duration;
 
 import java.util.Objects;
 
+/**
+ * The {@code ExplosionEffectManager} class manages the visual representation of explosions
+ * in the game. It extends {@link ImageView} to display an explosion image at a specified location
+ * on the screen for a brief duration before automatically removing it.
+ */
 public class ExplosionEffectManager extends ImageView {
 
+    /**
+     * The file name of the explosion image used for the visual effect.
+     */
     private static final String EXPLOSION_IMAGE_NAME = "explosion.png";
-    private static final String IMAGE_LOCATION = "/com/example/demo/images/";
-    private static final int EXPLOSION_DURATION = 500; // Duration in milliseconds
 
+    /**
+     * The path to the directory containing the image resources.
+     */
+    private static final String IMAGE_LOCATION = "/com/example/demo/images/";
+
+    /**
+     * The duration in milliseconds for which the explosion is displayed before being removed.
+     */
+    private static final int EXPLOSION_DURATION = 500;
+
+    /**
+     * Constructs an {@code ExplosionEffectManager} instance at the specified coordinates
+     * within the provided {@link Group}. The explosion image is displayed for a short duration
+     * and then removed from the scene.
+     *
+     * @param x    The x-coordinate where the explosion should appear on the screen.
+     * @param y    The y-coordinate where the explosion should appear on the screen.
+     * @param root The {@link Group} to which the explosion will be added.
+     */
     public ExplosionEffectManager(double x, double y, Group root) {
         super(new Image(Objects.requireNonNull(ExplosionEffectManager.class.getResource(IMAGE_LOCATION + EXPLOSION_IMAGE_NAME)).toExternalForm()));
 
