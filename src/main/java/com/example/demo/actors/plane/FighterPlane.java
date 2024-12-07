@@ -41,6 +41,7 @@ public abstract class FighterPlane extends ActiveActorDestructible {
 
 	/**
 	 * Reduces the plane's health by one. If health drops to zero, the plane is destroyed.
+	 * This method overrides the {@link ActiveActorDestructible#takeDamage()} method
 	 */
 	@Override
 	public void takeDamage() {

@@ -10,9 +10,9 @@ import java.util.List;
 import static com.example.demo.level.LevelParent.VELOCITY_CHANGE;
 
 /**
- * The {@code UserPlane} class extend {@link FighterPlane} to represent the player's aircraft in the game.
- * It extends the {@code FighterPlane} class and provides specific functionality
- * for user-controlled movement and projectile firing.
+ * The {@code UserPlane} class extends {@link FighterPlane} to represent the player-controlled aircraft in the game.
+ * It provides mechanisms for user-directed movement and projectile firing, responding directly to player input
+ * to navigate through the game environment and engage with enemy targets.
  */
 public class UserPlane extends FighterPlane {
 	/**
@@ -124,11 +124,13 @@ public class UserPlane extends FighterPlane {
 	}
 
 	/**
-	 * Fires a projectile from the user plane.
-	 * This method overrides the {@link FighterPlane#fireProjectile()} method
+	 * Fires a projectile from the user plane. This method is invoked in response to player input, such as pressing the fire button.
+	 * It creates a {@link UserProjectile} positioned to initiate from the front of the plane, simulating weapon fire.
+	 *This method overrides the {@link FighterPlane#fireProjectile()} method
 	 *
-	 * @return A new {@code UserProjectile} object representing the fired projectile.
+	 * @return A list containing the newly created {@link UserProjectile}, or an empty list if no projectile was fired.
 	 */
+
 	@Override
 	public List<ActiveActorDestructible> fireProjectile() {
 		List<ActiveActorDestructible> projectiles = new ArrayList<>();

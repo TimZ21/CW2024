@@ -136,6 +136,7 @@ public class Boss extends FighterPlane {
 	/**
 	 * Updates the position of the boss according to its movement pattern.
 	 * Ensures that the boss stays within its vertical boundaries.
+	 * This method overrides the {@link FighterPlane#updatePosition()} method
 	 */
 	@Override
 	public void updatePosition() {
@@ -149,6 +150,7 @@ public class Boss extends FighterPlane {
 
 	/**
 	 * Updates the boss's behavior, including its position and shield status.
+	 * This method overrides the {@link FighterPlane#updateActor()} method
 	 */
 	@Override
 	public void updateActor() {
@@ -161,6 +163,7 @@ public class Boss extends FighterPlane {
 	 * Fires a projectile from the boss with a probability defined by {@code BOSS_FIRE_RATE}.
 	 * This method determines whether to fire based on a random chance and returns a list of projectiles.
 	 * If no projectile is fired, it returns an empty list.
+	 * This method overrides the {@link FighterPlane#fireProjectile()} method
 	 *
 	 * @return A list containing the boss projectiles if fired; otherwise, an empty list.
 	 */
@@ -175,6 +178,7 @@ public class Boss extends FighterPlane {
 
 	/**
 	 * Takes damage, reducing the boss's health if its shield is not active.
+	 * This method overrides the {@link FighterPlane#takeDamage()} ()} method
 	 */
 	@Override
 	public void takeDamage() {
@@ -190,6 +194,7 @@ public class Boss extends FighterPlane {
 	 * This method overrides the default destroy behavior to include additional cleanup tasks,
 	 * such as hiding the health bar associated with the boss when it is destroyed.
 	 * This is critical for ensuring that the boss's health bar is no longer displayed once the boss is defeated.
+	 * This method overrides the {@link FighterPlane#destroy()} method
 	 */
 	@Override
 	public void destroy() {
@@ -244,14 +249,6 @@ public class Boss extends FighterPlane {
 	 * Calculates the initial Y-coordinate for the boss's projectile.
 	 *
 	 * @return The Y-coordinate for the projectile's starting position.
-	 */
-	private double getProjectileInitialPosition() {
-		return getLayoutY() + getTranslateY() + PROJECTILE_Y_POSITION_OFFSET;
-	}
-	/**
-	 * Getter to get ShieldManager in the Boss class for testing in BossTest
-	 *
-	 * @return ShieldManager that used in this Class
 	 */
 	public ShieldManager getShieldManager() {
 		return shieldManager;
