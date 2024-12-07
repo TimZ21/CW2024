@@ -159,6 +159,7 @@ public class StartMenu {
     }
 
     private void showVolumeSettings() {
+        AudioManager.getInstance().playButtonClickEffect();
         VBox layout = new VBox(20);
         layout.setAlignment(Pos.CENTER);
         layout.setPadding(new Insets(10));

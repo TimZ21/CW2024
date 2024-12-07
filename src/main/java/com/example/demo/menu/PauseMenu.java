@@ -90,12 +90,14 @@ public class PauseMenu {
     }
 
     private void resumeGame() {
+        AudioManager.getInstance().playButtonClickEffect();
         stage.setScene(gameScene);
         AudioManager.getInstance().resumeBackgroundMusic();
         onResume.run();
     }
 
     private void restartGame() throws Exception {
+        AudioManager.getInstance().playButtonClickEffect();
         System.out.println("Restarting the game...");
         AudioManager.getInstance().playBackgroundMusic();
         levelParent.cleanUp();
@@ -103,10 +105,12 @@ public class PauseMenu {
     }
 
     private void quitGame() {
+        AudioManager.getInstance().playButtonClickEffect();
         Platform.exit();
     }
 
     private void toggleMute(Button muteButton) {
+        AudioManager.getInstance().playButtonClickEffect();
         if (audioManager.isMuted()) {
             audioManager.unmute();
             muteButton.setText("Mute");

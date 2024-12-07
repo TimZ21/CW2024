@@ -1,6 +1,7 @@
 package com.example.demo.menu;
 
 import com.example.demo.actors.manager.AudioManager;
+import com.example.demo.actors.manager.ScaleUtils;
 import com.example.demo.controller.Controller;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -71,7 +72,8 @@ public class LoseMenu {
 
         VBox vbox = new VBox(contentVBox);
         vbox.setAlignment(Pos.TOP_LEFT);
-        vbox.setPadding(new Insets(250, 600, 0, 0)); // Adjust padding to move content to the top-left
+        ScaleUtils.updateScale();
+        vbox.setPadding(new Insets(ScaleUtils.scaleYRelocate(250), ScaleUtils.scaleXRelocate(600), 0, 0)); // Adjust padding to move content to the top-left
 
         StackPane root = new StackPane(backgroundImage, vbox);
 
@@ -82,9 +84,10 @@ public class LoseMenu {
      * Restarts the game by launching the game again.
      */
     private void restartGame() {
+        AudioManager.getInstance().playButtonClickEffect();
         try {
-            AudioManager.getInstance().playBackgroundMusic();
             new Controller((Stage) currentScene.getWindow()).launchGame();
+            AudioManager.getInstance().playBackgroundMusic();
         } catch (Exception ex) {
             ex.printStackTrace();
         }

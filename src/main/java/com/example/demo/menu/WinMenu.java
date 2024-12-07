@@ -1,6 +1,7 @@
 package com.example.demo.menu;
 
 import com.example.demo.actors.manager.AudioManager;
+import com.example.demo.actors.manager.ScaleUtils;
 import com.example.demo.controller.Controller;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
@@ -57,7 +58,8 @@ public class WinMenu {
 
         VBox vbox = new VBox(contentVBox);
         vbox.setAlignment(Pos.TOP_LEFT);
-        vbox.setPadding(new Insets(250, 600, 0, 0));
+        ScaleUtils.updateScale();
+        vbox.setPadding(new Insets(ScaleUtils.scaleYRelocate(250), ScaleUtils.scaleXRelocate(600), 0, 0));
 
         StackPane root = new StackPane(backgroundImage, vbox);
 
@@ -72,6 +74,7 @@ public class WinMenu {
     }
 
     private void restartGame() {
+        AudioManager.getInstance().playButtonClickEffect();
         try {
             new Controller((Stage) currentScene.getWindow()).launchGame();
             AudioManager.getInstance().playBackgroundMusic();
