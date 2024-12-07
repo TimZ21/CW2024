@@ -32,6 +32,7 @@ public class AudioManager {
 
     private MediaPlayer userShootPlayer;
     private MediaPlayer bossShootPlayer;
+    private MediaPlayer winEffectPlayer;
     /**
      * Flag to indicate whether all sounds should be muted or not.
      */
@@ -52,6 +53,7 @@ public class AudioManager {
     private double userShootEffectVolume = 0.5;
 
     private double bossShootEffectVolume = 0.5;
+    private double winEffectVolume = 0.5;
     private AudioManager() {}
 
     /**
@@ -148,6 +150,11 @@ public class AudioManager {
         System.out.println("Boss Shoot volume:" + volume);
     }
 
+    public void setWinEffectVolume(double volume) {
+        winEffectVolume = volume;
+        System.out.println("Win Effect volume:" + volume);
+    }
+
     /**
      * Gets the current volume level for background music.
      *
@@ -176,6 +183,10 @@ public class AudioManager {
 
     public double getBossShootEffectVolume() {
         return bossShootEffectVolume;
+    }
+
+    public double getWinEffectVolume() {
+        return winEffectVolume;
     }
     /**
      * Mutes all audio output.
@@ -290,9 +301,8 @@ public class AudioManager {
         userShootPlayer.play();
     }
 
-
     /**
-     * Plays the user fire projectile sound effect.
+     * Plays the boss fire projectile sound effect.
      */
     public void playBossShootEffect() {
         stopBossShootEffect();
@@ -308,5 +318,24 @@ public class AudioManager {
         bossShootPlayer.setVolume(bossShootEffectVolume); // Use stored volume
         if (isMuted) bossShootPlayer.setMute(true);
         bossShootPlayer.play();
+    }
+
+    /**
+     * Plays the boss fire projectile sound effect.
+     */
+    public void playWinEffect() {
+        stopBackgroundMusic();
+        String WIN_EFFECT = "/com/example/demo/sounds/win.mp3";
+        URL resource = getClass().getResource(WIN_EFFECT);
+        if (resource == null) {
+            System.err.println("Error: Button click sound file not found at " + WIN_EFFECT);
+            return;
+        }
+
+        Media winEffect = new Media(resource.toString());
+        winEffectPlayer = new MediaPlayer(winEffect);
+        winEffectPlayer.setVolume(winEffectVolume); // Use stored volume
+        if (isMuted) winEffectPlayer.setMute(true);
+        winEffectPlayer.play();
     }
 }

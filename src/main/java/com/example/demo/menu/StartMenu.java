@@ -221,10 +221,23 @@ public class StartMenu {
         bossShottEffectsVolumeSlider.setMajorTickUnit(0.1);
         bossShottEffectsVolumeSlider.setBlockIncrement(0.05);
 
-        Label bossShootEffectsVolumeLabel = new Label("User Shoot Effect Volume: " + (int) (bossShottEffectsVolumeSlider.getValue() * 100));
+        Label bossShootEffectsVolumeLabel = new Label("Boss Shoot Effect Volume: " + (int) (bossShottEffectsVolumeSlider.getValue() * 100));
         bossShottEffectsVolumeSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
             AudioManager.getInstance().setBossShootEffectVolume(newVal.doubleValue());
             bossShootEffectsVolumeLabel.setText("Boss Shoot Effect Volume: " + (int) (newVal.doubleValue() * 100));
+        });
+
+        // Volume controls for win sound effects
+        Slider winEffectsVolumeSlider = new Slider(0, 1, AudioManager.getInstance().getWinEffectVolume());
+        winEffectsVolumeSlider.setShowTickLabels(true);
+        winEffectsVolumeSlider.setShowTickMarks(true);
+        winEffectsVolumeSlider.setMajorTickUnit(0.1);
+        winEffectsVolumeSlider.setBlockIncrement(0.05);
+
+        Label winEffectsVolumeLabel = new Label("Win Effect Volume: " + (int) (winEffectsVolumeSlider.getValue() * 100));
+        winEffectsVolumeSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
+            AudioManager.getInstance().setWinEffectVolume(newVal.doubleValue());
+            winEffectsVolumeLabel.setText("Win Effect Volume: " + (int) (newVal.doubleValue() * 100));
         });
 
         layout.getChildren().addAll(new Label("Adjust Volume"),
@@ -232,7 +245,8 @@ public class StartMenu {
                 explosionEffectsVolumeLabel, explosionEffectVolumeSlider,
                 clickEffectsVolumeLabel, clickEffectsVolumeSlider,
                 userShootEffectsVolumeLabel, userShottEffectsVolumeSlider,
-                bossShootEffectsVolumeLabel, bossShottEffectsVolumeSlider);
+                bossShootEffectsVolumeLabel, bossShottEffectsVolumeSlider,
+                winEffectsVolumeLabel, winEffectsVolumeSlider);
 
         Stage settingsStage = new Stage();
         settingsStage.setTitle("Volume Settings");

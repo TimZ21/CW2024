@@ -1,5 +1,6 @@
 package com.example.demo.menu;
 
+import com.example.demo.actors.manager.AudioManager;
 import com.example.demo.controller.Controller;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
@@ -31,6 +32,9 @@ public class WinMenu {
     }
 
     public void show() {
+        if (AudioManager.getInstance().getWinEffectVolume() != 0) {
+            AudioManager.getInstance().playWinEffect();
+        }
         ImageView backgroundImage = new ImageView(
                 new Image(Objects.requireNonNull(getClass().getResource(BACKGROUND_IMAGE_NAME)).toExternalForm())
         );
@@ -72,6 +76,7 @@ public class WinMenu {
     private void restartGame() {
         try {
             new Controller((Stage) currentScene.getWindow()).launchGame();
+            AudioManager.getInstance().playBackgroundMusic();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
