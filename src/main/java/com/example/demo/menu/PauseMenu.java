@@ -38,6 +38,7 @@ public class PauseMenu {
     }
 
     public void show() {
+        AudioManager.getInstance().pauseBackgroundMusic();
         ImageView backgroundImage = new ImageView(
                 new Image(Objects.requireNonNull(getClass().getResource(BACKGROUND_IMAGE_NAME)).toExternalForm())
         );
@@ -90,6 +91,7 @@ public class PauseMenu {
 
     private void resumeGame() {
         stage.setScene(gameScene);
+        AudioManager.getInstance().resumeBackgroundMusic();
         onResume.run();
     }
 

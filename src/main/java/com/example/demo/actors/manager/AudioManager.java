@@ -102,6 +102,18 @@ public class AudioManager {
         }
     }
 
+    public void pauseBackgroundMusic() {
+        if (backgroundMusicPlayer != null && backgroundMusicPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
+            backgroundMusicPlayer.pause();
+        }
+    }
+
+    public void resumeBackgroundMusic() {
+        if (backgroundMusicPlayer != null && backgroundMusicPlayer.getStatus() == MediaPlayer.Status.PAUSED) {
+            backgroundMusicPlayer.play();
+        }
+    }
+
     /**
      * Sets the volume for all audio output.
      * @param volume the volume level between 0.0 (silent) and 1.0 (maximum)
