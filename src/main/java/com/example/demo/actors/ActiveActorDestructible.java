@@ -1,5 +1,7 @@
 package com.example.demo.actors;
 
+import com.example.demo.actors.projectile.Projectile;
+
 /**
  * The {@code ActiveActorDestructible} class is an abstract representation of an actor
  * in the game that can take damage and be destroyed. It extends the {@link ActiveActor} class
@@ -27,6 +29,7 @@ public abstract class ActiveActorDestructible extends ActiveActor implements Des
 	/**
 	 * Updates the position of the actor.
 	 * Subclasses must implement this method to define specific movement behavior.
+	 * This method overrides the {@link ActiveActor#updatePosition()} method
 	 */
 	@Override
 	public abstract void updatePosition();
@@ -40,12 +43,14 @@ public abstract class ActiveActorDestructible extends ActiveActor implements Des
 	/**
 	 * Defines the logic for taking damage.
 	 * Subclasses must implement this method to specify how the actor reacts to damage.
+	 * This method overrides the {@link Destructible#takeDamage()} method
 	 */
 	@Override
 	public abstract void takeDamage();
 
 	/**
 	 * Marks the actor as destroyed.
+	 * This method overrides the {@link Destructible#takeDamage()} method
 	 */
 	@Override
 	public void destroy() {

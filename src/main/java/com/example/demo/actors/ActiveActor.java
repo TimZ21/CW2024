@@ -6,12 +6,14 @@ import javafx.scene.image.ImageView;
 import java.util.Objects;
 
 /**
- * The {@code ActiveActor} class represents an active entity in the game that can be displayed
- * on the screen and updated during the game loop. This abstract class provides common functionality
- * for all actors, including image handling, positioning, and movement.
+ * The {@code ActiveActor} class serves as an abstract base for all dynamic entities in the game that are capable
+ * of being rendered on the screen and updated during the game loop. It provides foundational functionalities such
+ * as image management, positioning, and basic movement capabilities, forming the core for all moving game elements
+ * like planes and projectiles.
  *
- * @see ImageView
+ * @see ImageView for how images are managed and displayed.
  */
+
 public abstract class ActiveActor extends ImageView {
 
 	private static final String IMAGE_LOCATION = "/com/example/demo/images/";
