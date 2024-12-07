@@ -31,6 +31,7 @@ public class AudioManager {
     private MediaPlayer clickSoundPlayer;
 
     private MediaPlayer userShootPlayer;
+    private MediaPlayer bossShootPlayer;
     /**
      * Flag to indicate whether all sounds should be muted or not.
      */
@@ -49,6 +50,8 @@ public class AudioManager {
     private double explosionEffectVolume = 0.5; // Default volume for sound effects
     private double clickEffectVolume = 0.5;
     private double userShootEffectVolume = 0.5;
+
+    private double bossShootEffectVolume = 0.5;
     private AudioManager() {}
 
     /**
@@ -140,6 +143,11 @@ public class AudioManager {
         System.out.println("User Shoot volume:" + volume);
     }
 
+    public void setBossShootEffectVolume(double volume) {
+        bossShootEffectVolume = volume;
+        System.out.println("Boss Shoot volume:" + volume);
+    }
+
     /**
      * Gets the current volume level for background music.
      *
@@ -166,6 +174,9 @@ public class AudioManager {
         return userShootEffectVolume;
     }
 
+    public double getBossShootEffectVolume() {
+        return bossShootEffectVolume;
+    }
     /**
      * Mutes all audio output.
      */
@@ -215,6 +226,12 @@ public class AudioManager {
         }
     }
 
+    public void stopBossShootEffect() {
+        if (bossShootPlayer != null) {
+            bossShootPlayer.stop();
+        }
+    }
+
     /**
      * Plays a specific sound effect.
      */
@@ -255,9 +272,8 @@ public class AudioManager {
     }
 
     /**
-     * Plays the button click sound effect.
+     * Plays the user fire projectile sound effect.
      */
-
     public void playUserShootEffect() {
         stopUserShootEffect();
         String USER_SHOOT_EFFECT = "/com/example/demo/sounds/userShoot.mp3";
@@ -272,5 +288,25 @@ public class AudioManager {
         userShootPlayer.setVolume(userShootEffectVolume); // Use stored volume
         if (isMuted) userShootPlayer.setMute(true);
         userShootPlayer.play();
+    }
+
+
+    /**
+     * Plays the user fire projectile sound effect.
+     */
+    public void playBossShootEffect() {
+        stopBossShootEffect();
+        String BOSS_SHOOT_EFFECT = "/com/example/demo/sounds/bossShoot.mp3";
+        URL resource = getClass().getResource(BOSS_SHOOT_EFFECT);
+        if (resource == null) {
+            System.err.println("Error: Button click sound file not found at " + BOSS_SHOOT_EFFECT);
+            return;
+        }
+
+        Media bossShoot = new Media(resource.toString());
+        bossShootPlayer = new MediaPlayer(bossShoot);
+        bossShootPlayer.setVolume(bossShootEffectVolume); // Use stored volume
+        if (isMuted) bossShootPlayer.setMute(true);
+        bossShootPlayer.play();
     }
 }

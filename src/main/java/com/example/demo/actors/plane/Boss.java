@@ -1,6 +1,7 @@
 package com.example.demo.actors.plane;
 
 import com.example.demo.actors.ActiveActorDestructible;
+import com.example.demo.actors.manager.AudioManager;
 import com.example.demo.actors.manager.FirePatternManager;
 import com.example.demo.actors.manager.HealthBarManager;
 import com.example.demo.actors.manager.ShieldManager;
@@ -164,6 +165,7 @@ public class Boss extends FighterPlane {
 	@Override
 	public List<ActiveActorDestructible> fireProjectile() {
 		if (bossFiresInCurrentFrame()) {
+			AudioManager.getInstance().playBossShootEffect();
 			return firePatternManager.fireProjectiles(getAbsoluteX(), getAbsoluteY());
 		}
 		return Collections.emptyList();

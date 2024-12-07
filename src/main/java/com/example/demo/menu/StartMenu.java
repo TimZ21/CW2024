@@ -188,7 +188,7 @@ public class StartMenu {
             explosionEffectsVolumeLabel.setText("Explosion Effect Volume: " + (int) (newVal.doubleValue() * 100));
         });
 
-        // Volume controls for collision explosion sound effects
+        // Volume controls for button click sound effects
         Slider clickEffectsVolumeSlider = new Slider(0, 1, AudioManager.getInstance().getClickEffectVolume());
         clickEffectsVolumeSlider.setShowTickLabels(true);
         clickEffectsVolumeSlider.setShowTickMarks(true);
@@ -201,7 +201,7 @@ public class StartMenu {
             clickEffectsVolumeLabel.setText("Click Effect Volume: " + (int) (newVal.doubleValue() * 100));
         });
 
-        // Volume controls for collision explosion sound effects
+        // Volume controls for user fire projectile sound effects
         Slider userShottEffectsVolumeSlider = new Slider(0, 1, AudioManager.getInstance().getUserShootEffectVolume());
         userShottEffectsVolumeSlider.setShowTickLabels(true);
         userShottEffectsVolumeSlider.setShowTickMarks(true);
@@ -214,7 +214,25 @@ public class StartMenu {
             userShootEffectsVolumeLabel.setText("User Shoot Effect Volume: " + (int) (newVal.doubleValue() * 100));
         });
 
-        layout.getChildren().addAll(new Label("Adjust Volume"), musicVolumeLabel, musicVolumeSlider, explosionEffectsVolumeLabel, explosionEffectVolumeSlider, clickEffectsVolumeLabel, clickEffectsVolumeSlider, userShootEffectsVolumeLabel, userShottEffectsVolumeSlider);
+        // Volume controls for boss fire projectile sound effects
+        Slider bossShottEffectsVolumeSlider = new Slider(0, 1, AudioManager.getInstance().getBossShootEffectVolume());
+        bossShottEffectsVolumeSlider.setShowTickLabels(true);
+        bossShottEffectsVolumeSlider.setShowTickMarks(true);
+        bossShottEffectsVolumeSlider.setMajorTickUnit(0.1);
+        bossShottEffectsVolumeSlider.setBlockIncrement(0.05);
+
+        Label bossShootEffectsVolumeLabel = new Label("User Shoot Effect Volume: " + (int) (bossShottEffectsVolumeSlider.getValue() * 100));
+        bossShottEffectsVolumeSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
+            AudioManager.getInstance().setBossShootEffectVolume(newVal.doubleValue());
+            bossShootEffectsVolumeLabel.setText("Boss Shoot Effect Volume: " + (int) (newVal.doubleValue() * 100));
+        });
+
+        layout.getChildren().addAll(new Label("Adjust Volume"),
+                musicVolumeLabel, musicVolumeSlider,
+                explosionEffectsVolumeLabel, explosionEffectVolumeSlider,
+                clickEffectsVolumeLabel, clickEffectsVolumeSlider,
+                userShootEffectsVolumeLabel, userShottEffectsVolumeSlider,
+                bossShootEffectsVolumeLabel, bossShottEffectsVolumeSlider);
 
         Stage settingsStage = new Stage();
         settingsStage.setTitle("Volume Settings");
