@@ -66,31 +66,35 @@ public class EnemyPlane extends FighterPlane {
 	}
 
 	/**
-	 * Constructs an {@code EnemyPlane} with specified health.
-	 * This method is used for {@link com.example.demo.level.LevelTwo}
+	 * Constructs an {@code EnemyPlane} with specified health and an image.
+	 * This constructor variant allows customization for different levels or enemy types.
 	 *
-	 * @param initialXPos the initial x-coordinate of the enemy plane
-	 * @param initialYPos the initial y-coordinate of the enemy plane
-	 * @param health the health level with which the enemy plane starts
+	 * @param initialXPos the initial x-coordinate of the enemy plane, specifying where on the screen it appears horizontally.
+	 * @param initialYPos the initial y-coordinate of the enemy plane, specifying where on the screen it appears vertically.
+	 * @param health the health level with which the enemy plane starts, indicating how much damage it can take before being destroyed.
+	 * @param imageName the file name of the image representing this enemy plane, allowing for visual variety.
 	 */
+
 	public EnemyPlane(double initialXPos, double initialYPos, int health, String imageName) {
 		super(imageName, IMAGE_HEIGHT, initialXPos, initialYPos, health);
 	}
 
 	/**
-	 * Updates the position of the enemy plane by moving it horizontally based on a predefined velocity.
+	 * Updates the position of the enemy plane by moving it horizontally to the left.
+	 * The movement is determined by a predefined negative horizontal velocity, simulating the plane's attack approach.
 	 */
+
 	@Override
 	public void updatePosition() {
 		moveHorizontally(HORIZONTAL_VELOCITY);
 	}
 
 	/**
-     * Fires a projectile with a certain probability defined by FIRE_RATE}.
-     * The projectile is positioned relative to the plane's current position.
-     *
-     * @return A new {@link EnemyProjectile} if fired; otherwise, {@code null}.
-     */
+	 * Fires a projectile with a certain probability defined by {@code FIRE_RATE}.
+	 * The projectile is positioned relative to the plane's current position.
+	 *
+	 * @return A list containing a new {@link EnemyProjectile} if fired; otherwise, an empty list.
+	 */
 	@Override
 	public List<ActiveActorDestructible> fireProjectile() {
 		List<ActiveActorDestructible> projectiles = new ArrayList<>();
@@ -104,7 +108,8 @@ public class EnemyPlane extends FighterPlane {
 
 
 	/**
-	 * Updates the state of the enemy plane, including its position.
+	 * Updates the state of the enemy plane by refreshing its position on the screen.
+	 * This method is typically called each frame to handle the plane's movement and any other state changes that need to be checked or refreshed.
 	 */
 	@Override
 	public void updateActor() {
