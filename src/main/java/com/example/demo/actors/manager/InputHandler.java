@@ -174,6 +174,7 @@ public class InputHandler {
         List<ActiveActorDestructible> projectiles = userPlane.fireProjectile();
         if (projectiles != null) {
             projectiles.forEach(projectile -> {
+                AudioManager.getInstance().playUserShootEffect();
                 root.getChildren().add(projectile);
                 userProjectiles.add(projectile);
             });

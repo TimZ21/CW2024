@@ -29,6 +29,8 @@ public class AudioManager {
     private MediaPlayer soundEffectPlayer;
 
     private MediaPlayer clickSoundPlayer;
+
+    private MediaPlayer userShootPlayer;
     /**
      * Flag to indicate whether all sounds should be muted or not.
      */
@@ -46,6 +48,7 @@ public class AudioManager {
     private double musicVolume = 0.5; // Default volume for background music
     private double explosionEffectVolume = 0.5; // Default volume for sound effects
     private double clickEffectVolume = 0.5;
+    private double userShootEffectVolume = 0.5;
     private AudioManager() {}
 
     /**
@@ -132,6 +135,11 @@ public class AudioManager {
             System.out.println("Click volume:" + volume);
     }
 
+    public void setUserShootEffectVolume(double volume) {
+        userShootEffectVolume = volume;
+        System.out.println("User Shoot volume:" + volume);
+    }
+
     /**
      * Gets the current volume level for background music.
      *
@@ -154,6 +162,9 @@ public class AudioManager {
         return clickEffectVolume;
     }
 
+    public double getUserShootEffectVolume() {
+        return userShootEffectVolume;
+    }
 
     /**
      * Mutes all audio output.
@@ -198,10 +209,16 @@ public class AudioManager {
         }
     }
 
+    public void stopUserShootEffect() {
+        if (userShootPlayer != null) {
+            userShootPlayer.stop();
+        }
+    }
+
     /**
      * Plays a specific sound effect.
      */
-    public void playSoundEffect() {
+    public void playExplosionEffect() {
         stopSoundEffect(); // Stop the current sound effect if it's playing
 
         String SOUND_EFFECT_PATH = "/com/example/demo/sounds/explosion.mp3";
@@ -222,7 +239,7 @@ public class AudioManager {
      * Plays the button click sound effect.
      */
 
-    public void playButtonClickSound() {
+    public void playButtonClickEffect() {
         String BUTTON_CLICK_EFFECT = "/com/example/demo/sounds/click.mp3";
         URL resource = getClass().getResource(BUTTON_CLICK_EFFECT);
         if (resource == null) {
@@ -235,5 +252,25 @@ public class AudioManager {
         clickSoundPlayer.setVolume(clickEffectVolume); // Use stored volume
         if (isMuted) clickSoundPlayer.setMute(true);
         clickSoundPlayer.play();
+    }
+
+    /**
+     * Plays the button click sound effect.
+     */
+
+    public void playUserShootEffect() {
+        stopUserShootEffect();
+        String USER_SHOOT_EFFECT = "/com/example/demo/sounds/userShoot.mp3";
+        URL resource = getClass().getResource(USER_SHOOT_EFFECT);
+        if (resource == null) {
+            System.err.println("Error: Button click sound file not found at " + USER_SHOOT_EFFECT);
+            return;
+        }
+
+        Media userShoot = new Media(resource.toString());
+        userShootPlayer = new MediaPlayer(userShoot);
+        userShootPlayer.setVolume(userShootEffectVolume); // Use stored volume
+        if (isMuted) userShootPlayer.setMute(true);
+        userShootPlayer.play();
     }
 }

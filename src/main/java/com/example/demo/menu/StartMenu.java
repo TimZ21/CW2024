@@ -76,7 +76,7 @@ public class StartMenu {
     }
 
     private void showTutorial() {
-        AudioManager.getInstance().playButtonClickSound();
+        AudioManager.getInstance().playButtonClickEffect();
         // Use the same background image
         ImageView backgroundImage = new ImageView(new Image(Objects.requireNonNull(getClass().getResource(BACKGROUND_IMAGE_NAME)).toExternalForm()));
         backgroundImage.setFitWidth(stage.getWidth());
@@ -136,7 +136,7 @@ public class StartMenu {
 
     private void startGame() {
         try {
-            AudioManager.getInstance().playButtonClickSound();
+            AudioManager.getInstance().playButtonClickEffect();
             new com.example.demo.controller.Controller(stage).launchGame();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -146,12 +146,12 @@ public class StartMenu {
     private void toggleMute(Button muteButton) {
         AudioManager audioManager = AudioManager.getInstance();
         if (audioManager.isMuted()) {
-            AudioManager.getInstance().playButtonClickSound();
+            AudioManager.getInstance().playButtonClickEffect();
 
             audioManager.unmute();
             muteButton.setText("Mute");
         } else {
-            AudioManager.getInstance().playButtonClickSound();
+            AudioManager.getInstance().playButtonClickEffect();
             audioManager.mute();
             muteButton.setText("Unmute");
         }
@@ -201,7 +201,20 @@ public class StartMenu {
             clickEffectsVolumeLabel.setText("Click Effect Volume: " + (int) (newVal.doubleValue() * 100));
         });
 
-        layout.getChildren().addAll(new Label("Adjust Volume"), musicVolumeLabel, musicVolumeSlider, explosionEffectsVolumeLabel, explosionEffectVolumeSlider, clickEffectsVolumeLabel, clickEffectsVolumeSlider);
+        // Volume controls for collision explosion sound effects
+        Slider userShottEffectsVolumeSlider = new Slider(0, 1, AudioManager.getInstance().getUserShootEffectVolume());
+        userShottEffectsVolumeSlider.setShowTickLabels(true);
+        userShottEffectsVolumeSlider.setShowTickMarks(true);
+        userShottEffectsVolumeSlider.setMajorTickUnit(0.1);
+        userShottEffectsVolumeSlider.setBlockIncrement(0.05);
+
+        Label userShootEffectsVolumeLabel = new Label("User Shoot Effect Volume: " + (int) (userShottEffectsVolumeSlider.getValue() * 100));
+        userShottEffectsVolumeSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
+            AudioManager.getInstance().setUserShootEffectVolume(newVal.doubleValue());
+            userShootEffectsVolumeLabel.setText("User Shoot Effect Volume: " + (int) (newVal.doubleValue() * 100));
+        });
+
+        layout.getChildren().addAll(new Label("Adjust Volume"), musicVolumeLabel, musicVolumeSlider, explosionEffectsVolumeLabel, explosionEffectVolumeSlider, clickEffectsVolumeLabel, clickEffectsVolumeSlider, userShootEffectsVolumeLabel, userShottEffectsVolumeSlider);
 
         Stage settingsStage = new Stage();
         settingsStage.setTitle("Volume Settings");

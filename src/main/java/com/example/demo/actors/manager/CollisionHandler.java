@@ -91,7 +91,7 @@ public class CollisionHandler {
 
                     if (actor2.isDestroyed()) {
                         // Play sound effect
-                        AudioManager.getInstance().playSoundEffect();
+                        AudioManager.getInstance().playExplosionEffect();
 
                         // Render explosion effect at actor2's position
                         double x = actor2.getAbsoluteX();
