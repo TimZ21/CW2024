@@ -7,6 +7,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -262,9 +263,18 @@ public class StartMenu {
                 winEffectsVolumeLabel, winEffectsVolumeSlider,
                 loseEffectsVolumeLabel, loseEffectsVolumeSlider);
 
+        // Wrapping the layout in a ScrollPane
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setContent(layout);
+        scrollPane.setFitToWidth(true); // Ensures the width of the scroll pane matches the width of its content
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED); // Vertical scrollbar as needed
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Never show a horizontal scrollbar
+
+        // Setting up the Scene and Stage
         Stage settingsStage = new Stage();
         settingsStage.setTitle("Volume Settings");
-        settingsStage.setScene(new Scene(layout, 300, 750));
+        Scene scene = new Scene(scrollPane, 400, 600); // Adjusted size for better visibility
+        settingsStage.setScene(scene);
         settingsStage.show();
     }
 
