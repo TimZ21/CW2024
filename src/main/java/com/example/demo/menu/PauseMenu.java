@@ -97,6 +97,7 @@ public class PauseMenu {
 
     private void restartGame() throws Exception {
         System.out.println("Restarting the game...");
+        AudioManager.getInstance().playBackgroundMusic();
         levelParent.cleanUp();
         new Controller(stage).launchGame();
     }
