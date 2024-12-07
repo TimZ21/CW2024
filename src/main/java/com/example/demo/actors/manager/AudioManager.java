@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.actors.manager;
 
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;

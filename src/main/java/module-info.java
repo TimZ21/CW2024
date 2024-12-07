@@ -11,4 +11,5 @@ module com.example.demo {
     opens com.example.demo.view to javafx.fxml;
     opens com.example.demo.actors.plane to javafx.fxml;
     opens com.example.demo.actors.manager to javafx.fxml;
+    exports com.example.demo.actors.manager;
 }

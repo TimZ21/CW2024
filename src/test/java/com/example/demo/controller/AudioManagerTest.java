@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.controller.AudioManager;
+import com.example.demo.actors.manager.AudioManager;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
