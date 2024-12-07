@@ -12,23 +12,36 @@ import javafx.stage.Stage;
  * It initializes the game window, sets up the {@code Controller}, and launches the first level.
  */
 public class Main extends Application {
+	/**
+	 * The width of the game window in pixels. This defines the fixed width that the application window will use.
+	 */
 	private static final int SCREEN_WIDTH = 1300;
-	private static final int SCREEN_HEIGHT = 750;
-	private static final String TITLE = "Sky Battle";
-	private Controller myController;
 
 	/**
-	 * Starts the JavaFX application by initializing the primary stage and launching the game.
-	 *
-	 * @param stage The primary stage for the game window.
-	 * @throws ClassNotFoundException If the level class cannot be found.
-	 * @throws NoSuchMethodException If the constructor for the level class is not found.
-	 * @throws SecurityException If access to the constructor is denied.
-	 * @throws InstantiationException If the level class cannot be instantiated.
-	 * @throws IllegalAccessException If access to the constructor is not allowed.
-	 * @throws IllegalArgumentException If the arguments passed to the constructor are invalid.
-	 * @throws InvocationTargetException If the constructor invocation fails.
+	 * The height of the game window in pixels. This defines the fixed height that the application window will use.
 	 */
+	private static final int SCREEN_HEIGHT = 750;
+
+	/**
+	 * The title of the game window, which appears in the window's title bar.
+	 */
+	private static final String TITLE = "Sky Battle";
+
+	/**
+	 * Starts the JavaFX application by setting up the primary stage and displaying the start menu.
+	 * This method configures the stage properties such as title, size, and initializes
+	 * the start menu as the initial scene of the application.
+	 *
+	 * @param stage The primary stage for the game window, provided by JavaFX during application launch.
+	 * @throws ClassNotFoundException        If a class needed during initialization is not found.
+	 * @throws NoSuchMethodException         If a required method reflection call cannot be resolved.
+	 * @throws SecurityException             If access to a class or method is denied.
+	 * @throws InstantiationException        If an instance of a class cannot be created.
+	 * @throws IllegalAccessException        If access to the class constructor is illegal.
+	 * @throws IllegalArgumentException      If incorrect parameters are passed to a method.
+	 * @throws InvocationTargetException     If the underlying constructor or method throws an exception.
+	 */
+
 	@Override
 	public void start(Stage stage) throws ClassNotFoundException, NoSuchMethodException, SecurityException,
 			InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
