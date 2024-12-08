@@ -13,14 +13,40 @@ import java.util.Objects;
  */
 public class HeartDisplay {
 
+	/**
+	 * The path to the heart image resource used in the heart display.
+	 */
 	private static final String HEART_IMAGE_NAME = "/com/example/demo/images/heart_pixel.png";
-	private static final int HEART_HEIGHT = 50;
-	private static final int INDEX_OF_FIRST_ITEM = 0;
-	private HBox container;
-	private double containerXPosition;
-	private double containerYPosition;
-	private int numberOfHeartsToDisplay;
 
+	/**
+	 * The height of each heart image displayed. This constant defines the size of the heart images in the UI.
+	 */
+	private static final int HEART_HEIGHT = 50;
+
+	/**
+	 * The index of the first item in the container. Used for operations that target the first element, such as removal.
+	 */
+	private static final int INDEX_OF_FIRST_ITEM = 0;
+
+	/**
+	 * The container for the heart images. It is an {@code HBox} that arranges the heart images horizontally.
+	 */
+	private HBox container;
+
+	/**
+	 * The x-coordinate position of the heart display container on the screen. Determines where the heart display appears horizontally.
+	 */
+	private final double containerXPosition;
+
+	/**
+	 * The y-coordinate position of the heart display container on the screen. Determines where the heart display appears vertically.
+	 */
+	private final double containerYPosition;
+
+	/**
+	 * The number of hearts to display initially. This value can be set when the heart display is created and adjusted if necessary.
+	 */
+	private final int numberOfHeartsToDisplay;
 	/**
 	 * Constructs a {@code HeartDisplay} object and initializes the heart display at the specified position
 	 * with the given number of hearts.
