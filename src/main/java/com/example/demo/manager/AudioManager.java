@@ -175,19 +175,6 @@ public class AudioManager {
     }
 
     /**
-     * Sets the volume for all audio output.
-     * @param volume the volume level between 0.0 (silent) and 1.0 (maximum)
-     */
-    public void setVolume(double volume) {
-        if (backgroundMusicPlayer != null) {
-            backgroundMusicPlayer.setVolume(volume);
-        }
-        if (soundEffectPlayer != null) {
-            soundEffectPlayer.setVolume(volume);
-        }
-    }
-
-    /**
      * Sets the volume for background music.
      *
      * @param volume Volume level between 0.0 and 1.0.
