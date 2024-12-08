@@ -3,15 +3,30 @@ package com.example.demo.view;
 import javafx.scene.Group;
 
 /**
- * The {@code LevelViewLevelBoss} class is a specialized version of {@code LevelView}
+ * The {@code LevelViewLevelBoss} class is a specialized version of {@link LevelView}
  * for the second level of the game. It includes additional visual elements specific
  * to LevelBoss, such as the shield image.
  */
 public class LevelViewLevelBoss extends LevelView {
 
+	/**
+	 * The x-coordinate position for placing the shield image on the screen.
+	 */
 	private static final int SHIELD_X_POSITION = 1150;
+
+	/**
+	 * The y-coordinate position for placing the shield image on the screen.
+	 */
 	private static final int SHIELD_Y_POSITION = 500;
+
+	/**
+	 * The root {@code Group} that contains all visual elements for the LevelBoss view.
+	 */
 	private final Group root;
+
+	/**
+	 * The {@code ShieldImage} instance responsible for managing the display of the shield image in the LevelBoss.
+	 */
 	private final ShieldImage shieldImage;
 
 	/**
