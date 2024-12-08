@@ -1,5 +1,6 @@
-package com.example.demo.actors.manager;
+package com.example.demo.manager;
 
+import com.example.demo.manager.KeyStateTracker;
 import javafx.scene.input.KeyCode;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

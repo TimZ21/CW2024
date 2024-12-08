@@ -1,4 +1,4 @@
-package com.example.demo.actors.manager;
+package com.example.demo.manager;
 
 import javafx.scene.input.KeyCode;
 import java.util.Collections;

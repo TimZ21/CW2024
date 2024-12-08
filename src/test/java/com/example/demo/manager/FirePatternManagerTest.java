@@ -1,7 +1,8 @@
-package com.example.demo.actors.manager;
+package com.example.demo.manager;
 
 import com.example.demo.actors.ActiveActorDestructible;
 import com.example.demo.actors.projectile.BossProjectile;
+import com.example.demo.manager.FirePatternManager;
 import javafx.embed.swing.JFXPanel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

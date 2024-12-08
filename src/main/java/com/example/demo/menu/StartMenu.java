@@ -1,6 +1,6 @@
 package com.example.demo.menu;
 
-import com.example.demo.actors.manager.AudioManager;
+import com.example.demo.manager.AudioManager;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

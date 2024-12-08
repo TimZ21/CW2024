@@ -1,4 +1,4 @@
-package com.example.demo.actors.manager;
+package com.example.demo.manager;
 
 import com.example.demo.actors.ActiveActorDestructible;
 import com.example.demo.actors.projectile.BossProjectile;
@@ -34,6 +34,13 @@ public class FirePatternManager {
      */
     private final double projectileYPositionOffset;
 
+    /**
+     * Constructs a new {@code FirePatternManager} with a specified offset for projectile Y positioning.
+     * This manager is responsible for determining the firing patterns of projectiles based on the boss's
+     * current position and the chosen firing strategy (horizontal, vertical, or diagonal).
+     *
+     * @param projectileYPositionOffset The offset added to the Y position of the boss when creating projectiles.
+     */
     public FirePatternManager(double projectileYPositionOffset) {
         this.projectileYPositionOffset = projectileYPositionOffset;
     }

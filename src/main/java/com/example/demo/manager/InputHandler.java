@@ -1,4 +1,4 @@
-package com.example.demo.actors.manager;
+package com.example.demo.manager;
 
 import com.example.demo.actors.ActiveActorDestructible;
 import com.example.demo.actors.plane.UserPlane;

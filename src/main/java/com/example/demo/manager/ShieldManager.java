@@ -1,4 +1,4 @@
-package com.example.demo.actors.manager;
+package com.example.demo.manager;
 
 import com.example.demo.view.ShieldImage;
 import javafx.application.Platform;
@@ -125,7 +125,13 @@ public class ShieldManager {
     private boolean shieldExhausted() {
         return framesWithShieldActivated >= MAX_FRAMES_WITH_SHIELD;
     }
-
+    /**
+     * Retrieves the visual representation of the shield.
+     * This method provides access to the {@code ShieldImage} object which manages the display
+     * and properties of the shield image on the screen.
+     *
+     * @return The {@link ShieldImage} instance representing the shield's visual appearance.
+     */
     public ShieldImage getShieldImage() {
         return shieldImage;
     }

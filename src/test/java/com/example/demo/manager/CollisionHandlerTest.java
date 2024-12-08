@@ -1,16 +1,13 @@
-package com.example.demo.actors.manager;
+package com.example.demo.manager;
 
 import com.example.demo.actors.ActiveActorDestructible;
-import com.example.demo.actors.plane.Boss;
 import com.example.demo.actors.plane.EnemyPlane;
 import com.example.demo.actors.plane.UserPlane;
 import com.example.demo.actors.projectile.EnemyProjectile;
 import com.example.demo.actors.projectile.UserProjectile;
+import com.example.demo.manager.CollisionHandler;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
-import javafx.geometry.Bounds;
-import javafx.scene.layout.Region;
-import javafx.stage.Stage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

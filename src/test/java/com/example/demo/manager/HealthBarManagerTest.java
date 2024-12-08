@@ -1,5 +1,6 @@
-package com.example.demo.actors.manager;
+package com.example.demo.manager;
 
+import com.example.demo.manager.HealthBarManager;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.layout.HBox;

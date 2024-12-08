@@ -1,7 +1,8 @@
-package com.example.demo.actors.manager;
+package com.example.demo.manager;
 
 import com.example.demo.actors.ActiveActorDestructible;
 import com.example.demo.actors.plane.EnemyPlane;
+import com.example.demo.manager.ActorGroup;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Group;

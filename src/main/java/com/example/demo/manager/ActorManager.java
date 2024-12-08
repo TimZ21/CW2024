@@ -1,4 +1,4 @@
-package com.example.demo.actors.manager;
+package com.example.demo.manager;
 
 /**
  * The {@code ActorManager} class is responsible for managing different groups of game actors,

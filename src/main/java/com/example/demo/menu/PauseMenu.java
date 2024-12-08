@@ -1,7 +1,7 @@
 package com.example.demo.menu;
 
-import com.example.demo.actors.manager.ScaleUtils;
-import com.example.demo.actors.manager.AudioManager;
+import com.example.demo.manager.ScaleUtils;
+import com.example.demo.manager.AudioManager;
 import com.example.demo.controller.Controller;
 import com.example.demo.level.LevelParent;
 import javafx.application.Platform;

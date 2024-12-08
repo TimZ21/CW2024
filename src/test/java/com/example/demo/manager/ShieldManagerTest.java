@@ -1,6 +1,6 @@
-package com.example.demo.actors.manager;
+package com.example.demo.manager;
 
-import com.example.demo.actors.plane.Boss;
+import com.example.demo.manager.ShieldManager;
 import javafx.application.Platform;
 import javafx.scene.layout.HBox;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,10 +1,9 @@
 package com.example.demo.menu;
 
-import com.example.demo.actors.manager.AudioManager;
-import com.example.demo.actors.manager.ScaleUtils;
+import com.example.demo.manager.AudioManager;
+import com.example.demo.manager.ScaleUtils;
 import com.example.demo.controller.Controller;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
