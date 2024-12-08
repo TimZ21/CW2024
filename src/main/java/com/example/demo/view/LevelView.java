@@ -9,12 +9,30 @@ import javafx.scene.Group;
  */
 public class LevelView {
 
+	/**
+	 * The x-coordinate position where the heart display is initialized on the screen.
+	 * This defines the horizontal starting point for the heart display.
+	 */
 	private static final double HEART_DISPLAY_X_POSITION = 5;
+
+	/**
+	 * The y-coordinate position where the heart display is initialized on the screen.
+	 * This defines the vertical starting point for the heart display.
+	 */
 	private static final double HEART_DISPLAY_Y_POSITION = 25;
-	private static final int LOSS_SCREEN_X_POSITION = -160;
-	private static final int LOSS_SCREEN_Y_POSITION = -375;
+
+	/**
+	 * The root {@code Group} that contains all visual elements of the level.
+	 * This group acts as the container for adding or modifying game-level visual components.
+	 */
 	private final Group root;
+
+	/**
+	 * The {@code HeartDisplay} instance that manages the visual representation of player's lives.
+	 * It is responsible for displaying and updating the hearts based on the player's health.
+	 */
 	private final HeartDisplay heartDisplay;
+
 
 	/**
 	 * Constructs a {@code LevelView} with the specified root group and the number of hearts to display.
