@@ -21,17 +21,34 @@ import javafx.stage.Stage;
 import java.util.Objects;
 
 /**
- * The {@code WinMenu} class displays a "You Win" screen with options to restart the game or quit.
+ * The {@code WinMenu} class displays a victory screen with options to either restart the game or exit.
+ * This class handles the setup and display of the win menu UI elements within a provided game scene.
  */
 public class WinMenu {
 
+    /**
+     * The relative path to the background image for the menu.
+     */
     private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/menu_background.jpg";
+
+    /**
+     * The scene that is currently displayed before switching to the win menu.
+     */
     private final Scene currentScene;
 
+    /**
+     * Constructs a {@code WinMenu} with a reference to the current scene.
+     *
+     * @param currentScene The current scene where the win menu will be displayed.
+     */
     public WinMenu(Scene currentScene) {
         this.currentScene = currentScene;
     }
 
+    /**
+     * Displays the win menu overlaying the current game scene.
+     * This method sets up all UI components necessary for the win menu.
+     */
     public void show() {
         AudioManager.getInstance().playWinEffect();
         ImageView backgroundImage = new ImageView(
@@ -73,6 +90,9 @@ public class WinMenu {
         currentScene.setRoot(root);
     }
 
+    /**
+     * Restarts the game by re-initializing the game's main controller and resuming the background music.
+     */
     private void restartGame() {
         AudioManager.getInstance().playButtonClickEffect();
         try {
@@ -83,6 +103,11 @@ public class WinMenu {
         }
     }
 
+    /**
+     * Applies a standard styling to buttons used in the win menu.
+     *
+     * @param button The button to which the style will be applied.
+     */
     private void styleButton(Button button) {
         button.setStyle("-fx-background-color: #333; -fx-text-fill: white; -fx-font-size: 16px;");
         button.setMinWidth(120);
