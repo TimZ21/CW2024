@@ -24,23 +24,32 @@ import java.util.Objects;
 
 /**
  * The {@code LoseMenu} class displays a "Game Over" screen with options to restart the game or quit.
+ * This class handles the setup and display of the game over menu UI elements within a provided game scene.
  */
 public class LoseMenu {
 
+    /**
+     * The relative path to the background image for the menu.
+     */
     private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/menu_background.jpg";
+
+    /**
+     * The scene that is currently displayed before switching to the game over menu.
+     */
     private final Scene currentScene;
 
     /**
-     * Constructs a {@code LoseMenu} with the given scene.
+     * Constructs a {@code LoseMenu} with a reference to the current scene.
      *
-     * @param currentScene The scene to display the "Game Over" menu.
+     * @param currentScene The current scene where the game over menu will be displayed.
      */
     public LoseMenu(Scene currentScene) {
         this.currentScene = currentScene;
     }
 
     /**
-     * Displays the "Game Over" menu within the current scene.
+     * Displays the game over menu overlaying the current game scene.
+     * This method sets up all UI components necessary for the game over menu.
      */
     public void show() {
         AudioManager.getInstance().playLoseEffect();
@@ -81,7 +90,7 @@ public class LoseMenu {
     }
 
     /**
-     * Restarts the game by launching the game again.
+     * Restarts the game by re-initializing the game's main controller and resuming the background music.
      */
     private void restartGame() {
         AudioManager.getInstance().playButtonClickEffect();
@@ -93,6 +102,11 @@ public class LoseMenu {
         }
     }
 
+    /**
+     * Applies a standard styling to buttons used in the game over menu.
+     *
+     * @param button The button to which the style will be applied.
+     */
     private void styleButton(Button button) {
         button.setStyle("-fx-background-color: #333; -fx-text-fill: white; -fx-font-size: 16px;");
         button.setMinWidth(120);
@@ -100,7 +114,9 @@ public class LoseMenu {
     }
 
     /**
-     * Prevents a button from being activated by the space key.
+     * Adds an event filter to a button to prevent it from being activated by the space key.
+     *
+     * @param button The button to which the event filter will be applied.
      */
     private void preventSpaceActivation(Button button) {
         button.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
