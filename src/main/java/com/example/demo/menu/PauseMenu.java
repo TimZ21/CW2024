@@ -23,15 +23,50 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 
+/**
+ * Class representing a pause menu in the game.
+ * This menu provides options to resume, restart, adjust volume, and quit the game.
+ */
 public class PauseMenu {
 
+    /**
+     * Path to the background image for the pause menu.
+     */
     private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/menu_background.jpg";
-    private final Stage stage;
-    private final Scene gameScene;  // The game scene to switch back to
-    private final Runnable onResume;  // Action to resume the game
-    private final LevelParent levelParent;  // Reference to the LevelParent instance
-    private final AudioManager audioManager; // Instance of AudioManager
 
+    /**
+     * The primary stage for displaying the pause menu.
+     */
+    private final Stage stage;
+
+    /**
+     * The scene from the game to return to after unpausing.
+     */
+    private final Scene gameScene;
+
+    /**
+     * A Runnable that defines the action to take when the game is resumed.
+     */
+    private final Runnable onResume;
+
+    /**
+     * Reference to the parent level manager, which handles the game's state and transitions.
+     */
+    private final LevelParent levelParent;
+
+    /**
+     * Instance of AudioManager to handle audio operations like playing, pausing, and muting sounds.
+     */
+    private final AudioManager audioManager;
+
+    /**
+     * Constructor to initialize the PauseMenu.
+     *
+     * @param stage The primary stage of the application.
+     * @param gameScene The scene of the game to return to.
+     * @param onResume The runnable action to execute when resuming the game.
+     * @param levelParent The parent level managing game states.
+     */
     public PauseMenu(Stage stage, Scene gameScene, Runnable onResume, LevelParent levelParent) {
         this.stage = stage;
         this.gameScene = gameScene;
@@ -40,6 +75,9 @@ public class PauseMenu {
         this.audioManager = AudioManager.getInstance(); // Initialize the AudioManager
     }
 
+    /**
+     * Displays the pause menu on the screen with all available options.
+     */
     public void show() {
         AudioManager.getInstance().pauseBackgroundMusic();
         ImageView backgroundImage = new ImageView(
@@ -95,6 +133,9 @@ public class PauseMenu {
         stage.show();
     }
 
+    /**
+     * Resumes the game from the paused state and switches back to the game scene.
+     */
     private void resumeGame() {
         AudioManager.getInstance().playButtonClickEffect();
         stage.setScene(gameScene);
@@ -102,6 +143,11 @@ public class PauseMenu {
         onResume.run();
     }
 
+    /**
+     * Restarts the game by cleaning up the current level and reinitializing the game controller.
+     *
+     * @throws Exception if there is an error during the game restart.
+     */
     private void restartGame() throws Exception {
         AudioManager.getInstance().playButtonClickEffect();
         System.out.println("Restarting the game...");
@@ -110,11 +156,19 @@ public class PauseMenu {
         new Controller(stage).launchGame();
     }
 
+    /**
+     * Quits the game and closes the application platform.
+     */
     private void quitGame() {
         AudioManager.getInstance().playButtonClickEffect();
         Platform.exit();
     }
 
+    /**
+     * Toggles the mute state of the game's audio manager and updates the button text.
+     *
+     * @param muteButton The button used to toggle the mute state.
+     */
     private void toggleMute(Button muteButton) {
         AudioManager.getInstance().playButtonClickEffect();
         if (audioManager.isMuted()) {
@@ -126,12 +180,20 @@ public class PauseMenu {
         }
     }
 
+    /**
+     * Applies a standard style to the buttons in the pause menu.
+     *
+     * @param button The button to style.
+     */
     private void styleButton(Button button) {
         button.setStyle("-fx-background-color: #333; -fx-text-fill: white; -fx-font-size: 16px;");
         button.setMinWidth(120);
         button.setMinHeight(40);
     }
 
+    /**
+     * Shows the volume settings menu where the user can adjust various audio levels.
+     */
     private void showVolumeSettings() {
         AudioManager.getInstance().playButtonClickEffect();
         VBox layout = new VBox(20);
