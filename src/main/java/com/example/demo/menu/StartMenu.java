@@ -20,25 +20,63 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 
+/**
+ * The StartMenu class provides the main menu interface for the Sky Battle game.
+ * It allows players to start the game, access settings, view tutorials, or quit the game.
+ * This class handles the layout and interaction logic for the start menu, including
+ * button actions and audio control.
+ */
 public class StartMenu {
 
+    /**
+     * The relative path to the background image for the menu.
+     */
     private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/menu_background.jpg";
+
+    /**
+     * The title text displayed at the top of the menu.
+     */
     private static final String TITLE_TEXT = "Sky Battle";
+
+    /**
+     * The primary stage for the application, used to set and show scenes.
+     */
     private final Stage stage;
+
+    /**
+     * The scene for the start menu, containing all UI elements.
+     */
     private Scene scene;
+
+    /**
+     * The main layout container for the start menu, organizing the background and buttons.
+     */
     private StackPane mainLayout;  // Store the main layout
 
+    /**
+     * Constructs the StartMenu with the given stage and initializes the scene setup.
+     *
+     * @param stage The primary stage of the application, used to display this menu.
+     */
     public StartMenu(Stage stage) {
         this.stage = stage;
         createScene();  // Create the scene and set it on the stage here
     }
 
+    /**
+     * Creates the main scene for the start menu including layout initialization.
+     */
     private void createScene() {
         mainLayout = createLayout();  // Create and store the main layout
         scene = new Scene(mainLayout, stage.getWidth(), stage.getHeight());
         stage.setScene(scene);
     }
 
+    /**
+     * Generates the layout for the start menu, including buttons and background setup.
+     *
+     * @return A StackPane containing the configured layout of the start menu.
+     */
     private StackPane createLayout() {
         Text title = new Text(TITLE_TEXT);
         title.setFont(Font.font("Verdana", FontWeight.BOLD, 100)); // Changed font to Verdana and made it bold
@@ -76,6 +114,9 @@ public class StartMenu {
         return new StackPane(backgroundImage, contentLayout);
     }
 
+    /**
+     * Displays a tutorial overlay explaining the game mechanics.
+     */
     private void showTutorial() {
         AudioManager.getInstance().playButtonClickEffect();
         // Use the same background image
@@ -96,11 +137,15 @@ public class StartMenu {
                         - Avoid enemy bullets and enemy planes.
                         - Destroy enemies to prevent them pass and progress through levels.
 
-                        Objective:
-                        - Try to survive as long as possible and beat the boss.
-                        - Level 1: Defeating 10 enemies.
-                        - Level 2: Defeating 15 enemies.
-                        - Level Boss: Defeating the BOSS.
+                        Game Level:
+                        - Level 1: Enemy with 1 HP, at most 5.
+                                   Objective: Defeating 10 enemies.
+                        - Level 2: Enemy with 2 HP, at most 7.
+                                   Objective: Defeating 15 enemies.
+                        - Level 3: The Boss will come in this level.
+                                   Objective: Defeating the BOSS.
+                        - Level 4: The Boss and normal enemies will come together!
+                                   Objective: Defeating the BOSS.
 
                         Tips:
                         - Watch for the enemy close to the left boundary.
@@ -129,12 +174,20 @@ public class StartMenu {
         scene.setRoot(tutorialLayout);
     }
 
+    /**
+     * Styles the given button with a specific appearance.
+     *
+     * @param button The button to style.
+     */
     private void styleButton(Button button) {
         button.setStyle("-fx-background-color: #333; -fx-text-fill: white; -fx-font-size: 16px;");
         button.setMinWidth(120);
         button.setMinHeight(40);
     }
 
+    /**
+     * Starts the game by switching from the start menu to the game's main scene.
+     */
     private void startGame() {
         try {
             AudioManager.getInstance().playButtonClickEffect();
@@ -144,6 +197,12 @@ public class StartMenu {
         }
     }
 
+
+    /**
+     * Toggles the mute state of the game's audio.
+     *
+     * @param muteButton The button that triggers the mute toggle.
+     */
     private void toggleMute(Button muteButton) {
         AudioManager audioManager = AudioManager.getInstance();
         if (audioManager.isMuted()) {
@@ -158,6 +217,9 @@ public class StartMenu {
         }
     }
 
+    /**
+     * Displays the volume settings in a modal window, allowing the user to adjust various sound volumes.
+     */
     private void showVolumeSettings() {
         AudioManager.getInstance().playButtonClickEffect();
         VBox layout = new VBox(20);
@@ -279,7 +341,9 @@ public class StartMenu {
         settingsStage.show();
     }
 
-
+    /**
+     * Displays the start menu.
+     */
     public void show() {
         AudioManager.getInstance().playBackgroundMusic();
         stage.show();
