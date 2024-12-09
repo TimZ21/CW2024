@@ -16,6 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.util.Objects;
@@ -336,7 +337,9 @@ public class StartMenu {
         // Setting up the Scene and Stage
         Stage settingsStage = new Stage();
         settingsStage.setTitle("Volume Settings");
-        Scene scene = new Scene(scrollPane, 400, 600); // Adjusted size for better visibility
+        settingsStage.initModality(Modality.APPLICATION_MODAL); // Blocks user interaction with other windows
+        settingsStage.initOwner(stage); // Assume 'mainStage' is your main application window
+        Scene scene = new Scene(scrollPane, 400, 600);
         settingsStage.setScene(scene);
         settingsStage.show();
     }

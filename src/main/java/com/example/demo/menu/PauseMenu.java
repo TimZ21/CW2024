@@ -19,6 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.util.Objects;
@@ -55,11 +56,6 @@ public class PauseMenu {
     private final LevelParent levelParent;
 
     /**
-     * Instance of AudioManager to handle audio operations like playing, pausing, and muting sounds.
-     */
-    private final AudioManager audioManager;
-
-    /**
      * Constructor to initialize the PauseMenu.
      *
      * @param stage The primary stage of the application.
@@ -72,7 +68,6 @@ public class PauseMenu {
         this.gameScene = gameScene;
         this.onResume = onResume;
         this.levelParent = levelParent;
-        this.audioManager = AudioManager.getInstance(); // Initialize the AudioManager
     }
 
     /**
@@ -95,7 +90,7 @@ public class PauseMenu {
         Button restartButton = new Button("Restart");
         Button volumeButton = new Button("Volume");
         Button quitButton = new Button("Quit");
-        Button muteButton = new Button(audioManager.isMuted() ? "Unmute" : "Mute"); // Mute button
+        Button muteButton = new Button(AudioManager.getInstance().isMuted() ? "Unmute" : "Mute"); // Mute button
 
         styleButton(resumeButton);
         styleButton(restartButton);
@@ -171,11 +166,11 @@ public class PauseMenu {
      */
     private void toggleMute(Button muteButton) {
         AudioManager.getInstance().playButtonClickEffect();
-        if (audioManager.isMuted()) {
-            audioManager.unmute();
+        if (AudioManager.getInstance().isMuted()) {
+            AudioManager.getInstance().unmute();
             muteButton.setText("Mute");
         } else {
-            audioManager.mute();
+            AudioManager.getInstance().mute();
             muteButton.setText("Unmute");
         }
     }
@@ -310,7 +305,9 @@ public class PauseMenu {
         // Setting up the Scene and Stage
         Stage settingsStage = new Stage();
         settingsStage.setTitle("Volume Settings");
-        Scene scene = new Scene(scrollPane, 400, 600); // Adjusted size for better visibility
+        settingsStage.initModality(Modality.APPLICATION_MODAL); // Blocks user interaction with other windows
+        settingsStage.initOwner(stage); // Assume 'mainStage' is your main application window
+        Scene scene = new Scene(scrollPane, 400, 600);
         settingsStage.setScene(scene);
         settingsStage.show();
     }
