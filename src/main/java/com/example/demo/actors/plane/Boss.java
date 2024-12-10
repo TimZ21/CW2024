@@ -156,7 +156,7 @@ public class Boss extends FighterPlane {
 	public void updateActor() {
 		updatePosition();
 		shieldManager.updateShield();
-		shieldManager.updateShieldPosition(getAbsoluteX(), getAbsoluteY());
+		shieldManager.updateShieldPosition(getAbsoluteX() - 130, getAbsoluteY() - 20);
 	}
 
 	/**
