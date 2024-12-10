@@ -16,25 +16,27 @@ public class ScaleUtils {
     /**
      * Horizontal offset to adjust component positioning based on the scale factor.
      */
-    public static int incrementX = 0;
+    public static double incrementX = 0;
 
     /**
      * Vertical offset to adjust component positioning based on the scale factor.
      */
-    public static int incrementY = 0;
+    public static double incrementY = 0;
 
     /**
      * Updates the scale-related offsets based on the current screen scale factor.
      * This method adjusts {@code incrementX} and {@code incrementY} to ensure
      * elements are positioned appropriately across different scaling settings.
      */
+
+    // 450 / scale
     public static void updateScale() {
-        if (scale == 1) {
-            incrementX = -650;
-            incrementY = 0;
-        } else if (scale == 1.25) {
-            incrementX = -300;
-            incrementY = -50;
+        if (scale == 1.25) {
+            incrementX = 360;
+            incrementY = -100;
+        } else if (scale == 1.5) {
+            incrementX = 625;
+            incrementY = -300;
         }
     }
 

@@ -114,12 +114,12 @@ public class PauseMenu {
         VBox contentVBox = new VBox(30, title, resumeButton, restartButton, muteButton, volumeButton, quitButton); // Added muteButton here
         contentVBox.setAlignment(Pos.CENTER);  // Center alignment for content inside VBox
 
-        // Create a VBox to hold the contentVBox with top-left alignment
+
         VBox vbox = new VBox(contentVBox);
-        vbox.setAlignment(Pos.TOP_LEFT);  // Top-left alignment for the VBox
+        vbox.setAlignment(Pos.CENTER);
         ScaleUtils.updateScale();
         System.out.println(ScaleUtils.scale+" " + ScaleUtils.incrementX+" " + ScaleUtils.incrementY);
-        vbox.setPadding(new Insets(ScaleUtils.scaleYRelocate(200), ScaleUtils.scaleXRelocate(650), 0, 0));  // Adjust padding to move content to the top-left
+        vbox.setPadding(new Insets(ScaleUtils.incrementY, ScaleUtils.incrementX, 0, 0));
 
         StackPane root = new StackPane(backgroundImage, vbox);
 

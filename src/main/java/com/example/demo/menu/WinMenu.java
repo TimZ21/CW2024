@@ -74,9 +74,9 @@ public class WinMenu {
         contentVBox.setAlignment(Pos.CENTER);
 
         VBox vbox = new VBox(contentVBox);
-        vbox.setAlignment(Pos.TOP_LEFT);
+        vbox.setAlignment(Pos.CENTER);
         ScaleUtils.updateScale();
-        vbox.setPadding(new Insets(ScaleUtils.scaleYRelocate(250), ScaleUtils.scaleXRelocate(600), 0, 0));
+        vbox.setPadding(new Insets(ScaleUtils.incrementY, ScaleUtils.incrementX, 0, 0));
 
         StackPane root = new StackPane(backgroundImage, vbox);
 
