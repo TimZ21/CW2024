@@ -75,6 +75,9 @@ public class InputHandler {
             if (kc == KeyCode.ESCAPE) {
                 if (pauseGameCallback != null) {
                     pauseGameCallback.run();
+                    keyStateTracker.resetKeyStates();
+                    userPlane.stopVerticalMovement();
+                    userPlane.stopHorizontalMovement();
                 }
             }
             keyStateTracker.keyPressed(kc);

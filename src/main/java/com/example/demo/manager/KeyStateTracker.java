@@ -54,4 +54,11 @@ public class KeyStateTracker {
     public boolean isKeyPressed(KeyCode keyCode) {
         return keyCode != null && keyStateMap.getOrDefault(keyCode, false);
     }
+
+    /**
+     * Resets the state of all keys.
+     */
+    public void resetKeyStates() {
+        keyStateMap.clear();
+    }
 }
