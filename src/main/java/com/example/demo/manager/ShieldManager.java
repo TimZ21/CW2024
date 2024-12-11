@@ -95,6 +95,7 @@ public class ShieldManager {
     public void activateShield() {
         isShielded = true;
         shieldImage.showShield();
+        AudioManager.getInstance().playShieldEffect();
         System.out.println("Shield activated.");
     }
 

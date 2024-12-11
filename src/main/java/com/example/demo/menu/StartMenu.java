@@ -318,6 +318,19 @@ public class StartMenu {
             loseEffectsVolumeLabel.setText("Lose Effect Volume: " + (int) (newVal.doubleValue() * 100));
         });
 
+        // Volume controls for shield activation sound effects
+        Slider shieldEffectsVolumeSlider = new Slider(0, 1, AudioManager.getInstance().getShieldEffectVolume());
+        shieldEffectsVolumeSlider.setShowTickLabels(true);
+        shieldEffectsVolumeSlider.setShowTickMarks(true);
+        shieldEffectsVolumeSlider.setMajorTickUnit(0.1);
+        shieldEffectsVolumeSlider.setBlockIncrement(0.05);
+
+        Label shieldEffectsVolumeLabel = new Label("Shield Activation Effect Volume: " + (int) (shieldEffectsVolumeSlider.getValue() * 100));
+        shieldEffectsVolumeSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
+            AudioManager.getInstance().setShieldEffectVolume(newVal.doubleValue());
+            shieldEffectsVolumeLabel.setText("Shield Activation Volume: " + (int) (newVal.doubleValue() * 100));
+        });
+
         layout.getChildren().addAll(new Label("Adjust Volume"),
                 musicVolumeLabel, musicVolumeSlider,
                 explosionEffectsVolumeLabel, explosionEffectVolumeSlider,
@@ -325,7 +338,8 @@ public class StartMenu {
                 userShootEffectsVolumeLabel, userShottEffectsVolumeSlider,
                 bossShootEffectsVolumeLabel, bossShottEffectsVolumeSlider,
                 winEffectsVolumeLabel, winEffectsVolumeSlider,
-                loseEffectsVolumeLabel, loseEffectsVolumeSlider);
+                loseEffectsVolumeLabel, loseEffectsVolumeSlider,
+                shieldEffectsVolumeLabel, shieldEffectsVolumeSlider);
 
         // Wrapping the layout in a ScrollPane
         ScrollPane scrollPane = new ScrollPane();

@@ -47,6 +47,10 @@ public class AudioManager {
      * MediaPlayer used to play lose menu sound effects across the application.
      */
     private MediaPlayer loseEffectPlayer;
+    /**
+     * MediaPlayer used to play shield activate sound effects across the application.
+     */
+    private MediaPlayer shieldEffectPlayer;
 
     /**
      * Flag to indicate whether all sounds should be muted or not.
@@ -106,6 +110,14 @@ public class AudioManager {
      * ranging from 0.0 (silent) to 1.0 (maximum volume).
      */
     private double loseEffectVolume = 0.5;
+
+    /**
+     * The volume level for shield activate sound effects.
+     * Controls the volume of audio played when the player loses or fails a level,
+     * ranging from 0.0 (silent) to 1.0 (maximum volume).
+     */
+    private double shieldEffectVolume = 0.5;
+
 
     /**
      * Private constructor to prevent instantiation from outside the class.
@@ -248,6 +260,16 @@ public class AudioManager {
     }
 
     /**
+     * Sets the volume for shield sound effects.
+     *
+     * @param volume Volume level between 0.0 and 1.0.
+     */
+    public void setShieldEffectVolume(double volume) {
+        shieldEffectVolume = volume;
+        System.out.println("Shield Effect volume:" + volume);
+    }
+
+    /**
      * Gets the current volume level for background music.
      *
      * @return The volume level.
@@ -307,6 +329,15 @@ public class AudioManager {
      * @return The loseEffectVolume.
      */
     public double getLoseEffectVolume() {
+        return loseEffectVolume;
+    }
+
+    /**
+     * Gets the current volume for shield activate sound effects.
+     *
+     * @return The loseEffectVolume.
+     */
+    public double getShieldEffectVolume() {
         return loseEffectVolume;
     }
 
@@ -484,5 +515,24 @@ public class AudioManager {
         loseEffectPlayer.setVolume(loseEffectVolume); // Use stored volume
         if (isMuted) loseEffectPlayer.setMute(true);
         loseEffectPlayer.play();
+    }
+
+    /**
+     * Plays the game lose sound effect.
+     */
+    public void playShieldEffect() {
+        stopBackgroundMusic();
+        String SHIELD_EFFECT = "/com/example/demo/sounds/shield.mp3";
+        URL resource = getClass().getResource(SHIELD_EFFECT);
+        if (resource == null) {
+            System.err.println("Error: Button click sound file not found at " + SHIELD_EFFECT);
+            return;
+        }
+
+        Media shieldEffect = new Media(resource.toString());
+        shieldEffectPlayer = new MediaPlayer(shieldEffect);
+        shieldEffectPlayer.setVolume(shieldEffectVolume); // Use stored volume
+        if (isMuted) shieldEffectPlayer.setMute(true);
+        shieldEffectPlayer.play();
     }
 }

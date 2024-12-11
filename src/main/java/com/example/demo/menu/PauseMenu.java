@@ -280,6 +280,19 @@ public class PauseMenu {
         loseEffectsVolumeSlider.setMajorTickUnit(0.1);
         loseEffectsVolumeSlider.setBlockIncrement(0.05);
 
+        // Volume controls for shield activation sound effects
+        Slider shieldEffectsVolumeSlider = new Slider(0, 1, AudioManager.getInstance().getShieldEffectVolume());
+        shieldEffectsVolumeSlider.setShowTickLabels(true);
+        shieldEffectsVolumeSlider.setShowTickMarks(true);
+        shieldEffectsVolumeSlider.setMajorTickUnit(0.1);
+        shieldEffectsVolumeSlider.setBlockIncrement(0.05);
+
+        Label shieldEffectsVolumeLabel = new Label("Shield Activation Effect Volume: " + (int) (shieldEffectsVolumeSlider.getValue() * 100));
+        shieldEffectsVolumeSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
+            AudioManager.getInstance().setShieldEffectVolume(newVal.doubleValue());
+            shieldEffectsVolumeLabel.setText("Shield Activation Volume: " + (int) (newVal.doubleValue() * 100));
+        });
+
         Label loseEffectsVolumeLabel = new Label("Lose Effect Volume: " + (int) (loseEffectsVolumeSlider.getValue() * 100));
         loseEffectsVolumeSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
             AudioManager.getInstance().setLoseEffectVolume(newVal.doubleValue());
@@ -293,7 +306,8 @@ public class PauseMenu {
                 userShootEffectsVolumeLabel, userShottEffectsVolumeSlider,
                 bossShootEffectsVolumeLabel, bossShottEffectsVolumeSlider,
                 winEffectsVolumeLabel, winEffectsVolumeSlider,
-                loseEffectsVolumeLabel, loseEffectsVolumeSlider);
+                loseEffectsVolumeLabel, loseEffectsVolumeSlider,
+                shieldEffectsVolumeLabel, shieldEffectsVolumeSlider);
 
         // Wrapping the layout in a ScrollPane
         ScrollPane scrollPane = new ScrollPane();

@@ -20,38 +20,52 @@ class ScaleUtilsTest {
     }
 
     @Test
-    void testScaleRelocateAtScale1() {
+    void testIncrementXAtScale1() {
         ScaleUtils.scale = 1;
         ScaleUtils.updateScale();
 
-        double originalX = 100;
-        double originalY = 50;
-
-        assertEquals(originalX + -650, ScaleUtils.scaleXRelocate(originalX));
-        assertEquals(originalY, ScaleUtils.scaleYRelocate(originalY));
+        assertEquals(ScaleUtils.incrementX, 0);
     }
 
     @Test
-    void testScaleRelocateAtScale1_25() {
+    void testIncrementYAtScale1() {
+        ScaleUtils.scale = 1;
+        ScaleUtils.updateScale();
+
+        assertEquals(ScaleUtils.incrementY, 0);
+    }
+
+    @Test
+    void testIncrementXAtScale125() {
         ScaleUtils.scale = 1.25;
         ScaleUtils.updateScale();
 
-        double originalX = 100;
-        double originalY = 50;
-
-        assertEquals(originalX + -300, ScaleUtils.scaleXRelocate(originalX));
-        assertEquals(originalY - 50, ScaleUtils.scaleYRelocate(originalY));
+        assertEquals(ScaleUtils.incrementX, 360);
     }
 
     @Test
-    void testScaleRelocateAtScale1_5() {
-        ScaleUtils.scale = 1.5;
+    void testIncrementYAtScale125() {
+        ScaleUtils.scale = 1.25;
         ScaleUtils.updateScale();
 
-        double originalX = 100;
-        double originalY = 50;
-
-        assertEquals(originalX, ScaleUtils.scaleXRelocate(originalX));
-        assertEquals(originalY, ScaleUtils.scaleYRelocate(originalY));
+        assertEquals(ScaleUtils.incrementY, -100);
     }
+
+    @Test
+    void testIncrementXAtScale150() {
+        ScaleUtils.scale = 1.50;
+        ScaleUtils.updateScale();
+
+        assertEquals(ScaleUtils.incrementX, 625);
+    }
+
+    @Test
+    void testIncrementYAtScale150() {
+        ScaleUtils.scale = 1.50;
+        ScaleUtils.updateScale();
+
+        assertEquals(ScaleUtils.incrementY, -300);
+    }
+
+
 }
