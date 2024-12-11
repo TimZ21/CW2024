@@ -39,24 +39,4 @@ public class ScaleUtils {
             incrementY = -300;
         }
     }
-
-    /**
-     * Adjusts a horizontal position value according to the current scale increment.
-     *
-     * @param value The original horizontal position.
-     * @return The adjusted horizontal position.
-     */
-    public static double scaleXRelocate(double value) {
-        return value + incrementX;
-    }
-
-    /**
-     * Adjusts a vertical position value according to the current scale increment.
-     *
-     * @param value The original vertical position.
-     * @return The adjusted vertical position.
-     */
-    public static double scaleYRelocate(double value) {
-        return value + incrementY;
-    }
 }
