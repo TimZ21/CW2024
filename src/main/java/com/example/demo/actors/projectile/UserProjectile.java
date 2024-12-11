@@ -1,5 +1,7 @@
 package com.example.demo.actors.projectile;
 
+import static com.example.demo.level.LevelParent.VELOCITY_CHANGE;
+
 /**
  * The {@code UserProjectile} class extends {@link Projectile} to represent projectiles fired by the player's plane.
  * This class encapsulates the specific characteristics of the player's projectiles, including their movement behavior
@@ -17,7 +19,7 @@ public class UserProjectile extends Projectile {
 	/**
 	 * Horizontal velocity of the projectile.
 	 */
-	private static final int HORIZONTAL_VELOCITY = 6;
+	private static final double HORIZONTAL_VELOCITY = 20/VELOCITY_CHANGE;
 
 	/**
 	 * Constructs a {@code UserProjectile} instance with the specified initial position.
