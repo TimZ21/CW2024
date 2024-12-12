@@ -524,7 +524,6 @@ public class AudioManager {
      * Plays the game lose sound effect.
      */
     public void playShieldEffect() {
-        stopBackgroundMusic();
         String SHIELD_EFFECT = "/com/example/demo/sounds/shield.mp3";
         URL resource = getClass().getResource(SHIELD_EFFECT);
         if (resource == null) {
