@@ -6,6 +6,9 @@ package com.example.demo.manager;
  * and handling components that move out of the screen bounds.
  * It provides a standardized way for game components to be managed
  * during the game loop.
+ *
+ * <p>
+ * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/manager/GameComponent.java">GameComponent.java</a>
  */
 public interface GameComponent {
 

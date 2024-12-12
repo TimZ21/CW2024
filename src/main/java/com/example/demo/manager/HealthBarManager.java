@@ -7,6 +7,9 @@ import javafx.scene.layout.HBox;
 /**
  * The {@code HealthBarManager} class manages the health bar for {@link com.example.demo.actors.plane.Boss}.
  * It handles the initialization, positioning, visibility, and updating of the health bar.
+ *
+ * <p>
+ * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/manager/HealthBarManager.java">HealthBarManager.java</a>
  */
 public class HealthBarManager {
 

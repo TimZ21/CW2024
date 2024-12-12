@@ -23,6 +23,9 @@ import java.util.Objects;
 /**
  * The {@code WinMenu} class displays a victory screen with options to either restart the game or exit.
  * This class handles the setup and display of the win menu UI elements within a provided game scene.
+ *
+ * <p>
+ * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/menu/WinMenu.java">WinMenu.java</a>
  */
 public class WinMenu {
 

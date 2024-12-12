@@ -15,6 +15,8 @@ import static com.example.demo.level.LevelParent.VELOCITY_CHANGE;
  * Represents a boss enemy in the game.
  * The {@code Boss} class extends {@link FighterPlane} and implements special behavior
  * such as shield management, movement patterns, and projectile firing.
+ * <p>
+ * See the source code at <a href="https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/actors/plane/Boss.java">Boss.java</a>
  */
 public class Boss extends FighterPlane {
 	/**

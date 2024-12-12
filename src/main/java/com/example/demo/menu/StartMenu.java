@@ -26,6 +26,9 @@ import java.util.Objects;
  * It allows players to start the game, access settings, view tutorials, or quit the game.
  * This class handles the layout and interaction logic for the start menu, including
  * button actions and audio control.
+ *
+ * <p>
+ * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/menu/StartMenu.java">StartMenu.java</a>
  */
 public class StartMenu {
 

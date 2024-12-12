@@ -6,6 +6,9 @@ import javafx.scene.Group;
  * The {@code LevelViewLevelBoss} class is a specialized version of {@link LevelView}
  * for the second level of the game. It includes additional visual elements specific
  * to LevelBoss, such as the shield image.
+ *
+ * <p>
+ * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/view/LevelViewLevelBoss.java">LevelViewLevelBoss.java</a>
  */
 public class LevelViewLevelBoss extends LevelView {
 

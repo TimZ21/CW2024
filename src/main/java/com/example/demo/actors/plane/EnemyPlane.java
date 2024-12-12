@@ -12,6 +12,9 @@ import static com.example.demo.level.LevelParent.VELOCITY_CHANGE;
  * The {@code EnemyPlane} class represents an enemy aircraft in the game.
  * It extends the {@link FighterPlane} class and defines specific behaviors
  * for movement, firing projectiles, and updating the actor's state.
+ *
+ * <p>
+ * See the source code at <a href="https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/actors/plane/EnemyPlane.java">EnemyPlane.java</a>
  */
 public class EnemyPlane extends FighterPlane {
 

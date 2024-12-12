@@ -10,6 +10,9 @@ import java.net.URL;
 /**
  * The {@code ShieldImage} class represents the visual shield effect for the boss character.
  * It handles the initialization, positioning, and visibility of the shield image.
+ *
+ * <p>
+ * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/view/ShieldImage.java">ShieldImage.java</a>
  */
 public class ShieldImage {
 	/**

@@ -7,6 +7,9 @@ import javafx.stage.Stage;
  * control the initial setup and launching of the game. It initializes
  * the necessary controllers for managing the stage and levels, thereby
  * facilitating the game's overall flow and transitions.
+ *
+ * <p>
+ * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/controller/Controller.java">Controller.java</a>
  */
 public class Controller {
 

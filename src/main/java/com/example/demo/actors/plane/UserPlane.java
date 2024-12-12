@@ -13,6 +13,8 @@ import static com.example.demo.level.LevelParent.VELOCITY_CHANGE;
  * The {@code UserPlane} class extends {@link FighterPlane} to represent the player-controlled aircraft in the game.
  * It provides mechanisms for user-directed movement and projectile firing, responding directly to player input
  * to navigate through the game environment and engage with enemy targets.
+ * <p>
+ * See the source code at <a href="https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/actors/plane/UserPlane.java">UserPlane.java</a>
  */
 public class UserPlane extends FighterPlane {
 	/**

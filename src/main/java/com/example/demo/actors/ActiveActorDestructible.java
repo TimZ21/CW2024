@@ -7,6 +7,8 @@ import com.example.demo.actors.projectile.Projectile;
  * in the game that can take damage and be destroyed. It extends the {@link ActiveActor} class
  * and implements the {@link  Destructible} interface, providing additional functionality
  * for managing the actor's destruction state.
+ * <p>
+ * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/actors/ActiveActorDestructible.java">ActiveActorDestructible.java</a>
  */
 public abstract class ActiveActorDestructible extends ActiveActor implements Destructible {
 

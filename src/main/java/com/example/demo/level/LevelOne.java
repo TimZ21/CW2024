@@ -10,6 +10,9 @@ import com.example.demo.view.LevelView;
  * and the transition to the next level. This class extends {@link LevelParent}
  * and customizes the level-specific settings and mechanics, including enemy
  * spawning probabilities, initial player health, and background settings.
+ *
+ * <p>
+ * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/level/LevelOne.java">LevelOne.java</a>
  */
 public class LevelOne extends LevelParent {
 	/**

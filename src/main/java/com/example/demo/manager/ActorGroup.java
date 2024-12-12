@@ -10,6 +10,9 @@ import java.util.List;
  * managing a group of {@code ActiveActorDestructible} objects. It provides
  * methods for updating actors, removing destroyed actors, and handling actors
  * that move out of the screen bounds.
+ *
+ * <p>
+ * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/manager/ActorGroup.java">ActorGroup.java</a>
  */
 public class ActorGroup implements GameComponent {
 

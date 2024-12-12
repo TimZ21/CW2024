@@ -10,6 +10,9 @@ import javafx.scene.control.Alert;
  * This class is designed to simplify error handling in the application by providing a uniform approach
  * to reporting and logging exceptions. It can be especially useful in a user interface context where
  * notifying the user about errors in a consistent manner is critical.
+ *
+ * <p>
+ * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/controller/ExceptionHandler.java">ExceptionHandler.java</a>
  */
 public class ExceptionHandler {
 

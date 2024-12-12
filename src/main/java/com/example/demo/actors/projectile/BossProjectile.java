@@ -6,6 +6,8 @@ import static com.example.demo.level.LevelParent.VELOCITY_CHANGE;
  * The {@code BossProjectile} class represents a projectile fired by a boss character in the game.
  * It extends the {@link Projectile} class, providing custom behaviors tailored for the boss's attacks,
  * such as special movement patterns, differentiating it from standard projectiles.
+ * <p>
+ * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/actors/projectile/BossProjectile.java">BossProjectile.java</a>
  */
 
 public class BossProjectile extends Projectile {
@@ -50,6 +52,7 @@ public class BossProjectile extends Projectile {
 	 * @param initialYPos The initial Y-coordinate of the projectile.
 	 * @param xVelocity The horizontal velocity of the projectile.
 	 * @param yVelocity The vertical velocity of the projectile.
+	 *
 	 */
 	public BossProjectile(double initialXPos, double initialYPos, int xVelocity, int yVelocity) {
 		super(IMAGE_NAME, IMAGE_HEIGHT, initialXPos, initialYPos);

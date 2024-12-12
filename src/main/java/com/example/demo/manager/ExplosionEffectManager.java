@@ -13,6 +13,9 @@ import java.util.Objects;
  * The {@code ExplosionEffectManager} class manages the visual representation of explosions
  * in the game. It extends {@link ImageView} to display an explosion image at a specified location
  * on the screen for a brief duration before automatically removing it.
+ *
+ * <p>
+ * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/manager/ExplosionEffectManager.java">ExplosionEffectManager.java</a>
  */
 public class ExplosionEffectManager extends ImageView {
 

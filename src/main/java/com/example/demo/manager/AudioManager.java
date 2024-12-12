@@ -9,6 +9,9 @@ import java.net.URL;
  * The AudioManager class manages all audio related functionalities within the application.
  * It handles playing, stopping, and managing volume for background music and sound effects.
  * This class follows the Singleton design pattern to ensure there is only one instance managing audio throughout the application.
+ *
+ * <p>
+ * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/manager/AudioManager.java">AudioManager.java</a>
  */
 public class AudioManager {
 

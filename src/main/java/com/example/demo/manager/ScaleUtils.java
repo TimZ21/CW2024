@@ -6,6 +6,9 @@ import javafx.stage.Screen;
  * This {@code ScaleUtils} provides utility methods to handle scaling and positioning of UI components
  * based on the current screen scale factor. This is useful for adapting UI
  * elements to different display resolutions and scaling settings.
+ *
+ * <p>
+ * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/manager/ScaleUtils.java">ScaleUtils.java</a>
  */
 public class ScaleUtils {
     /**

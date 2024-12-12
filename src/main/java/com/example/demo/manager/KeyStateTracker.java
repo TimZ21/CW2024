@@ -9,6 +9,9 @@ import java.util.Map;
  * The {@code KeyStateTracker} tracks the state of keyboard keys.
  * Allows registering key presses and releases to track which keys are currently pressed.
  * Optimize the game experience when multiple keys are pressed together.
+ *
+ * <p>
+ * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/manager/KeyStateTracker.java">KeyStateTracker.java</a>
  */
 public class KeyStateTracker {
     /**

@@ -11,6 +11,9 @@ import java.util.Random;
 /**
  * The {@code FirePatternManager} manages the firing patterns for bosses, effectively implementing a variation of the Strategy pattern,
  * where each firing pattern can be considered a strategy.
+ *
+ * <p>
+ * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/manager/FirePatternManager.java">FirePatternManager.java</a>
  */
 public class FirePatternManager {
 

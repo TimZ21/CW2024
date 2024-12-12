@@ -18,6 +18,9 @@ package com.example.demo.manager;
  *
  * <p>The {@link ActorManager} thus acts as a central point for managing the life cycle and interaction
  * of all game actors across different groups, streamlining updates, destruction checks, and boundary management.</p>
+ *
+ * <p>
+ * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/manager/ActorManager.java">ActorManager.java</a>
  */
 public class ActorManager {
 

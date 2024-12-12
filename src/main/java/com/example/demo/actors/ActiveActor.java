@@ -12,6 +12,8 @@ import java.util.Objects;
  * like planes and projectiles.
  *
  * @see ImageView for how images are managed and displayed.
+ * <p>
+ * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/actors/ActiveActor.java">ActiveAcotr.java</a>
  */
 
 public abstract class ActiveActor extends ImageView {

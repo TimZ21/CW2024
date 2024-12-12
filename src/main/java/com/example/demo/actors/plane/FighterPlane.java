@@ -9,6 +9,8 @@ import java.util.List;
  * projectile firing, and damage handling. This abstract class extends {@link ActiveActorDestructible}
  * to utilize advanced destructive capabilities and requires subclasses to implement specific
  * projectile firing behavior.
+ * <p>
+ * See the source code at <a href="https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/actors/plane/FighterPlane.java">FighterPlane.java</a>
  */
 public abstract class FighterPlane extends ActiveActorDestructible {
 

@@ -6,6 +6,8 @@ import static com.example.demo.level.LevelParent.VELOCITY_CHANGE;
  * The {@code EnemyProjectile} class extends {@link Projectile} to represent projectiles fired by enemies in the game.
  * It defines specific attributes and behaviors for these projectiles, such as their appearance
  * and movement pattern, which contrasts with the player's projectiles by moving to the left.
+ * <p>
+ * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/actors/projectile/BossProjectile.java">EnemyProjectile.java</a>
  */
 public class EnemyProjectile extends Projectile {
 	/**

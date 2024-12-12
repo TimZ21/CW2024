@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 /**
  * The {@code Main} class serves as the entry point for the Sky Battle game application.
  * It initializes the game window, sets up the {@code Controller}, and launches the first level.
+ * <p>
+ * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/controller/Main.java">Main.java</a>
  */
 public class Main extends Application {
 	/**

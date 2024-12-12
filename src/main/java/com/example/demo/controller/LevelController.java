@@ -11,6 +11,9 @@ import java.lang.reflect.Constructor;
  * It facilitates the dynamic loading and transitioning between different game levels using reflection,
  * ensuring smooth gameplay transitions. Additionally, it manages interactions with the pause menu,
  * handling game pausing and resumption seamlessly.
+ *
+ * <p>
+ * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/controller/LevelController.java">LevelController.java</a>
  */
 public class LevelController {
 

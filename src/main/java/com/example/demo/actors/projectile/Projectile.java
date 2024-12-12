@@ -8,6 +8,8 @@ import com.example.demo.actors.plane.FighterPlane;
  * extending {@link ActiveActorDestructible}. This class provides a foundational framework for defining the
  * appearance, behavior, and interaction of projectiles with other entities in the game, such as how they
  * move, how they impact targets, and how they are visualized.
+ *
+ * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/actors/projectile/Projectile.java">Projectile.java</a>
  */
 public abstract class Projectile extends ActiveActorDestructible {
 

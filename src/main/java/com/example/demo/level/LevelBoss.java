@@ -9,6 +9,9 @@ import com.example.demo.view.LevelViewLevelBoss;
  * challenging the player with a powerful enemy, the Boss.
  * It extends {@link LevelParent} and defines the specific setup, enemy spawning,
  * and game-over conditions for a critical encounter in the game.
+ *
+ * <p>
+ * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/level/LevelBoss.java">LevelBoss.java</a>
  */
 public class LevelBoss extends LevelParent {
 
