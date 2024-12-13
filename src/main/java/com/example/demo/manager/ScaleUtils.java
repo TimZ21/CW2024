@@ -8,7 +8,7 @@ import javafx.stage.Screen;
  * elements to different display resolutions and scaling settings.
  *
  * <p>
- * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/manager/ScaleUtils.java">ScaleUtils.java</a>
+ * See the source code at <a href="https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/manager/ScaleUtils.java">ScaleUtils.java</a>
  */
 public class ScaleUtils {
     /**

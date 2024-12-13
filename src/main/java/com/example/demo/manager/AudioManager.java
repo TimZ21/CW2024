@@ -11,7 +11,7 @@ import java.net.URL;
  * This class follows the Singleton design pattern to ensure there is only one instance managing audio throughout the application.
  *
  * <p>
- * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/manager/AudioManager.java">AudioManager.java</a>
+ * See the source code at <a href="https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/manager/AudioManager.java">AudioManager.java</a>
  */
 public class AudioManager {
 

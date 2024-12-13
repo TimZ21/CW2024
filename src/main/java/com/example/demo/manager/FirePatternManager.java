@@ -13,7 +13,7 @@ import java.util.Random;
  * where each firing pattern can be considered a strategy.
  *
  * <p>
- * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/manager/FirePatternManager.java">FirePatternManager.java</a>
+ * See the source code at <a href="https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/manager/FirePatternManager.java">FirePatternManager.java</a>
  */
 public class FirePatternManager {
 

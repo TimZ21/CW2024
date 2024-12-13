@@ -18,7 +18,7 @@ import java.util.Random;
  * and the initialization of level-specific views and settings.
  *
  * <p>
- * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/level/LevelFinalBoss.java">LevelFinalBoss.java</a>
+ * See the source code at <a href="https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/level/LevelFinalBoss.java">LevelFinalBoss.java</a>
  */
 public class LevelFinalBoss extends LevelParent {
 

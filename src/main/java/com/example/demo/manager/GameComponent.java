@@ -8,7 +8,7 @@ package com.example.demo.manager;
  * during the game loop.
  *
  * <p>
- * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/manager/GameComponent.java">GameComponent.java</a>
+ * See the source code at <a href="https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/manager/GameComponent.java">GameComponent.java</a>
  */
 public interface GameComponent {
 

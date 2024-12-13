@@ -20,7 +20,7 @@ package com.example.demo.manager;
  * of all game actors across different groups, streamlining updates, destruction checks, and boundary management.</p>
  *
  * <p>
- * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/manager/ActorManager.java">ActorManager.java</a>
+ * See the source code at <a href="https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/manager/ActorManager.java">ActorManager.java</a>
  */
 public class ActorManager {
 

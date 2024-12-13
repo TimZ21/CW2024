@@ -24,7 +24,7 @@ import javafx.util.Duration;
  * This class should be extended by specific level classes that implement level-specific behaviors and entities.
  *
  * <p>
- * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/level/LevelParent.java">LevelParent.java</a>
+ * See the source code at <a href="https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/level/LevelParent.java">LevelParent.java</a>
  */
 public abstract class LevelParent {
 

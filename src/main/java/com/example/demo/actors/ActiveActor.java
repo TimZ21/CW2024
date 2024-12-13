@@ -13,11 +13,15 @@ import java.util.Objects;
  *
  * @see ImageView for how images are managed and displayed.
  * <p>
- * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/actors/ActiveActor.java">ActiveAcotr.java</a>
+ * See the source code at <a href="https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/actors/ActiveActor.java">ActiveAcotr.java</a>
  */
 
 public abstract class ActiveActor extends ImageView {
 
+	/**
+	 * The base directory path for all actor images. This path is relative to the resource directory
+	 * and is used to locate image files for actors.
+	 */
 	private static final String IMAGE_LOCATION = "/com/example/demo/images/";
 
 	/**

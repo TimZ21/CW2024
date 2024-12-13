@@ -6,6 +6,9 @@
 3. [Implemented and Working Properly](#implemented-and-working-properly)
 4. [Implemented but Not Working Properly](#implemented-but-not-working-properly)
 5. [Features Not Implemented](#features-not-implemented)
+6. [New Java Classes](#new-java-classes)
+7. [Modified Java Classes](#modified-java-classes)
+8. [Unexpected Problems](#unexpected-problems)
 
 ## GitHub Repository
 

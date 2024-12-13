@@ -11,7 +11,7 @@ import java.util.Map;
  * Optimize the game experience when multiple keys are pressed together.
  *
  * <p>
- * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/manager/KeyStateTracker.java">KeyStateTracker.java</a>
+ * See the source code at <a href="https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/manager/KeyStateTracker.java">KeyStateTracker.java</a>
  */
 public class KeyStateTracker {
     /**

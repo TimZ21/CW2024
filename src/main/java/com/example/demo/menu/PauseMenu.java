@@ -29,7 +29,7 @@ import java.util.Objects;
  * This menu provides options to resume, restart, adjust volume, and quit the game.
  *
  * <p>
- * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/menu/PauseMenu.java">PauseMenu.java</a>
+ * See the source code at <a href="https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/menu/PauseMenu.java">PauseMenu.java</a>
  */
 public class PauseMenu {
 

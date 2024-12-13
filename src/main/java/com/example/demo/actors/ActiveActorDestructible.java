@@ -8,10 +8,14 @@ import com.example.demo.actors.projectile.Projectile;
  * and implements the {@link  Destructible} interface, providing additional functionality
  * for managing the actor's destruction state.
  * <p>
- * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/actors/ActiveActorDestructible.java">ActiveActorDestructible.java</a>
+ * See the source code at <a href="https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/actors/ActiveActorDestructible.java">ActiveActorDestructible.java</a>
  */
 public abstract class ActiveActorDestructible extends ActiveActor implements Destructible {
 
+	/**
+	 * Indicates whether the actor has been destroyed.
+	 * This flag is used to determine the actor's state during the game loop.
+	 */
 	private boolean isDestroyed;
 
 	/**

@@ -13,7 +13,7 @@ import java.lang.reflect.Constructor;
  * handling game pausing and resumption seamlessly.
  *
  * <p>
- * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/controller/LevelController.java">LevelController.java</a>
+ * See the source code at <a href="https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/controller/LevelController.java">LevelController.java</a>
  */
 public class LevelController {
 

@@ -11,7 +11,7 @@ import static com.example.demo.level.LevelParent.VELOCITY_CHANGE;
  * position updates, and status checks for an entity with a shield.
  *
  * <p>
- * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/manager/ShieldManager.java">ShieldManager.java</a>
+ * See the source code at <a href="https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/manager/ShieldManager.java">ShieldManager.java</a>
  */
 public class ShieldManager {
 

@@ -11,7 +11,7 @@ import com.example.demo.view.LevelViewLevelBoss;
  * and game-over conditions for a critical encounter in the game.
  *
  * <p>
- * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/level/LevelBoss.java">LevelBoss.java</a>
+ * See the source code at <a href="https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/level/LevelBoss.java">LevelBoss.java</a>
  */
 public class LevelBoss extends LevelParent {
 

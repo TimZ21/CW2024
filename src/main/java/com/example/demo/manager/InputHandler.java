@@ -14,7 +14,7 @@ import java.util.List;
  * This class binds key presses and releases to actions within the game, such as moving a plane or firing projectiles.
  *
  * <p>
- * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/manager/InputHandler.java">InputHandler.java</a>
+ * See the source code at <a href="https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/manager/InputHandler.java">InputHandler.java</a>
  */
 public class InputHandler {
 

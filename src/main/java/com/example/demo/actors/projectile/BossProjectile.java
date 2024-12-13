@@ -7,7 +7,7 @@ import static com.example.demo.level.LevelParent.VELOCITY_CHANGE;
  * It extends the {@link Projectile} class, providing custom behaviors tailored for the boss's attacks,
  * such as special movement patterns, differentiating it from standard projectiles.
  * <p>
- * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/actors/projectile/BossProjectile.java">BossProjectile.java</a>
+ * See the source code at <a href="https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/actors/projectile/BossProjectile.java">BossProjectile.java</a>
  */
 
 public class BossProjectile extends Projectile {

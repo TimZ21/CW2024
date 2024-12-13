@@ -9,7 +9,7 @@ import javafx.stage.Stage;
  * to retrieve stage dimensions and show or hide the stage. This centralization of stage
  * management facilitates the handling of UI changes across the application.
  * <p>
- * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/controller/StageController.java">StageController.java</a>
+ * See the source code at <a href="https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/controller/StageController.java">StageController.java</a>
  */
 public class StageController {
 

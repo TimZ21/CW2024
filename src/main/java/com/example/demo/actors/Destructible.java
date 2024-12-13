@@ -12,7 +12,7 @@ package com.example.demo.actors;
  * <p>Note: This is a fundamental interface used throughout the game framework to ensure
  * objects conform to basic interactive game mechanics.
  * <p>
- * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/actors/Destructible.java">Destructible.java</a>
+ * See the source code at <a href="https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/actors/Destructible.java">Destructible.java</a>
  */
 public interface Destructible {
 

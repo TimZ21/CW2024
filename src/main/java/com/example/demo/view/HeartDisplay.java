@@ -12,7 +12,7 @@ import java.util.Objects;
  * and allows dynamically removing hearts as the player takes damage.
  *
  * <p>
- * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/view/HeartDisplay.java">HeartDisplay.java</a>
+ * See the source code at <a href="https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/view/HeartDisplay.java">HeartDisplay.java</a>
  */
 public class HeartDisplay {
 

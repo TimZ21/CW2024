@@ -9,7 +9,7 @@ import javafx.scene.layout.HBox;
  * It handles the initialization, positioning, visibility, and updating of the health bar.
  *
  * <p>
- * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/manager/HealthBarManager.java">HealthBarManager.java</a>
+ * See the source code at <a href="https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/manager/HealthBarManager.java">HealthBarManager.java</a>
  */
 public class HealthBarManager {
 

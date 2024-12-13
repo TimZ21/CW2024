@@ -8,7 +8,7 @@ import javafx.scene.Group;
  * initialization and display of these elements.
  *
  * <p>
- * See the source code at <a href=https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/view/LevelView.java">LevelView.java</a>
+ * See the source code at <a href="https://github.com/TimZ21/CW2024/blob/master/src/main/java/com/example/demo/view/LevelView.java">LevelView.java</a>
  */
 public class LevelView {
 
